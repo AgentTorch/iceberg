@@ -748,10 +748,11 @@ def get_all_states(employment_file: str) -> List[str]:
 
 if __name__ == "__main__":
     print("\n=== PROJECT ICEBERG: CALCULATING AGENTIC API ECONOMY IMPACT ===")
-    employment_file = "../data/state_M2023_dl-Table 1.csv"
-    tech_intensity_file = "../tech_intensity_simple.csv"
-    zapier_apps_file = "../data/zapier_apps_soc_codes.json"
-    soc_mapping_file = "../data/soc_mapping.json"
+    employment_file = "data/state_M2023_dl-Table 1.csv"
+    tech_intensity_file = "data/tech_intensity_simple.csv"
+    zapier_apps_file = "/data/zapier_apps_soc_codes.json"
+    soc_mapping_file = "/data/soc_mapping.json"
+    
     output_dir = "output_new2/"
 
     national_summary_df, national_industry_df = calculate_all_states_iceberg_indices(
