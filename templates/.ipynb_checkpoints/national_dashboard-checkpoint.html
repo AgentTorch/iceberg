@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Iceberg - National Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <style>
+        :root {
+            --primary-dark: #003366;
+            --primary-medium: #0055a4;
+            --primary-light: #6f9bd8;
+            --accent: #00b8d4;
+            --white: #ffffff;
+            --off-white: #f5f9ff;
+            --light-gray: #f5f7fa;
+            --card-background: #0d3b7a;
+            --highlight-glow: rgba(0, 184, 212, 0.4);
+            --text-dark: #001a33;
+            --text-medium: #003366;
+            --text-light: #ffffff;
+            --risk-very-high: #e74c3c;
+            --risk-high: #e67e22;
+            --risk-moderate: #f1c40f;
+            --risk-low: #3498db;
+            --risk-very-low: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--off-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        header {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .banner {
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-medium) 100%);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .summary-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+
+        .national-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .metric {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .dashboard-panel {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel-header {
+            margin-bottom: 15px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .panel-description {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .chart-container {
+            height: 400px;
+            position: relative;
+        }
+
+        .map-container {
+            height: 500px;
+            position: relative;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background-color: var(--light-gray);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--off-white);
+        }
+
+        .states path {
+            stroke: white;
+            stroke-width: 0.5px;
+            cursor: pointer;
+        }
+
+        .states path:hover {
+            stroke: var(--accent);
+            stroke-width: 2px;
+        }
+
+        .state-tooltip {
+            position: absolute;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 220px;
+        }
+
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .custom-tab-container {
+            margin-bottom: 20px;
+        }
+
+        .custom-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .custom-tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-medium);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .custom-tab.active {
+            color: var(--primary-dark);
+            border-bottom-color: var(--accent);
+        }
+
+        .custom-tab:hover:not(.active) {
+            border-bottom-color: #ddd;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 28px;
+            }
+            
+            .banner p {
+                font-size: 16px;
+            }
+            
+            .metric-value {
+                font-size: 28px;
+            }
+            
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <!-- Simple iceberg logo -->
+                <svg width="30" height="30" viewBox="0 0 100 100" style="margin-right: 10px;">
+                    <path 
+                        d="M20,30 L40,15 L60,25 L80,10 L90,30 L10,30 Z" 
+                        fill="#ffffff" 
+                        stroke="#ffffff"
+                        stroke-width="2"
+                    />
+                    <path 
+                        d="M10,30 L90,30 L80,100 L20,100 Z" 
+                        fill="#6f9bd8" 
+                        stroke="#ffffff"
+                        stroke-width="2"
+                        opacity="0.7"
+                    />
+                </svg>
+                Project Iceberg
+            </a>
+            <div>
+                <span style="margin-right: 15px;"><a href="https://iceberg.mit.edu/method.html" style="color: white; text-decoration: none;">Methodology</a></span>
+                <span><a href="#" style="color: white; text-decoration: none;">State Dashboards</a></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <h1>National Iceberg Index</h1>
+            <p>Measuring the impact of agentic AI technologies on the US economy</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- National Summary Card -->
+        <div class="summary-card">
+            <div class="national-metrics">
+                <div class="metric">
+                    <div class="metric-value">1.75%</div>
+                    <div class="metric-label">National Iceberg Index</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$300.0B</div>
+                    <div class="metric-label">Total Economic Value at Risk</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">3.5M</div>
+                    <div class="metric-label">Workers in At-Risk Jobs</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">10.9%</div>
+                    <div class="metric-label">Average Automation Gap</div>
+                </div>
+            </div>
+            <p style="color: var(--text-medium); font-size: 14px;">
+                The National Iceberg Index measures the current economic impact of AI automation through MCP-enabled systems across the United States. The current national index of 1.75% represents $300 billion in economic value at risk of automation, affecting approximately 3.5 million workers nationwide.
+            </p>
+        </div>
+
+        <!-- Map Visualization -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">State-by-State Automation Risk</h3>
+                <p class="panel-description">Click on a state to view its detailed dashboard</p>
+            </div>
+            <div class="map-container" id="us-map"></div>
+        </div>
+
+        <!-- Two-Column Layout for Key Metrics -->
+        <div class="grid-2col">
+            <!-- States with Highest Gap -->
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">States with Largest Automation Gap</h3>
+                    <p class="panel-description">Difference between potential and current automation risk</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="gapChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Workforce Risk Distribution -->
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Workforce Risk Distribution</h3>
+                    <p class="panel-description">Percentage of national workforce by risk category</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="workforceRiskChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Risk States Table -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">States with Highest Current Automation Risk</h3>
+                <p class="panel-description">Top 10 states by Iceberg Index</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>State</th>
+                        <th>Iceberg Index</th>
+                        <th>Economic Value at Risk</th>
+                        <th>Workers at Risk</th>
+                        <th>Potential Risk</th>
+                        <th>Automation Gap</th>
+                    </tr>
+                </thead>
+                <tbody id="risk-table-body">
+                    <!-- Table rows will be filled by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Industry Risk Analysis -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Industry Automation Risk</h3>
+                <p class="panel-description">Current vs. potential automation risk by major industry sectors</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="industryRiskChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Key Insights</h3>
+                <p class="panel-description">National trends and implications</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 10px;">
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Regional Variations</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        The highest automation risk is concentrated in states with technology and financial services hubs. States with diversified economies show greater resilience to automation impacts.
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Industry Trends</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        Computer & Mathematical, Business & Financial Operations, and Office & Administrative Support occupations consistently show the highest automation risk across all states.
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Automation Gaps</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        The significant gap between potential and current automation risk (10.9% nationally) indicates substantial room for MCP-enabled AI adoption across industries.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div style="text-align: center; margin: 40px 0 20px;">
+            <a href="#" style="display: inline-block; padding: 12px 25px; background-color: var(--primary-dark); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 15px;">
+                Download Full Report (PDF)
+            </a>
+            <a href="https://iceberg.mit.edu/method.html" style="display: inline-block; padding: 12px 25px; background-color: var(--accent); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                View Methodology
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3 class="footer-heading">Project Iceberg</h3>
+                <p>An initiative measuring the impact of Model Context Protocol (MCP) and agentic AI technologies on the US economy.</p>
+                <p style="margin-top: 10px;">© 2025 MIT Decentralized AI Group</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact</h3>
+                <p>
+                    MIT Decentralized AI Group<br>
+                    77 Massachusetts Avenue<br>
+                    Cambridge, MA 02139<br><br>
+                    iceberg@mit.edu
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for visualization - will be replaced with real data by the generation script
+        const stateData = [
+            {"state": "Washington", "icebergIndex": 5.81, "potentialRatio": 18.61, "automationGap": 12.80, "economicValue": 15.59, "workersAtRisk": 99950},
+            {"state": "Virginia", "icebergIndex": 4.92, "potentialRatio": 18.67, "automationGap": 13.75, "economicValue": 13.17, "workersAtRisk": 95800},
+            {"state": "North Carolina", "icebergIndex": 4.53, "potentialRatio": 14.86, "automationGap": 10.33, "economicValue": 12.85, "workersAtRisk": 115930}
+            // More state data will be added by the generation script
+        ];
+
+        const industryData = {
+            "labels": ["Computer & Mathematical", "Architecture & Engineering", "Life, Physical, & Social Science"],
+            "current": [52.01, 36.89, 33.03],
+            "potential": [64.74, 48.26, 43.59]
+            // More industry data will be added by the generation script
+        };
+
+        const workforceRiskData = {
+            "labels": ["Very High Risk", "High Risk", "Moderate Risk", "Low Risk", "Very Low Risk"],
+            "data": [9.11, 18.21, 42.50, 53.12, 28.84],
+            "colors": ["rgba(231, 76, 60, 0.8)", "rgba(230, 126, 34, 0.8)", "rgba(241, 196, 15, 0.8)", "rgba(52, 152, 219, 0.8)", "rgba(46, 204, 113, 0.8)"]
+            // Real workforce data will be added by the generation script
+        };
+
+        // Initialize charts when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Call function to populate table
+            console.log("calling pop risk table!!!!")
+            populateRiskTable();
+            
+            // Initialize States with Largest Gap Chart
+            const gapCtx = document.getElementById('gapChart').getContext('2d');
+            new Chart(gapCtx, {
+                type: 'bar',
+                data: {
+                    labels: stateData.slice(0, 10).map(state => state.state),
+                    datasets: [{
+                        label: 'Automation Gap',
+                        data: stateData.slice(0, 10).map(state => state.automationGap),
+                        backgroundColor: 'rgba(0, 184, 212, 0.8)',
+                        borderColor: 'rgba(0, 184, 212, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Automation Gap (Percentage Points)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Workforce Risk Distribution Chart
+            const riskCtx = document.getElementById('workforceRiskChart').getContext('2d');
+            new Chart(riskCtx, {
+                type: 'pie',
+                data: {
+                    labels: workforceRiskData.labels,
+                    datasets: [{
+                        data: workforceRiskData.data,
+                        backgroundColor: workforceRiskData.colors,
+                        borderColor: 'white',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value}M workers (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Industry Risk Chart
+            const industryCtx = document.getElementById('industryRiskChart').getContext('2d');
+            new Chart(industryCtx, {
+                type: 'bar',
+                data: {
+                    labels: industryData.labels,
+                    datasets: [
+                        {
+                            label: 'Current Risk',
+                            data: industryData.current,
+                            backgroundColor: 'rgba(0, 184, 212, 0.8)',
+                            borderColor: 'rgba(0, 184, 212, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Potential Risk',
+                            data: industryData.potential,
+                            backgroundColor: 'rgba(10, 55, 119, 0.8)',
+                            borderColor: 'rgba(10, 55, 119, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: false
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Automation Risk Score (0-100)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Initialize US Map Visualization
+            console.log("creating map visualization!!!")
+            createUSMap();
+        });
+
+        // Fill risk table with data
+        function populateRiskTable() {
+            const tableBody = document.getElementById('risk-table-body');
+            
+            // Sort states by Iceberg Index
+            const sortedStates = [...stateData].sort((a, b) => 
+                (b.icebergIndex || 0) - (a.icebergIndex || 0));
+            
+            // Create table rows for top 10 states
+            sortedStates.slice(0, 10).forEach((state, index) => {
+                if (!state) return; // Skip if state is undefined
+                
+                const row = document.createElement('tr');
+                
+                // Format data with proper error checking
+                const icebergIndex = state.icebergIndex ? state.icebergIndex.toFixed(1) : '0.0';
+                const economicValue = state.economicValue ? 
+                    `$${state.economicValue.toFixed(1)}B` : '$0.0B';
+                const workersAtRisk = state.workersAtRisk ? 
+                    `${(state.workersAtRisk / 1000).toFixed(0)}K` : '0K';
+                const potentialRatio = state.potentialRatio ? 
+                    state.potentialRatio.toFixed(1) : '0.0';
+                const automationGap = state.automationGap ? 
+                    state.automationGap.toFixed(1) : '0.0';
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${state.state || 'Unknown'}</td>
+                    <td>${icebergIndex}%</td>
+                    <td>${economicValue}</td>
+                    <td>${workersAtRisk}</td>
+                    <td>${potentialRatio}%</td>
+                    <td>${automationGap}</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Create US Map Visualization
+        function createUSMap() {
+            const width = document.getElementById('us-map').offsetWidth;
+            const height = 500;
+            
+            // Create SVG
+            const svg = d3.select('#us-map')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Define projection
+            const projection = d3.geoAlbersUsa()
+                .translate([width / 2, height / 2])
+                .scale(width);
+            
+            // Define path generator
+            const path = d3.geoPath()
+                .projection(projection);
+            
+            // Create tooltip
+            const tooltip = d3.select('body')
+                .append('div')
+                .attr('class', 'state-tooltip')
+                .style('opacity', 0);
+            
+            // Load US TopoJSON data
+            d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json')
+                .then(function(us) {
+                    // Convert TopoJSON to GeoJSON
+                    const states = topojson.feature(us, us.objects.states).features;
+                    
+                    // Create color scale for states
+                    const colorScale = d3.scaleLinear()
+                        .domain([0, 3, 6])  // Minimum, middle, and maximum iceberg index values
+                        .range(['#e1f5fe', '#0277bd', '#01579b']);  // Light blue to dark blue
+                    
+                    // Add state names to GeoJSON
+                    const stateNames = {
+                        '01': 'Alabama', '02': 'Alaska', '04': 'Arizona', '05': 'Arkansas', 
+                        '06': 'California', '08': 'Colorado', '09': 'Connecticut', '10': 'Delaware', 
+                        '11': 'District of Columbia', '12': 'Florida', '13': 'Georgia', '15': 'Hawaii', 
+                        '16': 'Idaho', '17': 'Illinois', '18': 'Indiana', '19': 'Iowa', 
+                        '20': 'Kansas', '21': 'Kentucky', '22': 'Louisiana', '23': 'Maine', 
+                        '24': 'Maryland', '25': 'Massachusetts', '26': 'Michigan', '27': 'Minnesota', 
+                        '28': 'Mississippi', '29': 'Missouri', '30': 'Montana', '31': 'Nebraska', 
+                        '32': 'Nevada', '33': 'New Hampshire', '34': 'New Jersey', '35': 'New Mexico', 
+                        '36': 'New York', '37': 'North Carolina', '38': 'North Dakota', '39': 'Ohio', 
+                        '40': 'Oklahoma', '41': 'Oregon', '42': 'Pennsylvania', '44': 'Rhode Island', 
+                        '45': 'South Carolina', '46': 'South Dakota', '47': 'Tennessee', '48': 'Texas', 
+                        '49': 'Utah', '50': 'Vermont', '51': 'Virginia', '53': 'Washington', 
+                        '54': 'West Virginia', '55': 'Wisconsin', '56': 'Wyoming', '72': 'Puerto Rico'
+                    };
+                    
+                    states.forEach(d => {
+                        d.properties.name = stateNames[d.id];
+                    });
+                    
+                    // Draw states
+                    svg.append('g')
+                        .attr('class', 'states')
+                        .selectAll('path')
+                        .data(states)
+                        .enter()
+                        .append('path')
+                        .attr('d', path)
+                        .attr('fill', function(d) {
+                            // Find the state data by name
+                            const stateObj = stateData.find(s => s.state === d.properties.name);
+                            return stateObj ? colorScale(stateObj.icebergIndex) : '#e1f5fe';
+                        })
+                        .on('mouseover', function(event, d) {
+                            // Find the state data by name
+                            const stateObj = stateData.find(s => s.state === d.properties.name);
+                            
+                            if (stateObj) {
+                                tooltip.transition()
+                                    .duration(200)
+                                    .style('opacity', 0.9);
+                                
+                                tooltip.html(`
+                                    <strong>${d.properties.name}</strong><br>
+                                    Iceberg Index: ${stateObj.icebergIndex.toFixed(1)}%<br>
+                                    Economic Value at Risk: $${stateObj.economicValue.toFixed(1)}B<br>
+                                    Workers at Risk: ${(stateObj.workersAtRisk / 1000).toFixed(0)}K<br>
+                                    Click for details
+                                `)
+                                    .style('left', (event.pageX + 15) + 'px')
+                                    .style('top', (event.pageY - 28) + 'px');
+                            }
+                        })
+                        .on('mouseout', function() {
+                            tooltip.transition()
+                                .duration(500)
+                                .style('opacity', 0);
+                        })
+                        .on('click', function(event, d) {
+                            // Navigate to state dashboard
+                            const stateName = d.properties.name.toLowerCase().replace(/\s+/g, '_');
+                            window.location.href = `dashboards/states/${stateName}_dashboard.html`;
+                        });
+                });
+        }
+    </script>
+</body>
+</html>

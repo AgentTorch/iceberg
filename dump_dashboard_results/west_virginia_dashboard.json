@@ -1,0 +1,1050 @@
+{
+  "executive_summary": {
+    "state_name": "West Virginia",
+    "iceberg_index": 0.567920632812814,
+    "potential_index": 7.304599469447198,
+    "automation_gap": 6.736678836634384,
+    "economic_value_at_risk": 200682000.0,
+    "employment_at_risk": 2250.0,
+    "total_employment": 681640.0,
+    "total_economic_value": 35336275600.0,
+    "state_ranking": "52 of 54",
+    "state_percentile": 3.7037037037037095,
+    "top_industries_at_risk": [
+      "Computer and Information Analyst",
+      "Top Executives",
+      "Communications Equipment Operators"
+    ],
+    "summary_text": "West Virginia has an Iceberg Index of 0.57%, with a potential automation risk of 7.30%. This represents an economic value of $0.20 billion at current risk, affecting 2.2k workers. The highest-risk industries are Computer and Information Analyst, Top Executives, Communications Equipment Operators.",
+    "metric_descriptions": {
+      "iceberg_index": "Current percentage of economic value at risk of automation",
+      "potential_index": "Theoretical percentage of economic value susceptible to automation",
+      "automation_gap": "Difference between potential and current automation risk (percentage points)"
+    }
+  },
+  "economic_impact": {
+    "top_industries_by_value": [
+      {
+        "name": "Mathematical Science Occupations",
+        "code": 152,
+        "economic_value_at_risk": 39422900.0,
+        "percentage_at_risk": 100.0,
+        "minor_potential_index": 100.0,
+        "employment": 490.0
+      },
+      {
+        "name": "Grounds Maintenance Workers",
+        "code": 373,
+        "economic_value_at_risk": 144420400.0,
+        "percentage_at_risk": 94.59688359087257,
+        "minor_potential_index": 94.59688359087257,
+        "employment": 4790.0
+      },
+      {
+        "name": "Computer and Information Analyst",
+        "code": 151,
+        "economic_value_at_risk": 660355300.0,
+        "percentage_at_risk": 61.2193203602135,
+        "minor_potential_index": 61.2193203602135,
+        "employment": 12370.0
+      },
+      {
+        "name": "Physical Scientists",
+        "code": 192,
+        "economic_value_at_risk": 41320800.0,
+        "percentage_at_risk": 50.20692336666626,
+        "minor_potential_index": 50.20692336666626,
+        "employment": 1020.0
+      },
+      {
+        "name": "Entertainment Attendants and Related Workers",
+        "code": 393,
+        "economic_value_at_risk": 35091000.0,
+        "percentage_at_risk": 48.71463118702609,
+        "minor_potential_index": 48.71463118702609,
+        "employment": 2070.0
+      },
+      {
+        "name": "Sales Representatives, Services",
+        "code": 413,
+        "economic_value_at_risk": 152392800.0,
+        "percentage_at_risk": 45.63151885578052,
+        "minor_potential_index": 45.63151885578052,
+        "employment": 6170.0
+      },
+      {
+        "name": "Other Transportation Workers",
+        "code": 536,
+        "economic_value_at_risk": 10016800.0,
+        "percentage_at_risk": 44.80667036447243,
+        "minor_potential_index": 44.80667036447243,
+        "employment": 560.0
+      },
+      {
+        "name": "Engineers",
+        "code": 172,
+        "economic_value_at_risk": 222387800.0,
+        "percentage_at_risk": 41.41058444824352,
+        "minor_potential_index": 41.41058444824352,
+        "employment": 5490.0
+      },
+      {
+        "name": "Other Food Preparation and Serving Related Workers",
+        "code": 359,
+        "economic_value_at_risk": 43841600.0,
+        "percentage_at_risk": 38.941823004148965,
+        "minor_potential_index": 38.941823004148965,
+        "employment": 4510.0
+      },
+      {
+        "name": "Architects, Surveyors, and Cartographers",
+        "code": 171,
+        "economic_value_at_risk": 16799100.0,
+        "percentage_at_risk": 37.66622795118374,
+        "minor_potential_index": 37.66622795118374,
+        "employment": 590.0
+      }
+    ],
+    "gdp_by_risk_level": {
+      "High": {
+        "economic_value": 1179510800.0,
+        "percentage": 3.3379601555971563
+      },
+      "Low": {
+        "economic_value": 22726383100.0,
+        "percentage": 64.31459658414029
+      },
+      "Moderate": {
+        "economic_value": 8153490300.0,
+        "percentage": 23.073994532689234
+      },
+      "Very High": {
+        "economic_value": 200682000.0,
+        "percentage": 0.567920632812814
+      },
+      "Very Low": {
+        "economic_value": 3076209400.0,
+        "percentage": 8.705528094760503
+      }
+    },
+    "total_economic_value_at_risk": 200682000.0,
+    "percentage_of_economy_at_risk": 0.567920632812814,
+    "metric_descriptions": {
+      "percentage_at_risk": "Current percentage of industry's economic value at risk (minor_iceberg_index)",
+      "econ_potential_index": "Potential automation impact weighted by economic importance",
+      "economic_value_at_risk": "Current economic value at risk in dollars"
+    }
+  },
+  "workforce_impact": {
+    "top_occupations_by_potential_risk": [
+      {
+        "title": "Software Developers",
+        "soc_code": 151252,
+        "employment": 1890.0,
+        "mean_wage": 94080.0,
+        "potential_risk": 87.10588235294118,
+        "economic_value": 177811200.0,
+        "weighted_potential_risk": 0.24152062327190132
+      },
+      {
+        "title": "Software Quality Assurance Analysts and Testers",
+        "soc_code": 151253,
+        "employment": 360.0,
+        "mean_wage": 63530.0,
+        "potential_risk": 83.6823529411765,
+        "economic_value": 22870800.0,
+        "weighted_potential_risk": 0.044195832197088704
+      },
+      {
+        "title": "Computer Programmers",
+        "soc_code": 151251,
+        "employment": 250.0,
+        "mean_wage": 75420.0,
+        "potential_risk": 75.6766706682673,
+        "economic_value": 18855000.0,
+        "weighted_potential_risk": 0.027755365980674296
+      },
+      {
+        "title": "Web Developers",
+        "soc_code": 151254,
+        "employment": 300.0,
+        "mean_wage": 83570.0,
+        "potential_risk": 74.42848671726756,
+        "economic_value": 25071000.0,
+        "weighted_potential_risk": 0.03275709467633981
+      },
+      {
+        "title": "Database Architects",
+        "soc_code": 151243,
+        "employment": 90.0,
+        "mean_wage": 103550.0,
+        "potential_risk": 74.39632809645599,
+        "economic_value": 9319500.0,
+        "weighted_potential_risk": 0.009822882355321048
+      },
+      {
+        "title": "Web and Digital Interface Designers",
+        "soc_code": 151255,
+        "employment": 90.0,
+        "mean_wage": 66640.0,
+        "potential_risk": 72.85982478097624,
+        "economic_value": 5997600.0,
+        "weighted_potential_risk": 0.009620010900604221
+      },
+      {
+        "title": "Computer Systems Analysts",
+        "soc_code": 151211,
+        "employment": 1190.0,
+        "mean_wage": 97420.0,
+        "potential_risk": 72.19112918479289,
+        "economic_value": 115929800.0,
+        "weighted_potential_risk": 0.12603052011311475
+      },
+      {
+        "title": "Database Administrators",
+        "soc_code": 151242,
+        "employment": 230.0,
+        "mean_wage": 74570.0,
+        "potential_risk": 71.48555211558308,
+        "economic_value": 17151100.0,
+        "weighted_potential_risk": 0.024120763139757216
+      },
+      {
+        "title": "Computer User Support Specialists",
+        "soc_code": 151232,
+        "employment": 1930.0,
+        "mean_wage": 56380.0,
+        "potential_risk": 68.35995989304814,
+        "economic_value": 108813400.0,
+        "weighted_potential_risk": 0.1935548421359998
+      },
+      {
+        "title": "Management Analysts",
+        "soc_code": 131111,
+        "employment": 1550.0,
+        "mean_wage": 93020.0,
+        "potential_risk": 67.4488017429194,
+        "economic_value": 144181000.0,
+        "weighted_potential_risk": 0.1533736909534726
+      }
+    ],
+    "top_occupations_by_current_risk": [
+      {
+        "title": "Software Developers",
+        "soc_code": 151252,
+        "employment": 1890.0,
+        "mean_wage": 94080.0,
+        "current_risk": 73.25942211543433,
+        "economic_value": 177811200.0,
+        "weighted_current_risk": 0.2031282022741783
+      },
+      {
+        "title": "Software Quality Assurance Analysts and Testers",
+        "soc_code": 151253,
+        "employment": 360.0,
+        "mean_wage": 63530.0,
+        "current_risk": 64.2722428679259,
+        "economic_value": 22870800.0,
+        "weighted_current_risk": 0.03394461509367602
+      },
+      {
+        "title": "Computer User Support Specialists",
+        "soc_code": 151232,
+        "employment": 1930.0,
+        "mean_wage": 56380.0,
+        "current_risk": 59.36781117740828,
+        "economic_value": 108813400.0,
+        "weighted_current_risk": 0.16809441284607413
+      },
+      {
+        "title": "Computer Systems Analysts",
+        "soc_code": 151211,
+        "employment": 1190.0,
+        "mean_wage": 97420.0,
+        "current_risk": 59.13631636868295,
+        "economic_value": 115929800.0,
+        "weighted_current_risk": 0.10323956410822825
+      },
+      {
+        "title": "Computer Programmers",
+        "soc_code": 151251,
+        "employment": 250.0,
+        "mean_wage": 75420.0,
+        "current_risk": 57.806446169286254,
+        "economic_value": 18855000.0,
+        "weighted_current_risk": 0.021201237518809875
+      },
+      {
+        "title": "General and Operations Managers",
+        "soc_code": 111021,
+        "employment": 14950.0,
+        "mean_wage": 94150.0,
+        "current_risk": 57.42858581788879,
+        "economic_value": 1407542500.0,
+        "weighted_current_risk": 1.259546619883571
+      },
+      {
+        "title": "Web Developers",
+        "soc_code": 151254,
+        "employment": 300.0,
+        "mean_wage": 83570.0,
+        "current_risk": 57.080096839653606,
+        "economic_value": 25071000.0,
+        "weighted_current_risk": 0.025121807775212845
+      },
+      {
+        "title": "Database Architects",
+        "soc_code": 151243,
+        "employment": 90.0,
+        "mean_wage": 103550.0,
+        "current_risk": 56.17486561285286,
+        "economic_value": 9319500.0,
+        "weighted_current_risk": 0.007417020575607003
+      },
+      {
+        "title": "Web and Digital Interface Designers",
+        "soc_code": 151255,
+        "employment": 90.0,
+        "mean_wage": 66640.0,
+        "current_risk": 55.022488126243054,
+        "economic_value": 5997600.0,
+        "weighted_current_risk": 0.007264866984569384
+      },
+      {
+        "title": "Database Administrators",
+        "soc_code": 151242,
+        "employment": 230.0,
+        "mean_wage": 74570.0,
+        "current_risk": 54.57919180132622,
+        "economic_value": 17151100.0,
+        "weighted_current_risk": 0.018416193466206546
+      }
+    ],
+    "top_occupations_by_automation_gap": [
+      {
+        "title": "Software Quality Assurance Analysts and Testers",
+        "soc_code": 151253,
+        "employment": 360.0,
+        "mean_wage": 63530.0,
+        "potential_risk": 83.6823529411765,
+        "current_risk": 64.2722428679259,
+        "automation_gap": 19.410110073250607,
+        "economic_value": 22870800.0
+      },
+      {
+        "title": "Database Architects",
+        "soc_code": 151243,
+        "employment": 90.0,
+        "mean_wage": 103550.0,
+        "potential_risk": 74.39632809645599,
+        "current_risk": 56.17486561285286,
+        "automation_gap": 18.221462483603126,
+        "economic_value": 9319500.0
+      },
+      {
+        "title": "Computer Programmers",
+        "soc_code": 151251,
+        "employment": 250.0,
+        "mean_wage": 75420.0,
+        "potential_risk": 75.6766706682673,
+        "current_risk": 57.806446169286254,
+        "automation_gap": 17.870224498981052,
+        "economic_value": 18855000.0
+      },
+      {
+        "title": "Web and Digital Interface Designers",
+        "soc_code": 151255,
+        "employment": 90.0,
+        "mean_wage": 66640.0,
+        "potential_risk": 72.85982478097624,
+        "current_risk": 55.022488126243054,
+        "automation_gap": 17.837336654733186,
+        "economic_value": 5997600.0
+      },
+      {
+        "title": "Web Developers",
+        "soc_code": 151254,
+        "employment": 300.0,
+        "mean_wage": 83570.0,
+        "potential_risk": 74.42848671726756,
+        "current_risk": 57.080096839653606,
+        "automation_gap": 17.348389877613954,
+        "economic_value": 25071000.0
+      },
+      {
+        "title": "Database Administrators",
+        "soc_code": 151242,
+        "employment": 230.0,
+        "mean_wage": 74570.0,
+        "potential_risk": 71.48555211558308,
+        "current_risk": 54.57919180132622,
+        "automation_gap": 16.906360314256858,
+        "economic_value": 17151100.0
+      },
+      {
+        "title": "Millwrights",
+        "soc_code": 499044,
+        "employment": 560.0,
+        "mean_wage": 61610.0,
+        "potential_risk": 65.31617647058825,
+        "current_risk": 49.07181922647579,
+        "automation_gap": 16.244357244112457,
+        "economic_value": 34501600.0
+      },
+      {
+        "title": "Cutting and Slicing Machine Setters, Operators, and Tenders",
+        "soc_code": 519032,
+        "employment": 160.0,
+        "mean_wage": 36170.0,
+        "potential_risk": 64.22058823529413,
+        "current_risk": 48.20428290645236,
+        "automation_gap": 16.016305328841767,
+        "economic_value": 5787200.0
+      },
+      {
+        "title": "Biological Scientists, All Other",
+        "soc_code": 191029,
+        "employment": 230.0,
+        "mean_wage": 75140.0,
+        "potential_risk": 65.10137672090113,
+        "current_risk": 49.1119831492071,
+        "automation_gap": 15.98939357169403,
+        "economic_value": 17282200.0
+      },
+      {
+        "title": "Computer and Information Research Scientists",
+        "soc_code": 151221,
+        "employment": 50.0,
+        "mean_wage": 180940.0,
+        "potential_risk": 62.0453431372549,
+        "current_risk": 46.743795986558325,
+        "automation_gap": 15.301547150696578,
+        "economic_value": 9047000.0
+      }
+    ],
+    "workforce_by_wage_level": {
+      "Lower Wage": {
+        "total_employment": 282030.0,
+        "potential_employment_at_risk": 930.0,
+        "current_employment_at_risk": 0.0,
+        "potential_risk_percentage": 0.3297521540261674,
+        "current_risk_percentage": 0.0,
+        "weighted_potential_risk": 30.350111038297882,
+        "weighted_current_risk": 26.215894693419486,
+        "automation_gap": 4.134216344878396,
+        "average_wage": 32409.756097560974
+      },
+      "Lower-Middle Wage": {
+        "total_employment": 142740.0,
+        "potential_employment_at_risk": 7580.0,
+        "current_employment_at_risk": 0.0,
+        "potential_risk_percentage": 5.31035449068236,
+        "current_risk_percentage": 0.0,
+        "weighted_potential_risk": 32.95613557198286,
+        "weighted_current_risk": 26.529167432350274,
+        "automation_gap": 6.426968139632589,
+        "average_wage": 44862.87425149701
+      },
+      "Upper-Middle Wage": {
+        "total_employment": 125020.0,
+        "potential_employment_at_risk": 2940.0,
+        "current_employment_at_risk": 360.0,
+        "potential_risk_percentage": 2.3516237402015676,
+        "current_risk_percentage": 0.28795392737162057,
+        "weighted_potential_risk": 33.88715381085132,
+        "weighted_current_risk": 26.85445891649361,
+        "automation_gap": 7.032694894357714,
+        "average_wage": 60318.8679245283
+      },
+      "Higher Wage": {
+        "total_employment": 131850.0,
+        "potential_employment_at_risk": 9250.0,
+        "current_employment_at_risk": 1890.0,
+        "potential_risk_percentage": 7.01554797117937,
+        "current_risk_percentage": 1.4334470989761092,
+        "weighted_potential_risk": 37.809964986482,
+        "weighted_current_risk": 33.88813631424042,
+        "automation_gap": 3.921828672241581,
+        "average_wage": 104727.79141104294
+      }
+    },
+    "total_employment": 681640.0,
+    "potential_employment_at_risk": 41250.0,
+    "current_employment_at_risk": 2250.0,
+    "potential_percentage_at_risk": 6.051581479960096,
+    "current_percentage_at_risk": 0.33008626254327794,
+    "total_potential_workforce_risk": 32.98752488201437,
+    "total_current_workforce_risk": 27.882661472993668,
+    "workforce_automation_gap": 5.104863409020702,
+    "potential_risk_distribution": {
+      "High": {
+        "employment": 18450.0,
+        "percentage": 2.7067073528548797
+      },
+      "Low": {
+        "employment": 481810.0,
+        "percentage": 70.68393873598967
+      },
+      "Moderate": {
+        "employment": 123330.0,
+        "percentage": 18.09312833753888
+      },
+      "Very High": {
+        "employment": 2250.0,
+        "percentage": 0.33008626254327794
+      },
+      "Very Low": {
+        "employment": 55800.0,
+        "percentage": 8.186139311073294
+      }
+    },
+    "current_risk_distribution": {
+      "High": {
+        "employment": 2250.0,
+        "percentage": 0.33008626254327794
+      },
+      "Low": {
+        "employment": 465770.0,
+        "percentage": 68.33079044657003
+      },
+      "Moderate": {
+        "employment": 58020.0,
+        "percentage": 8.511824423449328
+      },
+      "Very Low": {
+        "employment": 155600.0,
+        "percentage": 22.827298867437356
+      }
+    },
+    "metric_descriptions": {
+      "automation_susceptibility": "Theoretical automation susceptibility based on job tasks",
+      "enhanced_automation_risk": "Current automation risk incorporating both susceptibility and tool availability",
+      "potential_workforce_risk": "Potential risk weighted by employment proportion (automation_susceptibility * job_emp / total_emp)",
+      "current_workforce_risk": "Current risk weighted by employment proportion (enhanced_automation_risk * job_emp / total_emp)",
+      "automation_gap": "Difference between potential and current automation risk (percentage points)"
+    }
+  },
+  "action_items": {
+    "industries_with_largest_gaps": [
+      {
+        "name": "Mathematical Science Occupations",
+        "code": 152,
+        "current_risk": 0.0,
+        "potential_risk": 100.0,
+        "automation_gap": 100.0,
+        "employment": 490.0,
+        "econ_potential_index": 5.969952842053361
+      },
+      {
+        "name": "Grounds Maintenance Workers",
+        "code": 373,
+        "current_risk": 0.0,
+        "potential_risk": 94.59688359087257,
+        "automation_gap": 94.59688359087257,
+        "employment": 4790.0,
+        "econ_potential_index": 21.8701053811486
+      },
+      {
+        "name": "Physical Scientists",
+        "code": 192,
+        "current_risk": 0.0,
+        "potential_risk": 50.20692336666626,
+        "automation_gap": 50.20692336666626,
+        "employment": 1020.0,
+        "econ_potential_index": 6.257358727945396
+      },
+      {
+        "name": "Entertainment Attendants and Related Workers",
+        "code": 393,
+        "current_risk": 0.0,
+        "potential_risk": 48.71463118702609,
+        "automation_gap": 48.71463118702609,
+        "employment": 2070.0,
+        "econ_potential_index": 5.313957501363282
+      },
+      {
+        "name": "Sales Representatives, Services",
+        "code": 413,
+        "current_risk": 0.0,
+        "potential_risk": 45.63151885578052,
+        "automation_gap": 45.63151885578052,
+        "employment": 6170.0,
+        "econ_potential_index": 23.077394850923437
+      },
+      {
+        "name": "Other Transportation Workers",
+        "code": 536,
+        "current_risk": 0.0,
+        "potential_risk": 44.80667036447243,
+        "automation_gap": 44.80667036447243,
+        "employment": 560.0,
+        "econ_potential_index": 1.516880382424431
+      },
+      {
+        "name": "Computer and Information Analyst",
+        "code": 151,
+        "current_risk": 18.604553713021406,
+        "potential_risk": 61.2193203602135,
+        "automation_gap": 42.6147666471921,
+        "employment": 12370.0,
+        "econ_potential_index": 100.0
+      },
+      {
+        "name": "Engineers",
+        "code": 172,
+        "current_risk": 0.0,
+        "potential_risk": 41.41058444824352,
+        "automation_gap": 41.41058444824352,
+        "employment": 5490.0,
+        "econ_potential_index": 33.67699176488778
+      },
+      {
+        "name": "Other Food Preparation and Serving Related Workers",
+        "code": 359,
+        "current_risk": 0.0,
+        "potential_risk": 38.941823004148965,
+        "automation_gap": 38.941823004148965,
+        "employment": 4510.0,
+        "econ_potential_index": 6.63909262180526
+      },
+      {
+        "name": "Architects, Surveyors, and Cartographers",
+        "code": 171,
+        "current_risk": 0.0,
+        "potential_risk": 37.66622795118374,
+        "automation_gap": 37.66622795118374,
+        "employment": 590.0,
+        "econ_potential_index": 2.5439486894403665
+      }
+    ],
+    "occupations_with_largest_gaps": [
+      {
+        "title": "General and Operations Managers",
+        "soc_code": 111021,
+        "current_risk": 57.42858581788879,
+        "potential_risk": 43.23811442385173,
+        "automation_gap": 1.0,
+        "employment": 14950.0,
+        "mean_wage": 94150.0,
+        "economic_value": 1407542500.0
+      },
+      {
+        "title": "Registered Nurses",
+        "soc_code": 291141,
+        "current_risk": 25.948889622174203,
+        "potential_risk": 27.035567715458274,
+        "automation_gap": 0.7041707459320528,
+        "employment": 20860.0,
+        "mean_wage": 75990.0,
+        "economic_value": 1585151400.0
+      },
+      {
+        "title": "Construction Laborers",
+        "soc_code": 472061,
+        "current_risk": 47.40675796973906,
+        "potential_risk": 61.89495798319329,
+        "automation_gap": 0.3186116266546199,
+        "employment": 7580.0,
+        "mean_wage": 41330.0,
+        "economic_value": 313281400.0
+      },
+      {
+        "title": "Home Health and Personal Care Aides",
+        "soc_code": 311120,
+        "current_risk": 29.64829307035573,
+        "potential_risk": 35.95915032679739,
+        "automation_gap": 0.308695912449145,
+        "employment": 19790.0,
+        "mean_wage": 26400.0,
+        "economic_value": 522456000.0
+      },
+      {
+        "title": "Computer Occupations, All Other",
+        "soc_code": 151299,
+        "current_risk": 51.40664697506819,
+        "potential_risk": 49.5773034877668,
+        "automation_gap": 0.3035229568331757,
+        "employment": 3390.0,
+        "mean_wage": 109910.0,
+        "economic_value": 372594900.0
+      },
+      {
+        "title": "Retail Salespersons",
+        "soc_code": 412031,
+        "current_risk": 37.66374963501832,
+        "potential_risk": 29.990320178704387,
+        "automation_gap": 0.2602059324344135,
+        "employment": 17450.0,
+        "mean_wage": 30260.0,
+        "economic_value": 528037000.0
+      },
+      {
+        "title": "First-Line Supervisors of Construction Trades and Extraction Workers",
+        "soc_code": 471011,
+        "current_risk": 26.65957308231549,
+        "potential_risk": 34.59436274509804,
+        "automation_gap": 0.2588917190796908,
+        "employment": 5490.0,
+        "mean_wage": 82960.0,
+        "economic_value": 455450400.0
+      },
+      {
+        "title": "Software Developers",
+        "soc_code": 151252,
+        "current_risk": 73.25942211543433,
+        "potential_risk": 87.10588235294118,
+        "automation_gap": 0.2544944605815823,
+        "employment": 1890.0,
+        "mean_wage": 94080.0,
+        "economic_value": 177811200.0
+      },
+      {
+        "title": "Accountants and Auditors",
+        "soc_code": 132011,
+        "current_risk": 39.548790110673366,
+        "potential_risk": 43.40007383706621,
+        "automation_gap": 0.2527476015533735,
+        "employment": 4830.0,
+        "mean_wage": 73380.0,
+        "economic_value": 354425400.0
+      },
+      {
+        "title": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
+        "soc_code": 436014,
+        "current_risk": 41.290620965444994,
+        "potential_risk": 46.24910873440285,
+        "automation_gap": 0.2498153959559114,
+        "employment": 8660.0,
+        "mean_wage": 37960.0,
+        "economic_value": 328733600.0
+      }
+    ],
+    "mcp_server_opportunities": [
+      {
+        "title": "Millwrights",
+        "soc_code": 499044,
+        "automation_potential": 65.31617647058825,
+        "current_mcp_coverage": 2.3776158445440614,
+        "mcp_opportunity": 62.938560626044186,
+        "employment": 560.0,
+        "economic_value": 34501600.0
+      },
+      {
+        "title": "Cutting and Slicing Machine Setters, Operators, and Tenders",
+        "soc_code": 519032,
+        "automation_potential": 64.22058823529413,
+        "current_mcp_coverage": 3.8167366526694613,
+        "mcp_opportunity": 60.40385158262467,
+        "employment": 160.0,
+        "economic_value": 5787200.0
+      },
+      {
+        "title": "Construction Laborers",
+        "soc_code": 472061,
+        "automation_potential": 61.89495798319329,
+        "current_mcp_coverage": 2.0441767068272525,
+        "mcp_opportunity": 59.850781276366035,
+        "employment": 7580.0,
+        "economic_value": 313281400.0
+      },
+      {
+        "title": "Helpers--Production Workers",
+        "soc_code": 519198,
+        "automation_potential": 61.82843137254903,
+        "current_mcp_coverage": 3.8167366526694613,
+        "mcp_opportunity": 58.01169471987957,
+        "employment": 770.0,
+        "economic_value": 29698900.0
+      },
+      {
+        "title": "Riggers",
+        "soc_code": 499096,
+        "automation_potential": 56.58823529411765,
+        "current_mcp_coverage": 0.0,
+        "mcp_opportunity": 56.58823529411765,
+        "employment": NaN,
+        "economic_value": NaN
+      },
+      {
+        "title": "Dishwashers",
+        "soc_code": 359021,
+        "automation_potential": 57.735294117647065,
+        "current_mcp_coverage": 1.416012908251252,
+        "mcp_opportunity": 56.31928120939581,
+        "employment": 1760.0,
+        "economic_value": 43841600.0
+      },
+      {
+        "title": "Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",
+        "soc_code": 473015,
+        "automation_potential": 57.852941176470594,
+        "current_mcp_coverage": 2.0441767068272525,
+        "mcp_opportunity": 55.80876446964334,
+        "employment": 180.0,
+        "economic_value": 5963400.0
+      },
+      {
+        "title": "Derrick Operators, Oil and Gas",
+        "soc_code": 475011,
+        "automation_potential": 57.852941176470594,
+        "current_mcp_coverage": 2.0441767068272525,
+        "mcp_opportunity": 55.80876446964334,
+        "employment": 130.0,
+        "economic_value": 7855900.0
+      },
+      {
+        "title": "Electric Motor, Power Tool, and Related Repairers",
+        "soc_code": 492092,
+        "automation_potential": 58.07843137254902,
+        "current_mcp_coverage": 2.3776158445440614,
+        "mcp_opportunity": 55.70081552800496,
+        "employment": 140.0,
+        "economic_value": 5241600.0
+      },
+      {
+        "title": "Hoist and Winch Operators",
+        "soc_code": 537041,
+        "automation_potential": 57.735294117647065,
+        "current_mcp_coverage": 2.2514154281669514,
+        "mcp_opportunity": 55.483878689480115,
+        "employment": 80.0,
+        "economic_value": 4497600.0
+      }
+    ],
+    "retraining_suggestions": [
+      {
+        "at_risk_job": {
+          "title": "General and Operations Managers",
+          "mean_wage": 94150.0,
+          "risk_score": 1.0,
+          "risk_metric": "Current Automation Risk",
+          "employment": 14950.0
+        },
+        "alternative_jobs": [
+          {
+            "title": "Orthotists and Prosthetists",
+            "mean_wage": 80430.0,
+            "risk_score": 0.0030866551369818,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Economics Teachers, Postsecondary",
+            "mean_wage": 98790.0,
+            "risk_score": 0.0029842090940643,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Geological Technicians, Except Hydrologic Technicians",
+            "mean_wage": 80170.0,
+            "risk_score": 0.0028321234374674,
+            "risk_metric": "Current Automation Risk"
+          }
+        ]
+      },
+      {
+        "at_risk_job": {
+          "title": "Registered Nurses",
+          "mean_wage": 75990.0,
+          "risk_score": 0.7041707459320528,
+          "risk_metric": "Current Automation Risk",
+          "employment": 20860.0
+        },
+        "alternative_jobs": [
+          {
+            "title": "Sociology Teachers, Postsecondary",
+            "mean_wage": 74070.0,
+            "risk_score": 0.0031182437062977,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Orthotists and Prosthetists",
+            "mean_wage": 80430.0,
+            "risk_score": 0.0030866551369818,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Landscape Architects",
+            "mean_wage": 69230.0,
+            "risk_score": 0.0030515184656826,
+            "risk_metric": "Current Automation Risk"
+          }
+        ]
+      },
+      {
+        "at_risk_job": {
+          "title": "Construction Laborers",
+          "mean_wage": 41330.0,
+          "risk_score": 0.3186116266546199,
+          "risk_metric": "Current Automation Risk",
+          "employment": 7580.0
+        },
+        "alternative_jobs": [
+          {
+            "title": "Tutors",
+            "mean_wage": 39820.0,
+            "risk_score": 0.0031503778949872,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Animal Trainers",
+            "mean_wage": 36990.0,
+            "risk_score": 0.0030622067800566,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Fallers",
+            "mean_wage": 38840.0,
+            "risk_score": 0.0030576010589258,
+            "risk_metric": "Current Automation Risk"
+          }
+        ]
+      },
+      {
+        "at_risk_job": {
+          "title": "Home Health and Personal Care Aides",
+          "mean_wage": 26400.0,
+          "risk_score": 0.308695912449145,
+          "risk_metric": "Current Automation Risk",
+          "employment": 19790.0
+        },
+        "alternative_jobs": [
+          {
+            "title": "Parking Attendants",
+            "mean_wage": 26840.0,
+            "risk_score": 0.0027566736550028,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Floral Designers",
+            "mean_wage": 27090.0,
+            "risk_score": 0.0027135527714927,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Broadcast Technicians",
+            "mean_wage": 31240.0,
+            "risk_score": 0.002541581652153,
+            "risk_metric": "Current Automation Risk"
+          }
+        ]
+      },
+      {
+        "at_risk_job": {
+          "title": "Computer Occupations, All Other",
+          "mean_wage": 109910.0,
+          "risk_score": 0.3035229568331757,
+          "risk_metric": "Current Automation Risk",
+          "employment": 3390.0
+        },
+        "alternative_jobs": [
+          {
+            "title": "Economics Teachers, Postsecondary",
+            "mean_wage": 98790.0,
+            "risk_score": 0.0029842090940643,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",
+            "mean_wage": 91540.0,
+            "risk_score": 0.0028038576589478,
+            "risk_metric": "Current Automation Risk"
+          },
+          {
+            "title": "Training and Development Managers",
+            "mean_wage": 96910.0,
+            "risk_score": 0.0027480006069843,
+            "risk_metric": "Current Automation Risk"
+          }
+        ]
+      }
+    ],
+    "metric_descriptions": {
+      "current_risk": "Current automation risk (minor_iceberg_index for industries, enhanced_automation_risk for occupations)",
+      "potential_risk": "Theoretical automation potential (minor_potential_index for industries, automation_susceptibility for occupations)",
+      "automation_gap": "Difference between potential and current automation risk (percentage points)",
+      "mcp_opportunity": "Gap between automation potential and current MCP server coverage (percentage points)"
+    }
+  },
+  "future_projections": {
+    "current": {
+      "iceberg_index": 0.567920632812814,
+      "potential_index": 7.304599469447198,
+      "automation_gap": 6.736678836634384,
+      "economic_value_at_risk": 200682000.0,
+      "employment_at_risk": 2250.0
+    },
+    "short_term": {
+      "timeframe": "12 months",
+      "iceberg_index": 3.9362600511300063,
+      "economic_value_at_risk": 1390927700.0,
+      "employment_at_risk": 15594.758498520046,
+      "gap_closure": "50%"
+    },
+    "medium_term": {
+      "timeframe": "3 years",
+      "iceberg_index": 5.620429760288602,
+      "economic_value_at_risk": 1986050550.0,
+      "employment_at_risk": 22267.13774778007,
+      "gap_closure": "75%"
+    },
+    "long_term": {
+      "timeframe": "5 years",
+      "iceberg_index": 6.63093158578376,
+      "economic_value_at_risk": 2343124260.0,
+      "employment_at_risk": 26270.565297336085,
+      "gap_closure": "90%"
+    },
+    "assumptions": [
+      "Projections assume continuous development and adoption of MCP servers",
+      "Short-term projection assumes 50% of automation gap is closed within 1 year",
+      "Medium-term projection assumes 75% of automation gap is closed within 3 years",
+      "Long-term projection assumes 90% of automation gap is closed within 5 years"
+    ],
+    "metric_descriptions": {
+      "iceberg_index": "Percentage of economic value at risk of automation",
+      "economic_value_at_risk": "Economic value at risk in dollars",
+      "employment_at_risk": "Number of jobs at risk"
+    }
+  },
+  "comparative_analysis": {
+    "national_comparison": {
+      "state_iceberg_index": 0.567920632812814,
+      "national_iceberg_index": 2.358453745865051,
+      "iceberg_differential": -1.7905331130522368,
+      "iceberg_comparison": "below",
+      "state_potential_index": 7.304599469447198,
+      "national_potential_index": 11.242647629021667,
+      "potential_differential": -3.9380481595744685,
+      "potential_comparison": "below",
+      "state_automation_gap": 6.736678836634384,
+      "national_automation_gap": 8.884193883156616,
+      "gap_differential": -2.1475150465222317,
+      "gap_comparison": "below"
+    },
+    "similar_states": [
+      {
+        "state": "Virgin Islands",
+        "iceberg_index": 0.561120232528812,
+        "difference": -0.006800400284001973
+      },
+      {
+        "state": "Louisiana",
+        "iceberg_index": 0.6429483277366524,
+        "difference": 0.07502769492383843
+      },
+      {
+        "state": "Kentucky",
+        "iceberg_index": 0.6906295592687588,
+        "difference": 0.12270892645594478
+      }
+    ],
+    "neighboring_states": [],
+    "trend": "stable",
+    "metric_descriptions": {
+      "iceberg_index": "Current percentage of economic value at risk of automation",
+      "potential_index": "Theoretical percentage of economic value susceptible to automation",
+      "automation_gap": "Difference between potential and current automation risk (percentage points)",
+      "differential": "Difference between state and national average (percentage points)"
+    }
+  }
+}

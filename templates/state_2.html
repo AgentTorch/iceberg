@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Iceberg - {{STATE_NAME}} Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-dark: #003366;
+            --primary-medium: #0055a4;
+            --primary-light: #6f9bd8;
+            --accent: #00b8d4;
+            --white: #ffffff;
+            --off-white: #f5f9ff;
+            --light-gray: #f5f7fa;
+            --card-background: #0d3b7a;
+            --highlight-glow: rgba(0, 184, 212, 0.4);
+            --text-dark: #001a33;
+            --text-medium: #003366;
+            --text-light: #ffffff;
+            --risk-very-high: #e74c3c;
+            --risk-high: #e67e22;
+            --risk-moderate: #f1c40f;
+            --risk-low: #3498db;
+            --risk-very-low: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--off-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        nav a:hover {
+            border-color: var(--accent);
+        }
+
+        .banner {
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-medium) 100%);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .banner h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .summary-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+
+        .state-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .metric {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .comparison-tag {
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .above-average {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--risk-very-high);
+        }
+
+        .below-average {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--risk-very-low);
+        }
+
+        .dashboard-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 14px;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: var(--light-gray);
+        }
+
+        .dashboard-panel {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel-header {
+            margin-bottom: 15px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .panel-description {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background-color: var(--light-gray);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--off-white);
+        }
+
+        .risk-indicator {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .risk-very-high { background-color: var(--risk-very-high); }
+        .risk-high { background-color: var(--risk-high); }
+        .risk-moderate { background-color: var(--risk-moderate); }
+        .risk-low { background-color: var(--risk-low); }
+        .risk-very-low { background-color: var(--risk-very-low); }
+
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 28px;
+            }
+            
+            .banner p {
+                font-size: 16px;
+            }
+            
+            .metric-value {
+                font-size: 28px;
+            }
+            
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo">
+            <!-- Simple iceberg logo -->
+            <svg width="40" height="40" viewBox="0 0 100 100" style="margin-right: 10px;">
+                <path 
+                    d="M20,30 L40,15 L60,25 L80,10 L90,30 L10,30 Z" 
+                    fill="#ffffff" 
+                    stroke="#003366"
+                    stroke-width="2"
+                />
+                <path 
+                    d="M10,30 L90,30 L80,100 L20,100 Z" 
+                    fill="#0055a4" 
+                    stroke="#003366"
+                    stroke-width="2"
+                    opacity="0.7"
+                />
+            </svg>
+            Project Iceberg
+        </a>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../method.html">Methodology</a></li>
+                <li><a href="../dashboard.html" style="border-color: #00b8d4;">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <h1>{{STATE_NAME}} Iceberg Index</h1>
+            <p>Measuring the impact of agentic AI technologies on the state economy</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- State Summary Card -->
+        <div class="summary-card">
+            <div class="state-metrics">
+                <div class="metric">
+                    <div class="metric-value">
+                        {{ICEBERG_INDEX}}
+                        <span class="comparison-tag {{COMPARISON_CLASS}}">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                {{COMPARISON_ARROW}}
+                            </svg>
+                            {{ICEBERG_DIFFERENTIAL}} {{COMPARISON_DIRECTION}} national avg
+                        </span>
+                    </div>
+                    <div class="metric-label">Iceberg Index</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">{{ECONOMIC_VALUE_AT_RISK}}</div>
+                    <div class="metric-label">Economic Value at Risk</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">{{EMPLOYMENT_AT_RISK}}</div>
+                    <div class="metric-label">Workers in At-Risk Jobs</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">{{POTENTIAL_INDEX}}</div>
+                    <div class="metric-label">Potential Near-Term Risk</div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                <div style="font-weight: 600; color: var(--primary-dark);">
+                    State Ranking: <span style="font-weight: 700;">{{STATE_RANKING}}</span>
+                </div>
+                <div style="font-weight: 600; color: var(--primary-dark);">
+                    Automation Gap: <span style="font-weight: 700;">{{AUTOMATION_GAP}}</span>
+                    <span class="comparison-tag {{GAP_COMPARISON_CLASS}}" style="font-size: 12px; padding: 2px 6px;">
+                        {{GAP_DIFFERENTIAL}} {{GAP_COMPARISON_DIRECTION}} national avg
+                    </span>
+                </div>
+            </div>
+            <p style="color: var(--text-medium); font-size: 14px;">
+                {{SUMMARY_TEXT}}
+            </p>
+        </div>
+
+        <!-- Two-Column Layout for Key Metrics -->
+        <div class="grid-2col">
+            <!-- Top At-Risk Occupations -->
+            <!-- <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Top At-Risk Occupations</h3>
+                    <p class="panel-description">Occupations with highest automation risk in {{STATE_NAME}}</p>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Occupation</th>
+                            <th>Risk Score</th>
+                            <th>Workers</th>
+                            <th>Economic Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{TOP_OCCUPATIONS_ROWS}}
+                    </tbody>
+                </table>
+            </div> -->
+
+            <!-- National Comparison -->
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">{{STATE_NAME}} vs. National Average</h3>
+                    <p class="panel-description">How {{STATE_NAME}}'s automation risk compares nationally</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Economic Value at Risk</h3>
+                    <p class="panel-description">Distribution of economic value by risk category</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="economicValueChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economic Impact -->
+        <!-- <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Economic Value at Risk</h3>
+                <p class="panel-description">Distribution of economic value by risk category</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="economicValueChart"></canvas>
+            </div>
+        </div>
+ -->
+        <!-- Automation Gap Analysis -->
+        <!-- <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Automation Gap Analysis</h3>
+                <p class="panel-description">Occupations with highest potential vs. current automation</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Occupation</th>
+                        <th>Potential</th>
+                        <th>Current</th>
+                        <th>Gap</th>
+                        <th>Workers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{GAP_OCCUPATIONS_ROWS}}
+                </tbody>
+            </table>
+        </div> -->
+
+        <!-- Similar States Comparison -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Similar States Comparison</h3>
+                <p class="panel-description">States with similar automation risk profiles</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Iceberg Index</th>
+                        <th>Difference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{SIMILAR_STATES_ROWS}}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Industry Risk Analysis -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Industry Automation Potential</h3>
+                <p class="panel-description">Automation risk by major occupational groups in {{STATE_NAME}}</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="industryRiskChart"></canvas>
+            </div>
+        </div>
+
+
+        <!-- Key Recommendations -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Key Insights for {{STATE_NAME}} Leadership</h3>
+                <p class="panel-description">Based on {{STATE_NAME}}'s unique automation risk profile</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 10px;">
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Industry Focus</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        {{INDUSTRY_FOCUS_TEXT}}
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Economic Opportunity</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        {{ECONOMIC_OPPORTUNITY_TEXT}}
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Workforce Development</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        Focus workforce development programs on the {{EMPLOYMENT_AT_RISK}} workers in high-risk occupations, particularly in technology fields where risk is {{ICEBERG_DIFFERENTIAL}} {{COMPARISON_DIRECTION}} national average.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download & Contact -->
+        <!-- <div style="text-align: center; margin: 40px 0 20px;">
+            <a href="#" style="display: inline-block; padding: 12px 25px; background-color: var(--primary-dark); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 15px;">
+                Download Full Report (PDF)
+            </a>
+            <a href="mailto:iceberg@mit.edu" style="display: inline-block; padding: 12px 25px; background-color: var(--accent); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Contact Research Team
+            </a>
+        </div> -->
+    </div>
+
+    <div class="footer">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3 class="footer-heading">Project Iceberg</h3>
+                <p>An MIT initiative measuring the impact of Model Context Protocol (MCP) and agentic AI technologies on the US economy.</p>
+                <p style="margin-top: 10px;">© 2025 MIT Decentralized AI Group</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact</h3>
+                <p>
+                    MIT Decentralized AI Group<br>
+                    E14-374B, 75 Amherst Street<br>
+                    Cambridge, MA 02139<br><br>
+                    ayushc@mit.edu
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize charts when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Industry Risk Chart
+            const industryRiskCtx = document.getElementById('industryRiskChart').getContext('2d');
+            new Chart(industryRiskCtx, {
+                type: 'bar',
+                data: {
+                    labels: {{INDUSTRY_NAMES}},
+                    datasets: [{
+                        label: 'Automation Risk Score',
+                        data: {{INDUSTRY_RISKS}},
+                        backgroundColor: function(context) {
+                            const value = context.dataset.data[context.dataIndex];
+                            return value > 60 ? 'rgba(231, 76, 60, 0.8)' : 
+                                   value > 40 ? 'rgba(241, 196, 15, 0.8)' : 
+                                   'rgba(46, 204, 113, 0.8)';
+                        },
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Automation Risk Score (0-100)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Comparison Chart
+            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(comparisonCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Iceberg Index',
+                        'Workers at Risk (%)',
+                        'Economic Value at Risk (%)'
+                    ],
+                    datasets: [
+                        {
+                            label: '{{STATE_NAME}}',
+                            data: {{STATE_METRICS}},
+                            backgroundColor: 'rgba(0, 184, 212, 0.8)',
+                            borderColor: 'rgba(0, 184, 212, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'National Average',
+                            data: {{NATIONAL_METRICS}},
+                            backgroundColor: 'rgba(10, 55, 119, 0.8)',
+                            borderColor: 'rgba(10, 55, 119, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Economic Value Chart
+            const economicValueCtx = document.getElementById('economicValueChart').getContext('2d');
+            new Chart(economicValueCtx, {
+                type: 'pie',
+                data: {
+                    labels: {{RISK_LABELS}},
+                    datasets: [{
+                        data: {{RISK_VALUES}},
+                        backgroundColor: [
+                            'rgba(231, 76, 60, 0.8)',  // Very High
+                            'rgba(230, 126, 34, 0.8)', // High
+                            'rgba(241, 196, 15, 0.8)', // Moderate
+                            'rgba(52, 152, 219, 0.8)', // Low
+                            'rgba(46, 204, 113, 0.8)'  // Very Low
+                        ],
+                        borderColor: [
+                            'rgba(231, 76, 60, 1)',
+                            'rgba(230, 126, 34, 1)',
+                            'rgba(241, 196, 15, 1)',
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(46, 204, 113, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value}% (${percentage}% of total)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

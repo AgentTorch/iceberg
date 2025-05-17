@@ -1,0 +1,989 @@
+{
+  "zapier_apps_by_minor_soc": [
+    {
+      "soc_code": "11-1000",
+      "minor_group": "Top Executives",
+      "major_group": "Management Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["Google Calendar", "Slack"],
+      "key_zapier_categories": ["Scheduling", "Communication"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "11-2000",
+      "minor_group": "Advertising, Marketing, Promotions, Public Relations, and Sales Managers",
+      "major_group": "Management Occupations",
+      "estimated_apps": 350,
+      "percentage": 4.40,
+      "example_apps": ["HubSpot", "Mailchimp"],
+      "key_zapier_categories": ["Marketing Automation", "CRM"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "11-3000",
+      "minor_group": "Operations Specialties Managers",
+      "major_group": "Management Occupations",
+      "estimated_apps": 400,
+      "percentage": 5.03,
+      "example_apps": ["Trello", "Asana"],
+      "key_zapier_categories": ["Project Management", "Operations Tools"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "11-9000",
+      "minor_group": "Other Management Occupations",
+      "major_group": "Management Occupations",
+      "estimated_apps": 250,
+      "percentage": 3.14,
+      "example_apps": ["Monday.com", "Jira"],
+      "key_zapier_categories": ["General Management Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "13-1000",
+      "minor_group": "Business Operations Specialists",
+      "major_group": "Business and Financial Operations Occupations",
+      "estimated_apps": 450,
+      "percentage": 5.66,
+      "example_apps": ["QuickBooks", "Stripe"],
+      "key_zapier_categories": ["Billing", "Process Automation"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "13-2000",
+      "minor_group": "Financial Specialists",
+      "major_group": "Business and Financial Operations Occupations",
+      "estimated_apps": 350,
+      "percentage": 4.40,
+      "example_apps": ["Xero", "FreshBooks"],
+      "key_zapier_categories": ["Accounting", "Finance Tools"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "15-1200",
+      "minor_group": "Computer Occupations",
+      "major_group": "Computer and Mathematical Occupations",
+      "estimated_apps": 850,
+      "percentage": 10.69,
+      "example_apps": ["GitHub", "Zapier"],
+      "key_zapier_categories": ["Developer Tools", "API Integrations"],
+      "automation_risk": "Moderate-High"
+    },
+    {
+      "soc_code": "15-2000",
+      "minor_group": "Mathematical Science Occupations",
+      "major_group": "Computer and Mathematical Occupations",
+      "estimated_apps": 150,
+      "percentage": 1.89,
+      "example_apps": ["Google Sheets", "Tableau"],
+      "key_zapier_categories": ["Data Analysis", "Statistical Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "17-1000",
+      "minor_group": "Architects, Surveyors, and Cartographers",
+      "major_group": "Architecture and Engineering Occupations",
+      "estimated_apps": 80,
+      "percentage": 1.01,
+      "example_apps": ["Typeform", "SurveyMonkey"],
+      "key_zapier_categories": ["Survey Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "17-2000",
+      "minor_group": "Engineers",
+      "major_group": "Architecture and Engineering Occupations",
+      "estimated_apps": 100,
+      "percentage": 1.26,
+      "example_apps": ["AutoCAD", "Tinkercad"],
+      "key_zapier_categories": ["CAD", "Engineering Software"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "17-3000",
+      "minor_group": "Drafters, Engineering Technicians, and Mapping Technicians",
+      "major_group": "Architecture and Engineering Occupations",
+      "estimated_apps": 70,
+      "percentage": 0.88,
+      "example_apps": ["Lucidchart", "Miro"],
+      "key_zapier_categories": ["Design Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "19-1000",
+      "minor_group": "Life Scientists",
+      "major_group": "Life, Physical, and Social Science Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Google Forms", "Zoho Forms"],
+      "key_zapier_categories": ["Research Tools"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "19-2000",
+      "minor_group": "Physical Scientists",
+      "major_group": "Life, Physical, and Social Science Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Airtable", "Notion"],
+      "key_zapier_categories": ["Research Tools"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "19-3000",
+      "minor_group": "Social Scientists and Related Workers",
+      "major_group": "Life, Physical, and Social Science Occupations",
+      "estimated_apps": 40,
+      "percentage": 0.50,
+      "example_apps": ["Qualtrics", "SurveyMonkey"],
+      "key_zapier_categories": ["Survey Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "19-4000",
+      "minor_group": "Life, Physical, and Social Science Technicians",
+      "major_group": "Life, Physical, and Social Science Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Google Sheets", "Smartsheet"],
+      "key_zapier_categories": ["Data Collection Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "19-5000",
+      "minor_group": "Occupational Health and Safety Specialists and Technicians",
+      "major_group": "Life, Physical, and Social Science Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["iAuditor", "SafetyCulture"],
+      "key_zapier_categories": ["Safety Monitoring"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "21-1000",
+      "minor_group": "Counselors, Social Workers, and Other Community and Social Service Specialists",
+      "major_group": "Community and Social Service Occupations",
+      "estimated_apps": 80,
+      "percentage": 1.01,
+      "example_apps": ["Donorbox", "Givebutter"],
+      "key_zapier_categories": ["Nonprofit Tools"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "21-2000",
+      "minor_group": "Religious Workers",
+      "major_group": "Community and Social Service Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Eventbrite", "Calendly"],
+      "key_zapier_categories": ["Volunteer Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "23-1000",
+      "minor_group": "Lawyers, Judges, and Related Workers",
+      "major_group": "Legal Occupations",
+      "estimated_apps": 100,
+      "percentage": 1.26,
+      "example_apps": ["Clio", "DocuSign"],
+      "key_zapier_categories": ["Legal Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "23-2000",
+      "minor_group": "Legal Support Workers",
+      "major_group": "Legal Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["PandaDoc", "HelloSign"],
+      "key_zapier_categories": ["Document Management"],
+      "automation_risk": "Moderate-High"
+    },
+    {
+      "soc_code": "25-1000",
+      "minor_group": "Postsecondary Teachers",
+      "major_group": "Educational Instruction and Library Occupations",
+      "estimated_apps": 60,
+      "percentage": 0.75,
+      "example_apps": ["Canvas", "Moodle"],
+      "key_zapier_categories": ["Learning Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "25-2000",
+      "minor_group": "Preschool, Elementary, Middle, Secondary, and Special Education Teachers",
+      "major_group": "Educational Instruction and Library Occupations",
+      "estimated_apps": 80,
+      "percentage": 1.01,
+      "example_apps": ["Google Classroom", "ClassDojo"],
+      "key_zapier_categories": ["Education Platforms"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "25-3000",
+      "minor_group": "Other Teachers and Instructors",
+      "major_group": "Educational Instruction and Library Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["Teachable", "Thinkific"],
+      "key_zapier_categories": ["Online Learning"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "25-4000",
+      "minor_group": "Librarians, Curators, and Archivists",
+      "major_group": "Educational Instruction and Library Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Airtable", "Zotero"],
+      "key_zapier_categories": ["Library Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "25-9000",
+      "minor_group": "Other Educational Instruction and Library Occupations",
+      "major_group": "Educational Instruction and Library Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Kahoot", "Quizlet"],
+      "key_zapier_categories": ["Education Support"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "27-1000",
+      "minor_group": "Art and Design Workers",
+      "major_group": "Arts, Design, Entertainment, Sports, and Media Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["Canva", "Adobe Express"],
+      "key_zapier_categories": ["Creative Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "27-2000",
+      "minor_group": "Entertainers and Performers, Sports and Related Workers",
+      "major_group": "Arts, Design, Entertainment, Sports, and Media Occupations",
+      "estimated_apps": 100,
+      "percentage": 1.26,
+      "example_apps": ["Eventbrite", "TicketTailor"],
+      "key_zapier_categories": ["Event Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "27-3000",
+      "minor_group": "Media and Communication Workers",
+      "major_group": "Arts, Design, Entertainment, Sports, and Media Occupations",
+      "estimated_apps": 250,
+      "percentage": 3.14,
+      "example_apps": ["Hootsuite", "Buffer"],
+      "key_zapier_categories": ["Social Media", "Content"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "27-4000",
+      "minor_group": "Media and Communication Equipment Workers",
+      "major_group": "Arts, Design, Entertainment, Sports, and Media Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["Riverside.fm", "Descript"],
+      "key_zapier_categories": ["Media Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "29-1000",
+      "minor_group": "Healthcare Diagnosing or Treating Practitioners",
+      "major_group": "Healthcare Practitioners and Technical Occupations",
+      "estimated_apps": 150,
+      "percentage": 1.89,
+      "example_apps": ["Doxy.me", "Healthie"],
+      "key_zapier_categories": ["Medical Records"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "29-2000",
+      "minor_group": "Health Technologists and Technicians",
+      "major_group": "Healthcare Practitioners and Technical Occupations",
+      "estimated_apps": 100,
+      "percentage": 1.26,
+      "example_apps": ["SimplePractice", "Therabill"],
+      "key_zapier_categories": ["Healthcare Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "29-9000",
+      "minor_group": "Other Healthcare Practitioners and Technical Occupations",
+      "major_group": "Healthcare Practitioners and Technical Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["Acuity Scheduling", "Calendly"],
+      "key_zapier_categories": ["Healthcare Support"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "31-1000",
+      "minor_group": "Home Health and Personal Care Aides; Nursing Assistants, Orderlies, and Psychiatric Aides",
+      "major_group": "Healthcare Support Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["Care.com", "AlayaCare"],
+      "key_zapier_categories": ["Patient Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "31-2000",
+      "minor_group": "Occupational Therapy and Physical Therapist Assistants and Aides",
+      "major_group": "Healthcare Support Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["PT Everywhere", "WebPT"],
+      "key_zapier_categories": ["Therapy Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "31-9000",
+      "minor_group": "Other Healthcare Support Occupations",
+      "major_group": "Healthcare Support Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Google Forms", "Jotform"],
+      "key_zapier_categories": ["Support Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "33-1000",
+      "minor_group": "Supervisors of Protective Service Workers",
+      "major_group": "Protective Service Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["Slack", "Microsoft Teams"],
+      "key_zapier_categories": ["Security Oversight"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "33-2000",
+      "minor_group": "Firefighting and Prevention Workers",
+      "major_group": "Protective Service Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["PagerDuty", "Opsgenie"],
+      "key_zapier_categories": ["Monitoring"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "33-3000",
+      "minor_group": "Law Enforcement Workers",
+      "major_group": "Protective Service Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Axon Evidence", "Caseboard"],
+      "key_zapier_categories": ["Security Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "33-9000",
+      "minor_group": "Other Protective Service Workers",
+      "major_group": "Protective Service Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Verkada", "Rhombus"],
+      "key_zapier_categories": ["Monitoring"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "35-1000",
+      "minor_group": "Supervisors of Food Preparation and Serving Workers",
+      "major_group": "Food Preparation and Serving Related Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["7shifts", "Homebase"],
+      "key_zapier_categories": ["Restaurant Management"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "35-2000",
+      "minor_group": "Cooks and Food Preparation Workers",
+      "major_group": "Food Preparation and Serving Related Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Toast", "Square"],
+      "key_zapier_categories": ["Kitchen Tools"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "35-3000",
+      "minor_group": "Food and Beverage Serving Workers",
+      "major_group": "Food Preparation and Serving Related Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["DoorDash", "Uber Eats"],
+      "key_zapier_categories": ["Delivery", "Ordering"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "35-9000",
+      "minor_group": "Other Food Preparation and Serving Related Workers",
+      "major_group": "Food Preparation and Serving Related Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["OpenTable", "Resy"],
+      "key_zapier_categories": ["Support Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "37-1000",
+      "minor_group": "Supervisors of Building and Grounds Cleaning and Maintenance Workers",
+      "major_group": "Building and Grounds Cleaning and Maintenance Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Jobber", "Housecall Pro"],
+      "key_zapier_categories": ["Property Management"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "37-2000",
+      "minor_group": "Building Cleaning and Pest Control Workers",
+      "major_group": "Building and Grounds Cleaning and Maintenance Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["ServiceTitan", "PestPac"],
+      "key_zapier_categories": ["Maintenance"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "37-3000",
+      "minor_group": "Grounds Maintenance Workers",
+      "major_group": "Building and Grounds Cleaning and Maintenance Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["LawnBuddy", "GreenPal"],
+      "key_zapier_categories": ["Groundskeeping Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "39-1000",
+      "minor_group": "Supervisors of Personal Care and Service Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["When I Work", "Deputy"],
+      "key_zapier_categories": ["Scheduling"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "39-2000",
+      "minor_group": "Animal Care and Service Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["PetExec", "Gingr"],
+      "key_zapier_categories": ["Pet Care Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "39-3000",
+      "minor_group": "Entertainment Attendants and Related Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Ticketmaster", "Eventbrite"],
+      "key_zapier_categories": ["Event Booking"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "39-4000",
+      "minor_group": "Funeral Service Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["GatheringUs", "Tribute"],
+      "key_zapier_categories": ["Funeral Scheduling"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "39-5000",
+      "minor_group": "Personal Appearance Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 25,
+      "percentage": 0.31,
+      "example_apps": ["Square Appointments", "Booksy"],
+      "key_zapier_categories": ["Appointment Booking"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "39-6000",
+      "minor_group": "Baggage Porters, Bellhops, and Concierges",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Concierge Live", "Alice"],
+      "key_zapier_categories": ["Concierge Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "39-7000",
+      "minor_group": "Tour and Travel Guides",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["FareHarbor", "Rezdy"],
+      "key_zapier_categories": ["Travel Scheduling"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "39-9000",
+      "minor_group": "Other Personal Care and Service Workers",
+      "major_group": "Personal Care and Service Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Acuity Scheduling", "Setmore"],
+      "key_zapier_categories": ["General Scheduling"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "41-1000",
+      "minor_group": "Supervisors of Sales Workers",
+      "major_group": "Sales and Related Occupations",
+      "estimated_apps": 150,
+      "percentage": 1.89,
+      "example_apps": ["Pipedrive", "Zoho CRM"],
+      "key_zapier_categories": ["Sales Management"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "41-2000",
+      "minor_group": "Retail Sales Workers",
+      "major_group": "Sales and Related Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["Shopify", "WooCommerce"],
+      "key_zapier_categories": ["E-commerce"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "41-3000",
+      "minor_group": "Sales Representatives, Services",
+      "major_group": "Sales and Related Occupations",
+      "estimated_apps": 300,
+      "percentage": 3.77,
+      "example_apps": ["Salesforce", "HubSpot"],
+      "key_zapier_categories": ["CRM"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "41-4000",
+      "minor_group": "Sales Representatives, Wholesale and Manufacturing",
+      "major_group": "Sales and Related Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["TradeGecko", "Orderbot"],
+      "key_zapier_categories": ["Sales Tools"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "41-9000",
+      "minor_group": "Other Sales and Related Workers",
+      "major_group": "Sales and Related Occupations",
+      "estimated_apps": 100,
+      "percentage": 1.26,
+      "example_apps": ["Etsy", "eBay"],
+      "key_zapier_categories": ["Miscellaneous Sales"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "43-1000",
+      "minor_group": "Supervisors of Office and Administrative Support Workers",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 150,
+      "percentage": 1.89,
+      "example_apps": ["ClickUp", "Wrike"],
+      "key_zapier_categories": ["Office Management"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "43-2000",
+      "minor_group": "Communications Equipment Operators",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 50,
+      "percentage": 0.63,
+      "example_apps": ["RingCentral", "Zoom"],
+      "key_zapier_categories": ["Telephony"],
+      "automation_risk": "Moderate-High"
+    },
+    {
+      "soc_code": "43-3000",
+      "minor_group": "Financial Clerks",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["Wave", "Bill.com"],
+      "key_zapier_categories": ["Billing", "Docs"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "43-4000",
+      "minor_group": "Information and Record Clerks",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 250,
+      "percentage": 3.14,
+      "example_apps": ["Calendly", "Google Calendar"],
+      "key_zapier_categories": ["Calendars", "Scheduling"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "43-5000",
+      "minor_group": "Material Recording, Scheduling, Dispatching, and Distributing Workers",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 200,
+      "percentage": 2.52,
+      "example_apps": ["ShipStation", "Easyship"],
+      "key_zapier_categories": ["Scheduling", "Logistics"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "43-6000",
+      "minor_group": "Secretaries and Administrative Assistants",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 250,
+      "percentage": 3.14,
+      "example_apps": ["Gmail", "Outlook"],
+      "key_zapier_categories": ["Email", "Calendars"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "43-9000",
+      "minor_group": "Other Office and Administrative Support Workers",
+      "major_group": "Office and Administrative Support Occupations",
+      "estimated_apps": 300,
+      "percentage": 3.77,
+      "example_apps": ["Dropbox", "Google Drive"],
+      "key_zapier_categories": ["General Office Tools"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "45-1000",
+      "minor_group": "Supervisors of Farming, Fishing, and Forestry Workers",
+      "major_group": "Farming, Fishing, and Forestry Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["Farmbrite", "AgriWebb"],
+      "key_zapier_categories": ["Farm Management"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "45-2000",
+      "minor_group": "Agricultural Workers",
+      "major_group": "Farming, Fishing, and Forestry Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Croptracker", "Agworld"],
+      "key_zapier_categories": ["Agriculture Tools"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "45-3000",
+      "minor_group": "Fishing and Hunting Workers",
+      "major_group": "Farming, Fishing, and Forestry Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["Fishbrain", "HuntStand"],
+      "key_zapier_categories": ["Tracking"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "45-4000",
+      "minor_group": "Forest, Conservation, and Logging Workers",
+      "major_group": "Farming, Fishing, and Forestry Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["Weather Underground", "AccuWeather"],
+      "key_zapier_categories": ["Weather", "Conservation"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "47-1000",
+      "minor_group": "Supervisors of Construction and Extraction Workers",
+      "major_group": "Construction and Extraction Occupations",
+      "estimated_apps": 25,
+      "percentage": 0.31,
+      "example_apps": ["Procore", "Buildertrend"],
+      "key_zapier_categories": ["Construction Management"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "47-2000",
+      "minor_group": "Construction Trades Workers",
+      "major_group": "Construction and Extraction Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["PlanGrid", "Fieldwire"],
+      "key_zapier_categories": ["Project Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "47-3000",
+      "minor_group": "Helpers, Construction Trades",
+      "major_group": "Construction and Extraction Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Google Sheets", "Trello"],
+      "key_zapier_categories": ["Support Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "47-4000",
+      "minor_group": "Other Construction and Related Workers",
+      "major_group": "Construction and Extraction Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Smartsheet", "Asana"],
+      "key_zapier_categories": ["Miscellaneous Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "47-5000",
+      "minor_group": "Extraction Workers",
+      "major_group": "Construction and Extraction Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Enablon", "GeoOp"],
+      "key_zapier_categories": ["Resource Tracking"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "49-1000",
+      "minor_group": "Supervisors of Installation, Maintenance, and Repair Workers",
+      "major_group": "Installation, Maintenance, and Repair Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["ServiceMax", "UpKeep"],
+      "key_zapier_categories": ["Field Service"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "49-2000",
+      "minor_group": "Electrical and Electronic Equipment Mechanics, Installers, and Repairers",
+      "major_group": "Installation, Maintenance, and Repair Occupations",
+      "estimated_apps": 25,
+      "percentage": 0.31,
+      "example_apps": ["Fluke Connect", "iFixit"],
+      "key_zapier_categories": ["Equipment Tracking"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "49-3000",
+      "minor_group": "Vehicle and Mobile Equipment Mechanics, Installers, and Repairers",
+      "major_group": "Installation, Maintenance, and Repair Occupations",
+      "estimated_apps": 25,
+      "percentage": 0.31,
+      "example_apps": ["Fleetio", "Fullbay"],
+      "key_zapier_categories": ["Vehicle Tracking"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "49-9000",
+      "minor_group": "Other Installation, Maintenance, and Repair Occupations",
+      "major_group": "Installation, Maintenance, and Repair Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["MaintainX", "Fiix"],
+      "key_zapier_categories": ["General Maintenance"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-1000",
+      "minor_group": "Supervisors of Production Workers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Katana MRP", "MRPeasy"],
+      "key_zapier_categories": ["Manufacturing"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-2000",
+      "minor_group": "Assemblers and Fabricators",
+      "major_group": "Production Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Fishbowl", "Odoo"],
+      "key_zapier_categories": ["Inventory"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-3000",
+      "minor_group": "Food Processing Workers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["FoodStorm", "BatchMaster"],
+      "key_zapier_categories": ["Food Production"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "51-4000",
+      "minor_group": "Metal Workers and Plastic Workers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Prodsmart", "Shopfloor"],
+      "key_zapier_categories": ["Manufacturing"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-5000",
+      "minor_group": "Printing Workers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Printavo", "Printful"],
+      "key_zapier_categories": ["Printing Tools"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-6000",
+      "minor_group": "Textile, Apparel, and Furnishings Workers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["Sewio", "Texbase"],
+      "key_zapier_categories": ["Textile Tools"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "51-7000",
+      "minor_group": "Woodworkers",
+      "major_group": "Production Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["WoodPro", "CabWriter"],
+      "key_zapier_categories": ["Woodworking"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "51-8000",
+      "minor_group": "Plant and System Operators",
+      "major_group": "Production Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Ignition SCADA", "Tulip"],
+      "key_zapier_categories": ["System Monitoring"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "51-9000",
+      "minor_group": "Other Production Occupations",
+      "major_group": "Production Occupations",
+      "estimated_apps": 30,
+      "percentage": 0.38,
+      "example_apps": ["Unleashed", "Cin7"],
+      "key_zapier_categories": ["General Production"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "53-1000",
+      "minor_group": "Supervisors of Transportation and Material Moving Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["Motive", "Samsara"],
+      "key_zapier_categories": ["Logistics"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "53-2000",
+      "minor_group": "Air Transportation Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Google Calendar", "Airtable"],
+      "key_zapier_categories": ["Scheduling", "Data Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "53-3000",
+      "minor_group": "Motor Vehicle Operators",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 40,
+      "percentage": 0.50,
+      "example_apps": ["ShipStation", "Shippo"],
+      "key_zapier_categories": ["Shipping", "Delivery"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "53-4000",
+      "minor_group": "Rail Transportation Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["RailcarRx", "RailConnect"],
+      "key_zapier_categories": ["Rail Logistics"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "53-5000",
+      "minor_group": "Water Transportation Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 10,
+      "percentage": 0.13,
+      "example_apps": ["MarineTraffic", "SeaRates"],
+      "key_zapier_categories": ["Maritime Logistics"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "53-6000",
+      "minor_group": "Other Transportation Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["ParkMobile", "SpotHero"],
+      "key_zapier_categories": ["Miscellaneous Transportation"],
+      "automation_risk": "Moderate"
+    },
+    {
+      "soc_code": "53-7000",
+      "minor_group": "Material Moving Workers",
+      "major_group": "Transportation and Material Moving Occupations",
+      "estimated_apps": 40,
+      "percentage": 0.50,
+      "example_apps": ["Easyship", "Shiptheory"],
+      "key_zapier_categories": ["Warehouse", "Inventory"],
+      "automation_risk": "High"
+    },
+    {
+      "soc_code": "55-1000",
+      "minor_group": "Military Officer Special and Tactical Operations Leaders",
+      "major_group": "Military Specific Occupations",
+      "estimated_apps": 20,
+      "percentage": 0.25,
+      "example_apps": ["BambooHR", "Workable"],
+      "key_zapier_categories": ["Personnel Management"],
+      "automation_risk": "Low"
+    },
+    {
+      "soc_code": "55-2000",
+      "minor_group": "First-Line Enlisted Military Supervisors",
+      "major_group": "Military Specific Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Verkada", "AlertMedia"],
+      "key_zapier_categories": ["Security"],
+      "automation_risk": "Low-Moderate"
+    },
+    {
+      "soc_code": "55-3000",
+      "minor_group": "Military Enlisted Tactical Operations and Air/Weapons Specialists and Crew Members",
+      "major_group": "Military Specific Occupations",
+      "estimated_apps": 15,
+      "percentage": 0.19,
+      "example_apps": ["Google Sheets", "Trello"],
+      "key_zapier_categories": ["Tactical Tools"],
+      "automation_risk": "Low"
+    }
+  ],
+  "metadata": {
+    "total_zapier_apps": 7950,
+    "source": "Estimated distribution based on Zapier public information, web data, and major group mappings",
+    "date": "April 2025"
+  }
+}

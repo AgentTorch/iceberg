@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Iceberg - {STATE} Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-dark: #003366;
+            --primary-medium: #0055a4;
+            --primary-light: #6f9bd8;
+            --accent: #00b8d4;
+            --white: #ffffff;
+            --off-white: #f5f9ff;
+            --light-gray: #f5f7fa;
+            --card-background: #0d3b7a;
+            --highlight-glow: rgba(0, 184, 212, 0.4);
+            --text-dark: #001a33;
+            --text-medium: #003366;
+            --text-light: #ffffff;
+            --risk-very-high: #e74c3c;
+            --risk-high: #e67e22;
+            --risk-moderate: #f1c40f;
+            --risk-low: #3498db;
+            --risk-very-low: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--off-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        header {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .banner {
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-medium) 100%);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .summary-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 30px;
+        }
+
+        .state-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .metric {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .comparison-tag {
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .above-average {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--risk-very-high);
+        }
+
+        .below-average {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--risk-very-low);
+        }
+
+        .dashboard-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 14px;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: var(--light-gray);
+        }
+
+        .dashboard-panel {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel-header {
+            margin-bottom: 15px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .panel-description {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background-color: var(--light-gray);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--off-white);
+        }
+
+        .risk-indicator {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .risk-very-high { background-color: var(--risk-very-high); }
+        .risk-high { background-color: var(--risk-high); }
+        .risk-moderate { background-color: var(--risk-moderate); }
+        .risk-low { background-color: var(--risk-low); }
+        .risk-very-low { background-color: var(--risk-very-low); }
+
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-heading {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 28px;
+            }
+            
+            .banner p {
+                font-size: 16px;
+            }
+            
+            .metric-value {
+                font-size: 28px;
+            }
+            
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://iceberg.mit.edu" class="logo">
+                <!-- Simple iceberg logo -->
+                <svg width="30" height="30" viewBox="0 0 100 100" style="margin-right: 10px;">
+                    <path 
+                        d="M20,30 L40,15 L60,25 L80,10 L90,30 L10,30 Z" 
+                        fill="#ffffff" 
+                        stroke="#ffffff"
+                        stroke-width="2"
+                    />
+                    <path 
+                        d="M10,30 L90,30 L80,100 L20,100 Z" 
+                        fill="#6f9bd8" 
+                        stroke="#ffffff"
+                        stroke-width="2"
+                        opacity="0.7"
+                    />
+                </svg>
+                Project Iceberg
+            </a>
+            <div>
+                <span style="margin-right: 15px;"><a href="https://iceberg.mit.edu/method.html" style="color: white; text-decoration: none;">Methodology</a></span>
+                <span><a href="index.html" style="color: white; text-decoration: none;">All States</a></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="container">
+            <h1>{STATE} Iceberg Index</h1>
+            <p>Measuring the impact of agentic AI technologies on the state economy</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- State Summary Card -->
+        <div class="summary-card">
+            <div class="state-metrics">
+                <div class="metric">
+                    <div class="metric-value">
+                        2.3%
+                        <span class="comparison-tag above-average">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 19V5M5 12l7-7 7 7"/>
+                            </svg>
+                            0.55% above national avg
+                        </span>
+                    </div>
+                    <div class="metric-label">Iceberg Index</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$12.8B</div>
+                    <div class="metric-label">Economic Value at Risk</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">78,500</div>
+                    <div class="metric-label">Workers in At-Risk Jobs</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">12.6%</div>
+                    <div class="metric-label">Potential Near-Term Risk</div>
+                </div>
+            </div>
+            <p style="color: var(--text-medium); font-size: 14px;">
+                {STATE}'s current Iceberg Index of 2.3% indicates that this portion of the state's economic value is susceptible to automation through MCP-enabled AI systems. This represents $12.8 billion in economic value and affects approximately 78,500 workers across the state.
+            </p>
+        </div>
+
+        <!-- Industry Risk Analysis -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Industry Automation Risk</h3>
+                <p class="panel-description">Automation risk by major occupational groups in {STATE}</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="industryRiskChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Two-Column Layout for Key Metrics -->
+        <div class="grid-2col">
+            <!-- Top At-Risk Occupations -->
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Top At-Risk Occupations</h3>
+                    <p class="panel-description">Occupations with highest automation risk in {STATE}</p>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Occupation</th>
+                            <th>Risk Score</th>
+                            <th>Workers</th>
+                            <th>Economic Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="risk-indicator risk-very-high"></span>
+                                Software Developers
+                            </td>
+                            <td>82.5</td>
+                            <td>5,280</td>
+                            <td>$742M</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="risk-indicator risk-very-high"></span>
+                                Web Developers
+                            </td>
+                            <td>78.3</td>
+                            <td>1,850</td>
+                            <td>$176M</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="risk-indicator risk-very-high"></span>
+                                Database Administrators
+                            </td>
+                            <td>76.9</td>
+                            <td>920</td>
+                            <td>$94M</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="risk-indicator risk-high"></span>
+                                Financial Analysts
+                            </td>
+                            <td>75.4</td>
+                            <td>3,640</td>
+                            <td>$412M</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="risk-indicator risk-high"></span>
+                                Accountants and Auditors
+                            </td>
+                            <td>74.2</td>
+                            <td>12,450</td>
+                            <td>$1.1B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- National Comparison -->
+            <div class="dashboard-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">{STATE} vs. National Average</h3>
+                    <p class="panel-description">How {STATE}'s automation risk compares nationally</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economic Impact -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Economic Value at Risk</h3>
+                <p class="panel-description">Distribution of economic value by risk category</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="economicValueChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Automation Gap Analysis -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Automation Gap Analysis</h3>
+                <p class="panel-description">Occupations with highest potential vs. current automation</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Occupation</th>
+                        <th>Potential</th>
+                        <th>Current</th>
+                        <th>Gap</th>
+                        <th>Workers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Market Research Analysts</td>
+                        <td>72.5</td>
+                        <td>41.3</td>
+                        <td>31.2</td>
+                        <td>4,820</td>
+                    </tr>
+                    <tr>
+                        <td>Personal Financial Advisors</td>
+                        <td>68.9</td>
+                        <td>39.6</td>
+                        <td>29.3</td>
+                        <td>3,270</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Writers</td>
+                        <td>66.4</td>
+                        <td>38.1</td>
+                        <td>28.3</td>
+                        <td>960</td>
+                    </tr>
+                    <tr>
+                        <td>Human Resources Specialists</td>
+                        <td>63.7</td>
+                        <td>37.2</td>
+                        <td>26.5</td>
+                        <td>5,320</td>
+                    </tr>
+                    <tr>
+                        <td>Training & Development Specialists</td>
+                        <td>61.9</td>
+                        <td>36.8</td>
+                        <td>25.1</td>
+                        <td>2,740</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Key Recommendations -->
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Key Insights for {STATE} Leadership</h3>
+                <p class="panel-description">Based on {STATE}'s unique automation risk profile</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 10px;">
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Industry Focus</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        Computer & Mathematical occupations show the highest automation risk (79.4%), followed by Office & Administrative (62.8%) and Business & Financial Operations (61.2%).
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Economic Opportunity</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        The largest automation gaps exist in Market Research and Financial Advisory services, representing potential areas for productivity gains through strategic MCP adoption.
+                    </p>
+                </div>
+                <div style="background-color: var(--light-gray); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent);">
+                    <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--primary-dark);">Workforce Development</h4>
+                    <p style="font-size: 14px; color: var(--text-medium);">
+                        Focus workforce development programs on the 78,500 workers in high-risk occupations, particularly in technology fields where risk is significantly above national average.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download & Contact -->
+        <div style="text-align: center; margin: 40px 0 20px;">
+            <a href="#" style="display: inline-block; padding: 12px 25px; background-color: var(--primary-dark); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin-right: 15px;">
+                Download Full Report (PDF)
+            </a>
+            <a href="mailto:iceberg@mit.edu" style="display: inline-block; padding: 12px 25px; background-color: var(--accent); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Contact Research Team
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3 class="footer-heading">Project Iceberg</h3>
+                <p>An MIT initiative measuring the impact of Model Context Protocol (MCP) and agentic AI technologies on the US economy.</p>
+                <p style="margin-top: 10px;">© 2025 MIT Decentralized AI Group</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact</h3>
+                <p>
+                    MIT Decentralized AI Group<br>
+                    77 Massachusetts Avenue<br>
+                    Cambridge, MA 02139<br><br>
+                    iceberg@mit.edu
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize charts when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Industry Risk Chart
+            const industryRiskCtx = document.getElementById('industryRiskChart').getContext('2d');
+            new Chart(industryRiskCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Computer & Mathematical', 
+                        'Office & Administrative', 
+                        'Business & Financial',
+                        'Management',
+                        'Sales & Related',
+                        'Architecture & Engineering',
+                        'Healthcare Practitioners',
+                        'Transportation & Material',
+                        'Education & Training',
+                        'Construction & Extraction'
+                    ],
+                    datasets: [{
+                        label: 'Automation Risk Score',
+                        data: [79.4, 62.8, 61.2, 35.8, 48.6, 45.6, 29.6, 36.8, 32.5, 26.4],
+                        backgroundColor: function(context) {
+                            const value = context.dataset.data[context.dataIndex];
+                            return value > 60 ? 'rgba(231, 76, 60, 0.8)' : 
+                                   value > 40 ? 'rgba(241, 196, 15, 0.8)' : 
+                                   'rgba(46, 204, 113, 0.8)';
+                        },
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Automation Risk Score (0-100)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Comparison Chart
+            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(comparisonCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Iceberg Index',
+                        'Workers at Risk (%)',
+                        'Economic Value at Risk (%)'
+                    ],
+                    datasets: [
+                        {
+                            label: '{STATE}',
+                            data: [2.3, 3.2, 2.7],
+                            backgroundColor: 'rgba(0, 184, 212, 0.8)',
+                            borderColor: 'rgba(0, 184, 212, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'National Average',
+                            data: [1.75, 2.8, 2.1],
+                            backgroundColor: 'rgba(10, 55, 119, 0.8)',
+                            borderColor: 'rgba(10, 55, 119, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Initialize Economic Value Chart
+            const economicValueCtx = document.getElementById('economicValueChart').getContext('2d');
+            new Chart(economicValueCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Very High Risk', 'High Risk', 'Moderate Risk', 'Low Risk', 'Very Low Risk'],
+                    datasets: [{
+                        data: [1.7, 3.5, 4.2, 2.3, 1.1],
+                        backgroundColor: [
+                            'rgba(231, 76, 60, 0.8)',  // Very High
+                            'rgba(230, 126, 34, 0.8)', // High
+                            'rgba(241, 196, 15, 0.8)', // Moderate
+                            'rgba(52, 152, 219, 0.8)', // Low
+                            'rgba(46, 204, 113, 0.8)'  // Very Low
+                        ],
+                        borderColor: [
+                            'rgba(231, 76, 60, 1)',
+                            'rgba(230, 126, 34, 1)',
+                            'rgba(241, 196, 15, 1)',
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(46, 204, 113, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: $${value}B (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
