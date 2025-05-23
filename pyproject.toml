@@ -1,0 +1,21 @@
+[tool.basedpyright]
+include = ["src"]
+exclude = [
+    "**/__pycache__",
+]
+typeCheckingMode = "off"
+
+defineConstant = { DEBUG = false }
+
+reportMissingImports = "error"
+reportMissingTypeStubs = false
+reportAttributeAccessIssue = false
+reportUnknownArgumentType = false
+reportUnknownVariableType = false
+reportUnknownMemberType = false
+
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+[tool.ruff]
+# ignore = ["E501"]
