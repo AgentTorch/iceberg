@@ -753,7 +753,7 @@ if __name__ == "__main__":
     zapier_apps_file = "/data/zapier_apps_soc_codes.json"
     soc_mapping_file = "/data/soc_mapping.json"
     
-    output_dir = "output_new2/"
+    output_dir = "generation/"
 
     national_summary_df, national_industry_df = calculate_all_states_iceberg_indices(
         employment_file, tech_intensity_file, zapier_apps_file, soc_mapping_file,
