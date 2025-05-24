@@ -11,7 +11,7 @@ import pickle
 # File paths
 DATA_DIR = 'data'
 ONET_DIR = os.path.join(DATA_DIR, 'ONET')
-STATEWISE_DATA_DIR = os.path.join('output_new2')
+STATEWISE_DATA_DIR = os.path.join('generation')
 STORE_DIR = 'store'
 JOBRANK_DIR = os.path.join(STORE_DIR, 'jobrank')
 
@@ -19,7 +19,7 @@ JOBRANK_DIR = os.path.join(STORE_DIR, 'jobrank')
 # Input files
 SKILLS_CSV = os.path.join(ONET_DIR, 'Skills.csv')
 TECH_INTENSITY_CSV = os.path.join(DATA_DIR, 'tech_intensity_simple.csv')
-SOC_MAPPING_JSON = os.path.join(DATA_DIR, 'soc_mapping.json')
+SOC_MAPPING_CSV = os.path.join(DATA_DIR, 'soc_mapping.csv')
 
 # Output files
 SKILL_EMBEDDINGS_NPY = os.path.join(JOBRANK_DIR, 'skill_embeddings.npy')
@@ -30,22 +30,33 @@ JOB_GRAPH_GPICKLE = os.path.join(JOBRANK_DIR, 'job_graph.gpickle')
 JOB_RANK_SCORES_PKL = os.path.join(JOBRANK_DIR, 'job_rank_scores.pkl')
 ENHANCED_AUTOMATION_RISK_CSV = os.path.join(STATEWISE_DATA_DIR, '{state}_occupation_details.csv')
 
-def get_minor_code(soc_code):
-    """
-        Return the minor code from the SOC code in accordance to our format of minor codes
-    """
 
-    c = soc_code.replace('-', '')
-    return c[:3]
 
 def get_soc_code_cleaned(soc_code):
     """
         Return the SOC code cleaned in accordance to our format of SOC codes
     """
-    c = soc_code.split('.')[0]
-    c = c.replace('-', '')
-    return c
+    if type(soc_code) != str:
+        soc_code = str(soc_code)
+    if '.' in soc_code:
+        soc_code = soc_code.split('.')[0]
+    soc_code = soc_code.replace('-', '')  
+    return str(soc_code)
 
+def get_minor_code(soc_code):
+    """
+        Return the minor code from the SOC code in accordance to our format of minor codes
+    """
+
+    soc_code = get_soc_code_cleaned(soc_code)
+    return str(soc_code[:3])
+
+def get_major_code(soc_code):
+    """
+        Return the major code from the SOC code in accordance to our format of major codes
+    """
+    soc_code = get_soc_code_cleaned(soc_code)
+    return str(soc_code[:2])
 
 class JobRank:
     def __init__(self, state=None, load_data=False):
@@ -270,24 +281,56 @@ class JobRank:
     
     def calculate_job_rank(self, alpha=0.85, max_iter=100):
         """Calculate JobRank scores using PageRank algorithm"""
-        self.job_rank_scores = {job: 1/len(self.graph) for job in self.graph.nodes()}
+        n = len(self.graph)
+        self.job_rank_scores = {job: 1/n for job in self.graph.nodes()}
         
         for _ in range(max_iter):
             new_scores = {}
             for job in self.graph.nodes():
+                # Calculate incoming scores
                 incoming_score = sum(
                     self.job_rank_scores[predecessor] * self.graph[predecessor][job]['weight']
                     for predecessor in self.graph.predecessors(job)
                 )
-                new_scores[job] = (1 - alpha) + alpha * incoming_score
+                
+                # Apply PageRank formula: PR(p) = (1-d)/N + d * sum(PR(i)/C(i))
+                # where d is alpha, N is number of nodes, and C(i) is number of outgoing links
+                new_scores[job] = (1 - alpha)/n + alpha * incoming_score
             
-            total = sum(new_scores.values())
-            self.job_rank_scores = {job: score/total for job, score in new_scores.items()}
+            # Update scores
+            self.job_rank_scores = new_scores
         
         return self.job_rank_scores
+
+    def _get_job_title(self, job_code):
+        """
+            Return the title of a job code
+        """
+        try:
+            soc_mapping_source = self.soc_mapping.loc[job_code]
+            return soc_mapping_source.get('detailed_title', "")
+        except KeyError:
+            # Try with cleaned SOC code
+            cleaned_code = get_soc_code_cleaned(job_code)
+            try:
+                soc_mapping_source = self.soc_mapping[self.soc_mapping['normalized_SOC_Code'] == int(cleaned_code)]
+                if len(soc_mapping_source) > 0:
+                    return soc_mapping_source.iloc[0]['detailed_title']
+            except KeyError:
+                pass
+
+        print(f"Warning: No SOC mapping found for {job_code}")
+        return f"Unknown Job ({job_code})"
     
-    def get_transition_recommendations(self, job_code, n_recommendations=5):
-        """Get detailed transition recommendations with skill analysis"""
+    def get_transition_recommendations(self, job_code, n_recommendations=5, transition_type='general'):
+        """Get detailed transition recommendations with skill analysis
+        
+        Args:
+            job_code (str): The O*NET-SOC Code to get recommendations for
+            n_recommendations (int): Number of recommendations to return
+            transition_type (str, optional): Filter recommendations by transition type.
+                Must be one of: 'general', 'different_minor', 'different_major', or None for all types.
+        """
         if job_code not in self.graph:
             print(f"Job code {job_code} not found in graph")
             return []
@@ -299,8 +342,35 @@ class JobRank:
             reverse=True
         )
         
+        # Filter by transition type if specified
+        if transition_type:
+            if transition_type not in ['general', 'different_minor', 'different_major']:
+                raise ValueError("transition_type must be one of: 'general', 'different_minor', 'different_major'")
+            
+            # Get source job codes
+            source_major = get_major_code(job_code)
+            source_minor = get_minor_code(job_code)
+            
+            # Filter transitions based on type
+            filtered_transitions = []
+            for u, v, d in transitions:
+                target_major = get_major_code(v)
+                target_minor = get_minor_code(v)
+                
+                if transition_type == 'general':
+                    filtered_transitions.append((u, v, d))
+                elif transition_type == 'different_minor':
+                    if source_minor != target_minor and source_major == target_major:
+                        filtered_transitions.append((u, v, d))
+                elif transition_type == 'different_major':
+                    if source_major != target_major:
+                        filtered_transitions.append((u, v, d))
+            
+            transitions = filtered_transitions
+        
         # Get source job skills
         source_skills = self.skill_embeddings.loc[job_code]
+        soc_mapping_source_title = self._get_job_title(job_code)
         
         recommendations = []
         for _, target, data in transitions[:n_recommendations]:
@@ -310,25 +380,35 @@ class JobRank:
             # Calculate skill gaps
             skill_gaps = self._calculate_skill_gaps(source_skills, target_skills)
 
-            soc_mapping_target = self.soc_mapping.get(target, None)
+            skill_overlap = self._calculate_skill_overlap(source_skills, target_skills)
+
+            soc_mapping_target_title = self._get_job_title(target)
+
+            # Determine transition type
+            source_major = get_major_code(job_code)
+            source_minor = get_minor_code(job_code)
+            target_major = get_major_code(target)
+            target_minor = get_minor_code(target)
             
-            if soc_mapping_target is None:
-                modified_target = target.split('.')[0]
-                soc_mapping_target = self.soc_mapping.get(modified_target, {})
-            
-            if soc_mapping_target is None:
-                print(f"No SOC mapping found for {target}")
-                
-            soc_mapping_target_title = soc_mapping_target.get('detailed_title', "")
+            if source_major != target_major:
+                transition_type = 'general'
+            elif source_minor != target_minor:
+                transition_type = 'different_minor'
+            else:
+                transition_type = 'same_minor'
 
             recommendations.append({
+                'source_job': job_code,
+                'source_title': soc_mapping_source_title,
                 'target_job': target,
                 'target_title': soc_mapping_target_title,
                 'transition_probability': data['weight'],
+                'transition_type': transition_type,
                 'tech_intensity': self.tech_intensity_df.loc[target, 'tech_intensity_score'],
                 'hot_tech_ratio': self.tech_intensity_df.loc[target, 'hot_tech_ratio'],
                 'skill_gaps': skill_gaps,
-                'required_training': self._identify_required_training(skill_gaps)
+                'skill_overlap': skill_overlap,
+                # 'required_training': self._identify_required_training(skill_gaps)
             })
         
         return recommendations
@@ -344,17 +424,32 @@ class JobRank:
             if target_value > 0 and source_value == 0:
                 gaps.append({
                     'skill': skill_name,
-                    'gap': target_value,
+                    'gap': float(target_value),
                     'type': 'new_skill'
                 })
             elif target_value > source_value:
                 gaps.append({
                     'skill': skill_name,
-                    'gap': target_value - source_value,
+                    'gap': float(target_value - source_value),
                     'type': 'skill_upgrade'
                 })
-        
         return sorted(gaps, key=lambda x: x['gap'], reverse=True)
+
+    def _calculate_skill_overlap(self, source_skills, target_skills):
+        """Calculate the overlap between source and target skills"""
+        overlap = []
+        for skill_name in target_skills.index:
+            source_value = source_skills[skill_name]
+            target_value = target_skills[skill_name]
+
+            if target_value > 0 and source_value > 0 and source_value >= target_value:
+                overlap.append({
+                    'skill': skill_name,
+                    'gap': abs(float(source_value - target_value)),
+                    'type': 'skill_overlap'
+                })
+        return sorted(overlap, key=lambda x: x['gap'], reverse=False)
+            
     
     def _identify_required_training(self, skill_gaps):
         """Identify required training based on skill gaps"""
@@ -387,8 +482,7 @@ class JobRank:
         """Load input data"""
         self.skills_df = pd.read_csv(SKILLS_CSV)
         self.tech_intensity_df = pd.read_csv(TECH_INTENSITY_CSV, index_col='O*NET-SOC Code')
-        with open(SOC_MAPPING_JSON, 'r') as f:
-            self.soc_mapping = json.load(f)
+        self.soc_mapping = pd.read_csv(SOC_MAPPING_CSV, index_col='SOC Code')
 
         enhanced_automation_risk_csv = ENHANCED_AUTOMATION_RISK_CSV.format(state=self.state)
         self.enhanced_automation_risk_df = pd.read_csv(enhanced_automation_risk_csv, index_col='SOC_Code_Cleaned')
@@ -423,12 +517,32 @@ class JobRank:
         
         return self.job_rank_scores
 
+def get_recommendations_from_file(job_rank, input_file_path, state, transition_type, n_recommendations=5):
+    # read txt file line by line
+    all_recommendations = []
+    with open(input_file_path, 'r') as f:
+        for line in f:
+            job_code = line.strip()
+            print(f"Getting recommendations for {job_code}")
+            recommendations = job_rank.get_transition_recommendations(
+                job_code,
+                n_recommendations=n_recommendations,
+                transition_type=transition_type)
+            all_recommendations.extend(recommendations)
+
+            if len(recommendations) == 0:
+                print(f"No recommendations found for {job_code}")
+            
+    return pd.DataFrame(all_recommendations)
+
 def main():
     parser = argparse.ArgumentParser(description='JobRank: Job Transition Analysis')
     parser.add_argument('mode', choices=['build', 'get_rec'], help='Mode to run: build or get recommendations')
     parser.add_argument('--job_code', help='O*NET-SOC Code for getting recommendations (required in get_rec mode)')
     parser.add_argument('--n_recommendations', type=int, default=5, help='Number of recommendations to return (default: 5)')
     parser.add_argument('--state', help='State to get recommendations for (default: tennessee)', default='tennessee')
+    parser.add_argument('--transition_type', help='Transition type to get recommendations for (default: general)', default='general', choices=['general', 'different_minor', 'different_major'])
+    parser.add_argument('--input_file_path', help='File containing input SOC codes')
     args = parser.parse_args()
     
     if args.mode == 'build':
@@ -441,23 +555,32 @@ def main():
         job_rank.save_data()
         
     elif args.mode == 'get_rec':
-        if not args.job_code:
-            parser.error("--job_code is required in get_rec mode")
+        if not args.job_code and not args.input_file_path:
+            parser.error("--job_code or --input_file_path is required in get_rec mode")
         
         # Initialize JobRank without data
         job_rank = JobRank(state=args.state, load_data=True)
         
+        if args.input_file_path:
+            df = get_recommendations_from_file(job_rank, args.input_file_path, args.state, args.transition_type, args.n_recommendations)
+            path = os.path.join(JOBRANK_DIR, f'{args.state}_input_{args.transition_type}_recommendations.csv')
+            df.to_csv(path, index=False)
+            print(f"Saved recommendations to {path}")
+            return
+
+
         # Get recommendations
         recommendations = job_rank.get_transition_recommendations(
             args.job_code,
-            n_recommendations=args.n_recommendations
+            n_recommendations=args.n_recommendations,
+            transition_type=args.transition_type
         )
         
         # Print recommendations
         print(f"\nDetailed transition recommendations for {args.job_code}:")
         for rec in recommendations:
             print("-"*20)
-            print(f"\nTarget Job Title: {rec['target_title']}")
+            print(f"\nTarget Job Title: {rec['target_job']} {rec['target_title']}")
             print(f"Transition Probability: {rec['transition_probability']:.3f}")
             print(f"Tech Intensity: {rec['tech_intensity']:.2f}")
             print(f"Hot Tech Ratio: {rec['hot_tech_ratio']:.2f}")
@@ -465,10 +588,6 @@ def main():
             print("\nTop Skill Gaps:")
             for gap in rec['skill_gaps'][:3]:
                 print(f"- {gap['skill']}: {gap['gap']:.2f} ({gap['type']})")
-            
-            print("\nRequired Training:")
-            for training in rec['required_training'][:3]:
-                print(f"- {training['skill']}: {training['training_type']} ({training['estimated_duration']})")
 
 if __name__ == "__main__":
     main()
