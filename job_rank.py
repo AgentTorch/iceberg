@@ -227,13 +227,17 @@ class JobRank:
                         # Combine all factors
                         transition_matrix[i, j] = (
                             sim * 0.4 +  # Base similarity
-                            skill_factor * 0.3 +  # Skill transition cost
-                            risk_factor * 0.2 +  # Automation risk
+                            skill_factor * 0.2 +  # Skill transition cost
+                            risk_factor * 0.3 +  # Automation risk
                             hot_factor * 0.1  # Hot technology
                         )
         
         # Normalize rows to get probabilities
         row_sums = transition_matrix.sum(axis=1)
+        
+        # if any element in row_sums is 0, set it to epsilon
+        row_sums = np.where(row_sums == 0, 1e-10, row_sums)
+
         transition_matrix = transition_matrix / row_sums[:, np.newaxis]
         
         self.transition_matrix = pd.DataFrame(
