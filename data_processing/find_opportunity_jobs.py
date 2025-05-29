@@ -102,22 +102,32 @@ def find_opportunity_jobs(df: pd.DataFrame, version: str = "v1") -> pd.DataFrame
             elif ops_skills >= 2.5:
                 score -= 2
                 
-            # Secondary factors
-            if tech_comp >= 0.14:
+            # Updated secondary factors with stricter requirements
+            if tech_comp >= 0.16:  # Higher threshold for technical composition
+                score += 2
+            elif tech_comp >= 0.14:
                 score += 1
-            if 2.8 <= soc_skills <= 3.4:
+            elif tech_comp < 0.12:  # Penalty for very low technical orientation
+                score -= 1
+                
+            if 2.8 <= soc_skills <= 3.3:
                 score += 1
             elif soc_skills >= 3.6:
-                score -= 1
+                score -= 2  # Stronger penalty for high social dependency
+                
             if mgmt_skills >= 2.5:
                 score += 1
                 
-            # Final classification
-            if score >= 4:
+            # Penalty for purely academic roles
+            if tech_comp < 0.14 and cog_skills > 3.6:
+                score -= 2
+                
+            # Final classification with updated thresholds
+            if score >= 5:
                 return "High AI Benefit"
-            elif score >= 2:
+            elif score >= 3:
                 return "Moderate AI Benefit"  
-            elif score >= 0:
+            elif score >= 1:
                 return "Low AI Benefit"
             else:
                 return "Minimal AI Benefit"
@@ -129,23 +139,51 @@ def find_opportunity_jobs(df: pd.DataFrame, version: str = "v1") -> pd.DataFrame
             soc_skills = row['social_skills']
             tech_comp = row['technical_composition']
             mgmt_skills = row['management_skills']
+            tech_skills = row['technical_skills']
+            title = row['Title']
             
             score = 0
             
             # Primary factors (stronger weights)
-            score += cog_skills * 0.3  # Higher cognitive = better
-            score -= ops_skills * 0.25  # Lower operations = better
+            score += cog_skills * 0.25  # Cognitive skills important but not dominant
+            score -= ops_skills * 0.3   # Stronger penalty for physical/manual work
             
-            # Secondary factors
-            score += tech_comp * 2.0    # Technical orientation
-            score += mgmt_skills * 0.1  # Management capability
+            # Technical orientation is crucial for AI opportunity jobs
+            score += tech_comp * 3.5    # Much higher weight for technical composition
+            score += tech_skills * 0.15  # Direct technical skills also important
             
-            # Social skills - moderate range is optimal
-            if 2.8 <= soc_skills <= 3.4:
+            # Management and coordination roles benefit from AI
+            score += mgmt_skills * 0.2   # Higher weight for management skills
+            
+            # Social skills - moderate range is optimal, but penalize very high
+            if 2.5 <= soc_skills <= 3.2:
                 score += soc_skills * 0.05
-            elif soc_skills >= 3.6:
-                score -= (soc_skills - 3.6) * 0.1  # Penalty for very high social dependency
+            elif soc_skills >= 3.5:
+                score -= (soc_skills - 3.5) * 0.15  # Stronger penalty for very high social dependency
             
+            # Strong penalty for academic/teaching roles
+            academic_keywords = ['Teachers,', 'Postsecondary', 'Instructor', 'Professor', 'Education Teachers']
+            if any(keyword in title for keyword in academic_keywords):
+                score -= 0.5  # Strong penalty for academic roles
+                
+            # Additional penalty for pure research roles without practical application
+            research_keywords = ['Scientists', 'Anthropologists', 'Archeologists', 'Historians', 'Philosophers']
+            if any(keyword in title for keyword in research_keywords) and tech_comp < 0.16:
+                score -= 0.3  # Penalty for pure research with low tech composition
+                
+            # Penalty for purely academic roles (low technical composition + very high cognitive)
+            if tech_comp < 0.14 and cog_skills > 3.6:
+                score -= 0.3  # Penalty for highly academic, less practical roles
+                
+            # Bonus for practical business/tech combinations
+            if tech_comp >= 0.15 and mgmt_skills >= 2.3 and cog_skills >= 3.0:
+                score += 0.2  # Bonus for tech-savvy management roles
+                
+            # Bonus for clearly business-oriented roles
+            business_keywords = ['Analysts', 'Engineers', 'Managers', 'Specialists', 'Architects', 'Developers', 'Consultants']
+            if any(keyword in title for keyword in business_keywords) and tech_comp >= 0.15:
+                score += 0.15  # Bonus for business/tech roles with good technical composition
+                
             return score
         
         df_filtered['AI_Benefit_Classification'] = df_filtered.apply(classify_ai_benefit_potential, axis=1)
