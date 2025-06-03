@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 
-OPPORTUNITY_JOBS_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data_v2/opportunity_jobs.csv")
+OPPORTUNITY_JOBS_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data_v2/opportunity_jobs_{version}.csv")
 # SKILLS_IMPORTANCE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data/skills/skills_importance.csv")
 SKILLS_BASED_RISK_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data/skills/skills_based_risk.csv")
 
@@ -76,64 +76,73 @@ def find_opportunity_jobs(df: pd.DataFrame, version: str = "v1") -> pd.DataFrame
         df_filtered.sort_values(by='technical_composition', ascending=False, inplace=True)
         return df_filtered[['O*NET-SOC Code', 'Title', 'technical_composition', 'cognitive_skills', 'social_skills', 'operations_skills', 'maintenance_skills', 'management_skills', 'technical_skills']]
     elif version == "v2":
-        # Add AI benefit classification
+        # Comprehensive AI Opportunity Analysis across all technical composition levels
         df_filtered = df.copy()
         
-        def classify_ai_benefit_potential(row):
-            """Classify jobs based on AI benefit potential using key features"""
+        # Define technical composition strata
+        def get_tech_composition_stratum(tech_comp):
+            if tech_comp <= 0.1165:
+                return "Low-Tech"
+            elif tech_comp <= 0.1558:
+                return "Medium-Tech" 
+            else:
+                return "High-Tech"
+        
+        def classify_ai_transformation_potential(row):
+            """Classify LOW-TECH jobs based on their potential to be transformed by AI tools"""
             ops_skills = row['operations_skills']
             cog_skills = row['cognitive_skills'] 
             soc_skills = row['social_skills']
             tech_comp = row['technical_composition']
             mgmt_skills = row['management_skills']
+            title = row['Title']
+            
+            # Only apply to low-tech jobs
+            if tech_comp > 0.13:
+                return "Not Applicable"
             
             score = 0
             
-            # Primary factors
-            if cog_skills >= 3.3:
+            # Primary criteria: Currently low-tech but with good foundation for AI adoption
+            if tech_comp <= 0.13:  # Low technical composition
                 score += 2
-            elif cog_skills >= 3.0:
-                score += 1
                 
-            if ops_skills <= 1.5:
-                score += 2
-            elif ops_skills <= 2.0:
-                score += 1
-            elif ops_skills >= 2.5:
+                # But has cognitive capacity to adopt AI tools
+                if cog_skills >= 3.0:
+                    score += 2
+                elif cog_skills >= 2.8:
+                    score += 1
+                    
+                # Jobs involving information processing, decision making, customer interaction
+                if 2.5 <= soc_skills <= 3.8:  # Human interaction that AI can augment
+                    score += 1
+                    
+                if mgmt_skills >= 2.2:  # Management/coordination tasks AI can enhance
+                    score += 1
+                    
+                # Lower operations skills = less physical, more suitable for AI augmentation
+                if ops_skills <= 2.0:
+                    score += 2
+                elif ops_skills <= 2.5:
+                    score += 1
+                
+                    
+            # Penalty for purely manual/physical jobs
+            if ops_skills >= 3.0:
                 score -= 2
                 
-            # Updated secondary factors with stricter requirements
-            if tech_comp >= 0.16:  # Higher threshold for technical composition
-                score += 2
-            elif tech_comp >= 0.14:
-                score += 1
-            elif tech_comp < 0.12:  # Penalty for very low technical orientation
-                score -= 1
-                
-            if 2.8 <= soc_skills <= 3.3:
-                score += 1
-            elif soc_skills >= 3.6:
-                score -= 2  # Stronger penalty for high social dependency
-                
-            if mgmt_skills >= 2.5:
-                score += 1
-                
-            # Penalty for purely academic roles
-            if tech_comp < 0.14 and cog_skills > 3.6:
-                score -= 2
-                
-            # Final classification with updated thresholds
-            if score >= 5:
-                return "High AI Benefit"
-            elif score >= 3:
-                return "Moderate AI Benefit"  
-            elif score >= 1:
-                return "Low AI Benefit"
+            # Final classification
+            if score >= 6:
+                return "High Transformation Potential"
+            elif score >= 4:
+                return "Moderate Transformation Potential"
+            elif score >= 2:
+                return "Low Transformation Potential"
             else:
-                return "Minimal AI Benefit"
+                return "Minimal Transformation Potential"
         
-        def calculate_ai_benefit_score(row):
-            """Calculate numerical AI benefit score for ranking"""
+        def classify_ai_enhancement_potential(row):
+            """Classify MEDIUM/HIGH-TECH jobs based on their potential to benefit from advanced AI"""
             ops_skills = row['operations_skills']
             cog_skills = row['cognitive_skills'] 
             soc_skills = row['social_skills']
@@ -142,59 +151,130 @@ def find_opportunity_jobs(df: pd.DataFrame, version: str = "v1") -> pd.DataFrame
             tech_skills = row['technical_skills']
             title = row['Title']
             
+            # Only apply to medium/high-tech jobs
+            if tech_comp <= 0.13:
+                return "Not Applicable"
+            
             score = 0
             
-            # Primary factors (stronger weights)
-            score += cog_skills * 0.25  # Cognitive skills important but not dominant
-            score -= ops_skills * 0.3   # Stronger penalty for physical/manual work
+            # Primary factors for AI enhancement in technical roles
+            score += cog_skills * 0.25  # Cognitive skills important for advanced AI adoption
+            score -= ops_skills * 0.3   # Physical work reduces AI benefit potential
+            score += tech_comp * 2.0    # Higher tech composition = more AI enhancement potential
+            score += tech_skills * 0.15 # Technical skills help with AI adoption
             
-            # Technical orientation is crucial for AI opportunity jobs
-            score += tech_comp * 3.5    # Much higher weight for technical composition
-            score += tech_skills * 0.15  # Direct technical skills also important
-            
-            # Management and coordination roles benefit from AI
-            score += mgmt_skills * 0.2   # Higher weight for management skills
-            
-            # Social skills - moderate range is optimal, but penalize very high
-            if 2.5 <= soc_skills <= 3.2:
-                score += soc_skills * 0.05
-            elif soc_skills >= 3.5:
-                score -= (soc_skills - 3.5) * 0.15  # Stronger penalty for very high social dependency
-            
-            # Strong penalty for academic/teaching roles
-            academic_keywords = ['Teachers,', 'Postsecondary', 'Instructor', 'Professor', 'Education Teachers']
-            if any(keyword in title for keyword in academic_keywords):
-                score -= 0.5  # Strong penalty for academic roles
+            # Management roles can benefit significantly from AI insights
+            if mgmt_skills >= 2.5:
+                score += 0.4
+            elif mgmt_skills >= 2.0:
+                score += 0.2
                 
-            # Additional penalty for pure research roles without practical application
-            research_keywords = ['Scientists', 'Anthropologists', 'Archeologists', 'Historians', 'Philosophers']
-            if any(keyword in title for keyword in research_keywords) and tech_comp < 0.16:
-                score -= 0.3  # Penalty for pure research with low tech composition
-                
-            # Penalty for purely academic roles (low technical composition + very high cognitive)
-            if tech_comp < 0.14 and cog_skills > 3.6:
-                score -= 0.3  # Penalty for highly academic, less practical roles
-                
-            # Bonus for practical business/tech combinations
-            if tech_comp >= 0.15 and mgmt_skills >= 2.3 and cog_skills >= 3.0:
-                score += 0.2  # Bonus for tech-savvy management roles
-                
-            # Bonus for clearly business-oriented roles
-            business_keywords = ['Analysts', 'Engineers', 'Managers', 'Specialists', 'Architects', 'Developers', 'Consultants']
-            if any(keyword in title for keyword in business_keywords) and tech_comp >= 0.15:
-                score += 0.15  # Bonus for business/tech roles with good technical composition
-                
-            return score
+            # Final classification  
+            if score >= 2.0:
+                return "High Enhancement Potential"
+            elif score >= 1.5:
+                return "Moderate Enhancement Potential"
+            elif score >= 1.0:
+                return "Low Enhancement Potential"
+            else:
+                return "Minimal Enhancement Potential"
         
-        df_filtered['AI_Benefit_Classification'] = df_filtered.apply(classify_ai_benefit_potential, axis=1)
-        df_filtered['AI_Benefit_Score'] = df_filtered.apply(calculate_ai_benefit_score, axis=1)
+        def calculate_transformation_score(row):
+            """Calculate score for LOW-TECH transformation potential"""
+            if row['technical_composition'] > 0.13:
+                return 0
+                
+            ops_skills = row['operations_skills']
+            cog_skills = row['cognitive_skills'] 
+            soc_skills = row['social_skills']
+            tech_comp = row['technical_composition']
+            mgmt_skills = row['management_skills']
+            title = row['Title']
+            
+            score = 0
+            
+            # Core transformation factors
+            score += (0.13 - tech_comp) * 10  # Higher score for lower current tech
+            score += cog_skills * 0.4  # Cognitive ability to adopt new tools
+            
+            # Human-centric jobs that AI can augment
+            if 2.5 <= soc_skills <= 3.8:
+                score += soc_skills * 0.3
+                
+            # Management/coordination roles
+            score += mgmt_skills * 0.25
+            
+            # Less physical = more suitable for AI tools
+            score -= ops_skills * 0.2
+            
+            return max(0, score)
         
-        # Sort by AI benefit score (highest first)
-        df_filtered.sort_values(by='AI_Benefit_Score', ascending=False, inplace=True)
+        def calculate_enhancement_score(row):
+            """Calculate score for MEDIUM/HIGH-TECH enhancement potential"""
+            if row['technical_composition'] <= 0.13:
+                return 0
+                
+            ops_skills = row['operations_skills']
+            cog_skills = row['cognitive_skills'] 
+            soc_skills = row['social_skills']
+            tech_comp = row['technical_composition']
+            mgmt_skills = row['management_skills']
+            tech_skills = row['technical_skills']
+            
+            score = 0
+            
+            # Base scoring for technical roles
+            score += cog_skills * 0.25
+            score -= ops_skills * 0.3  
+            score += tech_comp * 2.0
+            score += tech_skills * 0.15
+            
+            # Management bonus
+            if mgmt_skills >= 2.5:
+                score += 0.4
+            elif mgmt_skills >= 2.0:
+                score += 0.2
+                
+            
+            return max(0, score)
         
-        return df_filtered[['O*NET-SOC Code', 'Title', 'technical_composition', 'cognitive_skills', 'social_skills', 
-                           'operations_skills', 'maintenance_skills', 'management_skills', 'technical_skills',
-                           'AI_Benefit_Classification', 'AI_Benefit_Score']]
+        # Apply all classifications
+        df_filtered['Tech_Stratum'] = df_filtered['technical_composition'].apply(get_tech_composition_stratum)
+        df_filtered['AI_Transformation_Classification'] = df_filtered.apply(classify_ai_transformation_potential, axis=1)
+        df_filtered['AI_Enhancement_Classification'] = df_filtered.apply(classify_ai_enhancement_potential, axis=1)
+        df_filtered['AI_Transformation_Score'] = df_filtered.apply(calculate_transformation_score, axis=1)
+        df_filtered['AI_Enhancement_Score'] = df_filtered.apply(calculate_enhancement_score, axis=1)
+        
+        # Create overall AI opportunity score (combination of both)
+        df_filtered['Overall_AI_Opportunity_Score'] = df_filtered['AI_Transformation_Score'] + df_filtered['AI_Enhancement_Score']
+        
+        # Create comprehensive AI opportunity classification
+        def get_overall_ai_classification(row):
+            transformation = row['AI_Transformation_Classification']
+            enhancement = row['AI_Enhancement_Classification']
+            tech_stratum = row['Tech_Stratum']
+            
+            if tech_stratum == "Low-Tech":
+                if transformation in ['High Transformation Potential', 'Moderate Transformation Potential']:
+                    return f"Low-Tech: {transformation}"
+                else:
+                    return f"Low-Tech: {transformation}"
+            else:
+                if enhancement in ['High Enhancement Potential', 'Moderate Enhancement Potential']:
+                    return f"{tech_stratum}: {enhancement}"
+                else:
+                    return f"{tech_stratum}: {enhancement}"
+        
+        df_filtered['Overall_AI_Classification'] = df_filtered.apply(get_overall_ai_classification, axis=1)
+        
+        # Sort by overall AI opportunity score
+        df_filtered.sort_values(by='Overall_AI_Opportunity_Score', ascending=False, inplace=True)
+        
+        return df_filtered[['O*NET-SOC Code', 'Title', 'technical_composition', 'Tech_Stratum',
+                           'cognitive_skills', 'social_skills', 'operations_skills', 'maintenance_skills', 
+                           'management_skills', 'technical_skills', 'AI_Transformation_Classification',
+                           'AI_Enhancement_Classification', 'AI_Transformation_Score', 'AI_Enhancement_Score',
+                           'Overall_AI_Opportunity_Score', 'Overall_AI_Classification']]
 
 def main():
     # Analyze the technical skills percentiles
@@ -220,40 +300,17 @@ def main():
         print(f"\nRange between 80th and 20th percentiles: {percentile_range:.4f}")
 
     # Generate opportunity jobs - you can change version to "v2" for AI classification
-    version = "v2"  # Change to "v2" for AI benefit analysis
+    version = "v1"  # Change to "v2" for AI benefit analysis
     print(f"\nGenerating opportunity jobs using version: {version}")
+
+    output_path = OPPORTUNITY_JOBS_OUTPUT_PATH.format(version=version)
     
     df_opportunity_jobs = find_opportunity_jobs(
         df_normalized_skill_importance, 
         version=version
-    )
-    
-    # Update output path based on version
-    if version == "v2":
-        output_path = OPPORTUNITY_JOBS_OUTPUT_PATH.replace(".csv", "_with_ai_classification.csv")
-        print(f"\n=== AI BENEFIT CLASSIFICATION RESULTS ===")
-        if 'AI_Benefit_Classification' in df_opportunity_jobs.columns:
-            classification_counts = df_opportunity_jobs['AI_Benefit_Classification'].value_counts()
-            total_jobs = len(df_opportunity_jobs)
-            for category, count in classification_counts.items():
-                percentage = (count / total_jobs) * 100
-                print(f"{category}: {count} jobs ({percentage:.1f}%)")
-    else:
-        output_path = OPPORTUNITY_JOBS_OUTPUT_PATH
-    
+    ) 
     df_opportunity_jobs.to_csv(output_path, index=False)
     print(f"\nOpportunity jobs saved to {output_path}")
-    
-    # Show sample of top results
-    print(f"\nTop 10 opportunity jobs:")
-    if version == "v2":
-        print("Ranked by AI Benefit Score:")
-        for i, (_, row) in enumerate(df_opportunity_jobs.head(10).iterrows(), 1):
-            print(f"{i:2d}. {row['Title']} (AI: {row['AI_Benefit_Classification']}, Score: {row['AI_Benefit_Score']:.3f})")
-    else:
-        print("Ranked by Technical Composition:")
-        for i, (_, row) in enumerate(df_opportunity_jobs.head(10).iterrows(), 1):
-            print(f"{i:2d}. {row['Title']} (Tech Comp: {row['technical_composition']:.3f})")
 
 if __name__ == "__main__":
     main()
