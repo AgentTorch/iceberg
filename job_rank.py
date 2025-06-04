@@ -8,6 +8,10 @@ import os
 import argparse
 import pickle
 
+
+from wef_risk import WefRisk
+
+
 # File paths
 DATA_DIR = 'data'
 ONET_DIR = os.path.join(DATA_DIR, 'ONET')
@@ -71,34 +75,8 @@ class JobRank:
         self.transition_matrix = None
         self.job_rank_scores = None
         self.enhanced_automation_risk_df = None
-        
-        
-        
-        self.skill_categories = {
-            'basic_skills': [
-                'Reading Comprehension', 'Active Listening', 'Writing', 'Speaking',
-                'Mathematics', 'Science'
-            ],
-            'cognitive_skills': [
-                'Critical Thinking', 'Active Learning', 'Learning Strategies',
-                'Monitoring', 'Complex Problem Solving', 'Judgment and Decision Making'
-            ],
-            'social_skills': [
-                'Social Perceptiveness', 'Coordination', 'Persuasion',
-                'Negotiation', 'Instructing', 'Service Orientation'
-            ],
-            'technical_skills': [
-                'Technology Design', 'Programming', 'Operations Analysis',
-                'Equipment Selection', 'Installation', 'Operations Monitoring',
-                'Operation and Control', 'Equipment Maintenance', 'Troubleshooting',
-                'Repairing', 'Quality Control Analysis'
-            ],
-            'management_skills': [
-                'Systems Analysis', 'Systems Evaluation', 'Time Management',
-                'Management of Financial Resources', 'Management of Material Resources',
-                'Management of Personnel Resources'
-            ]
-        }
+        print("-----> Initializing WefRisk")
+        self.wef_risk = WefRisk()
 
         if load_data:
             self.load_data()
@@ -249,13 +227,17 @@ class JobRank:
                         # Combine all factors
                         transition_matrix[i, j] = (
                             sim * 0.4 +  # Base similarity
-                            skill_factor * 0.3 +  # Skill transition cost
-                            risk_factor * 0.2 +  # Automation risk
+                            skill_factor * 0.2 +  # Skill transition cost
+                            risk_factor * 0.3 +  # Automation risk
                             hot_factor * 0.1  # Hot technology
                         )
         
         # Normalize rows to get probabilities
         row_sums = transition_matrix.sum(axis=1)
+        
+        # if any element in row_sums is 0, set it to epsilon
+        row_sums = np.where(row_sums == 0, 1e-10, row_sums)
+
         transition_matrix = transition_matrix / row_sums[:, np.newaxis]
         
         self.transition_matrix = pd.DataFrame(
@@ -491,14 +473,24 @@ class JobRank:
         """
             Return the automation risk for a given SOC code.
             If SOC code is not found, returns the median automation risk.
+
+            args:
+                soc_code (str): The SOC code to get the automation risk for.
+                soc_code is in the format of XX-XXXX.XX
+
+            returns:
+                float: The automation risk for the given SOC code.
         """
-        soc_code_cleaned = get_soc_code_cleaned(soc_code)
-        try:
-            return self.enhanced_automation_risk_df.loc[int(soc_code_cleaned), 'enhanced_automation_risk']
-        except KeyError:
-            median_risk = self.enhanced_automation_risk_df['enhanced_automation_risk'].median()
-            print(f"Warning: SOC code {soc_code_cleaned} not found in automation risk data. Using median risk: {median_risk:.3f}")
-            return median_risk
+        # soc_code_cleaned = get_soc_code_cleaned(soc_code)
+        # try:
+        #     # v1 risk score from the enhanced_automation_risk_df
+        #     return self.enhanced_automation_risk_df.loc[int(soc_code_cleaned), 'enhanced_automation_risk']
+        # except KeyError:
+        #     median_risk = self.enhanced_automation_risk_df['enhanced_automation_risk'].median()
+        #     print(f"Warning: SOC code {soc_code_cleaned} not found in automation risk data. Using median risk: {median_risk:.3f}")
+        #     return median_risk
+
+        return self.wef_risk.compute_risk_score(soc_code)
         
     
     def build(self):
