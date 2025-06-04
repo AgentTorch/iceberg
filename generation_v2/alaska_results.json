@@ -1,0 +1,919 @@
+{
+    "state": "Alaska",
+    "total_jobs": 304670.0,
+    "total_economic_value": 20696874300.0,
+    "employment_by_industry": {
+        "HEALTHCARE": 37000.0,
+        "RETAIL_TRADE": 34890.0,
+        "TRAVEL_AND_ENTERTAINMENT_SERVICES": 32430.0,
+        "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 31960.0,
+        "CONSTRUCTION": 27230.0,
+        "MANUFACTURING": 19490.0,
+        "EDUCATIONAL_SERVICES": 13490.0,
+        "MANAGEMENT": 13350.0,
+        "PACKAGING_AND_GOODS_TRANSPORTATION": 10600.0,
+        "FINANCE_AND_INSURANCE": 8560.0,
+        "PASSENGER_TRANSPORTATION": 8370.0,
+        "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 5790.0,
+        "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 4970.0,
+        "ACCOUNTING_AND_AUDITING_SERVICES": 4610.0,
+        "GOVERNMENT": 4130.0,
+        "LEGAL_SERVICES": 3420.0,
+        "MEDIA_AND_COMMUNICATIONS_SERVICES": 3260.0,
+        "MINING_OIL_GAS_EXTRACTION": 2680.0,
+        "ENERGY": 2470.0,
+        "AGRICULTURE_FORESTRY_FISHING_HUNTING": 1770.0,
+        "ARCHITECTURAL_ENGINEERING_SERVICES": 1100.0,
+        "REAL_ESTATE_RENTAL_LEASING": 950.0,
+        "MANAGEMENT_CONSULTING_SERVICES": 380.0,
+        "SPECIAL_INDUSTRIES": 340.0
+    },
+    "economic_value_by_industry": {
+        "HEALTHCARE": 3192919700.0,
+        "CONSTRUCTION": 2092664350.0,
+        "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 1739125500.0,
+        "MANAGEMENT": 1514502400.0,
+        "RETAIL_TRADE": 1476612500.0,
+        "MANUFACTURING": 1341697350.0,
+        "TRAVEL_AND_ENTERTAINMENT_SERVICES": 1239227800.0,
+        "EDUCATIONAL_SERVICES": 1030646200.0,
+        "FINANCE_AND_INSURANCE": 770471700.0,
+        "PASSENGER_TRANSPORTATION": 731390700.0,
+        "PACKAGING_AND_GOODS_TRANSPORTATION": 677631300.0,
+        "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 562156600.0,
+        "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 447054200.0,
+        "GOVERNMENT": 354065000.0,
+        "LEGAL_SERVICES": 329464600.0,
+        "ACCOUNTING_AND_AUDITING_SERVICES": 251706000.0,
+        "ENERGY": 249380350.0,
+        "MINING_OIL_GAS_EXTRACTION": 240594800.0,
+        "MEDIA_AND_COMMUNICATIONS_SERVICES": 226677300.0,
+        "ARCHITECTURAL_ENGINEERING_SERVICES": 140968000.0,
+        "AGRICULTURE_FORESTRY_FISHING_HUNTING": 99458600.0,
+        "REAL_ESTATE_RENTAL_LEASING": 68916900.0,
+        "MANAGEMENT_CONSULTING_SERVICES": 40078600.0,
+        "SPECIAL_INDUSTRIES": 23208600.0
+    },
+    "risk": {
+        "total_jobs_at_risk": 34550.0,
+        "total_jobs_at_risk_percentage": 11.340138510519578,
+        "total_economic_value_at_risk": 2863458400.0,
+        "total_economic_value_at_risk_percentage": 13.835221485594081,
+        "industry_impact_percentage": {
+            "ACCOUNTING_AND_AUDITING_SERVICES": 100.0,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 91.14688128772636,
+            "SPECIAL_INDUSTRIES": 88.23529411764706,
+            "FINANCE_AND_INSURANCE": 55.490654205607484,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 45.45454545454545,
+            "LEGAL_SERVICES": 36.54970760233918,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 27.288428324697755,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 24.293785310734464,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 18.404907975460123,
+            "HEALTHCARE": 17.37837837837838,
+            "ENERGY": 12.550607287449392,
+            "MINING_OIL_GAS_EXTRACTION": 11.940298507462686,
+            "MANAGEMENT": 9.812734082397004,
+            "CONSTRUCTION": 8.483290488431876,
+            "MANUFACTURING": 7.952796305797845,
+            "EDUCATIONAL_SERVICES": 7.3387694588584145,
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 5.225281602002503,
+            "PASSENGER_TRANSPORTATION": 2.6284348864994027,
+            "RETAIL_TRADE": 2.5508741759816567,
+            "MANAGEMENT_CONSULTING_SERVICES": 0.0,
+            "REAL_ESTATE_RENTAL_LEASING": 0.0,
+            "PACKAGING_AND_GOODS_TRANSPORTATION": 0.0,
+            "GOVERNMENT": 0.0,
+            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 0.0
+        },
+        "employment_at_risk_by_industry": {
+            "HEALTHCARE": 6430.0,
+            "FINANCE_AND_INSURANCE": 4750.0,
+            "ACCOUNTING_AND_AUDITING_SERVICES": 4610.0,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 4530.0,
+            "CONSTRUCTION": 2310.0,
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 1670.0,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 1580.0,
+            "MANUFACTURING": 1550.0,
+            "MANAGEMENT": 1310.0,
+            "LEGAL_SERVICES": 1250.0,
+            "EDUCATIONAL_SERVICES": 990.0,
+            "RETAIL_TRADE": 890.0,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 600.0,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 500.0,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 430.0,
+            "MINING_OIL_GAS_EXTRACTION": 320.0,
+            "ENERGY": 310.0,
+            "SPECIAL_INDUSTRIES": 300.0,
+            "PASSENGER_TRANSPORTATION": 220.0
+        },
+        "economic_value_at_risk_by_industry": {
+            "HEALTHCARE": 666929500.0,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 418088600.0,
+            "FINANCE_AND_INSURANCE": 362418500.0,
+            "ACCOUNTING_AND_AUDITING_SERVICES": 251706000.0,
+            "CONSTRUCTION": 232831100.0,
+            "MANAGEMENT": 167549000.0,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 155558000.0,
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 96551000.0,
+            "MANUFACTURING": 79966300.0,
+            "LEGAL_SERVICES": 77152200.0,
+            "EDUCATIONAL_SERVICES": 73961100.0,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 45712000.0,
+            "RETAIL_TRADE": 44428800.0,
+            "MINING_OIL_GAS_EXTRACTION": 41203200.0,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 37768500.0,
+            "ENERGY": 37320900.0,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 35119100.0,
+            "SPECIAL_INDUSTRIES": 20763000.0,
+            "PASSENGER_TRANSPORTATION": 18431600.0
+        },
+        "industry_wise_top_5_jobs": {
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "19-2041",
+                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
+                        "TOT_EMP": 730.0,
+                        "economic_value": 67291400.0
+                    },
+                    {
+                        "OCC_CODE": "19-1023",
+                        "OCC_TITLE": "Zoologists and Wildlife Biologists",
+                        "TOT_EMP": 680.0,
+                        "economic_value": 57643600.0
+                    },
+                    {
+                        "OCC_CODE": "11-9121",
+                        "OCC_TITLE": "Natural Sciences Managers",
+                        "TOT_EMP": 640.0,
+                        "economic_value": 76249600.0
+                    },
+                    {
+                        "OCC_CODE": "19-4021",
+                        "OCC_TITLE": "Biological Technicians",
+                        "TOT_EMP": 600.0,
+                        "economic_value": 32622000.0
+                    },
+                    {
+                        "OCC_CODE": "19-1029",
+                        "OCC_TITLE": "Biological Scientists, All Other",
+                        "TOT_EMP": 420.0,
+                        "economic_value": 38757600.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "11-9121",
+                        "OCC_TITLE": "Natural Sciences Managers",
+                        "TOT_EMP": 640.0,
+                        "economic_value": 76249600.0
+                    },
+                    {
+                        "OCC_CODE": "19-2041",
+                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
+                        "TOT_EMP": 730.0,
+                        "economic_value": 67291400.0
+                    },
+                    {
+                        "OCC_CODE": "19-1023",
+                        "OCC_TITLE": "Zoologists and Wildlife Biologists",
+                        "TOT_EMP": 680.0,
+                        "economic_value": 57643600.0
+                    },
+                    {
+                        "OCC_CODE": "19-2042",
+                        "OCC_TITLE": "Geoscientists, Except Hydrologists and Geographers",
+                        "TOT_EMP": 370.0,
+                        "economic_value": 39138600.0
+                    },
+                    {
+                        "OCC_CODE": "19-1029",
+                        "OCC_TITLE": "Biological Scientists, All Other",
+                        "TOT_EMP": 420.0,
+                        "economic_value": 38757600.0
+                    }
+                ]
+            },
+            "MANAGEMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "11-9199",
+                        "OCC_TITLE": "Managers, All Other",
+                        "TOT_EMP": 1310.0,
+                        "economic_value": 167549000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "11-9199",
+                        "OCC_TITLE": "Managers, All Other",
+                        "TOT_EMP": 1310.0,
+                        "economic_value": 167549000.0
+                    }
+                ]
+            },
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-5051",
+                        "OCC_TITLE": "Postal Service Clerks",
+                        "TOT_EMP": 390.0,
+                        "economic_value": 20221500.0
+                    },
+                    {
+                        "OCC_CODE": "43-3051",
+                        "OCC_TITLE": "Payroll and Timekeeping Clerks",
+                        "TOT_EMP": 260.0,
+                        "economic_value": 14201200.0
+                    },
+                    {
+                        "OCC_CODE": "43-3021",
+                        "OCC_TITLE": "Billing and Posting Clerks",
+                        "TOT_EMP": 230.0,
+                        "economic_value": 11766800.0
+                    },
+                    {
+                        "OCC_CODE": "43-4071",
+                        "OCC_TITLE": "File Clerks",
+                        "TOT_EMP": 210.0,
+                        "economic_value": 8880900.0
+                    },
+                    {
+                        "OCC_CODE": "13-1031",
+                        "OCC_TITLE": "Claims Adjusters, Examiners, and Investigators",
+                        "TOT_EMP": 200.0,
+                        "economic_value": 17524000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "43-5051",
+                        "OCC_TITLE": "Postal Service Clerks",
+                        "TOT_EMP": 390.0,
+                        "economic_value": 20221500.0
+                    },
+                    {
+                        "OCC_CODE": "13-1031",
+                        "OCC_TITLE": "Claims Adjusters, Examiners, and Investigators",
+                        "TOT_EMP": 200.0,
+                        "economic_value": 17524000.0
+                    },
+                    {
+                        "OCC_CODE": "43-3051",
+                        "OCC_TITLE": "Payroll and Timekeeping Clerks",
+                        "TOT_EMP": 260.0,
+                        "economic_value": 14201200.0
+                    },
+                    {
+                        "OCC_CODE": "13-1141",
+                        "OCC_TITLE": "Compensation, Benefits, and Job Analysis Specialists",
+                        "TOT_EMP": 180.0,
+                        "economic_value": 13757400.0
+                    },
+                    {
+                        "OCC_CODE": "43-3021",
+                        "OCC_TITLE": "Billing and Posting Clerks",
+                        "TOT_EMP": 230.0,
+                        "economic_value": 11766800.0
+                    }
+                ]
+            },
+            "CONSTRUCTION": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "17-2051",
+                        "OCC_TITLE": "Civil Engineers",
+                        "TOT_EMP": 1630.0,
+                        "economic_value": 180832200.0
+                    },
+                    {
+                        "OCC_CODE": "17-3022",
+                        "OCC_TITLE": "Civil Engineering Technologists and Technicians",
+                        "TOT_EMP": 330.0,
+                        "economic_value": 21730500.0
+                    },
+                    {
+                        "OCC_CODE": "47-4011",
+                        "OCC_TITLE": "Construction and Building Inspectors",
+                        "TOT_EMP": 230.0,
+                        "economic_value": 20405600.0
+                    },
+                    {
+                        "OCC_CODE": "13-1051",
+                        "OCC_TITLE": "Cost Estimators",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 9862800.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "17-2051",
+                        "OCC_TITLE": "Civil Engineers",
+                        "TOT_EMP": 1630.0,
+                        "economic_value": 180832200.0
+                    },
+                    {
+                        "OCC_CODE": "17-3022",
+                        "OCC_TITLE": "Civil Engineering Technologists and Technicians",
+                        "TOT_EMP": 330.0,
+                        "economic_value": 21730500.0
+                    },
+                    {
+                        "OCC_CODE": "47-4011",
+                        "OCC_TITLE": "Construction and Building Inspectors",
+                        "TOT_EMP": 230.0,
+                        "economic_value": 20405600.0
+                    },
+                    {
+                        "OCC_CODE": "13-1051",
+                        "OCC_TITLE": "Cost Estimators",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 9862800.0
+                    }
+                ]
+            },
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "13-1161",
+                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
+                        "TOT_EMP": 350.0,
+                        "economic_value": 24223500.0
+                    },
+                    {
+                        "OCC_CODE": "27-1024",
+                        "OCC_TITLE": "Graphic Designers",
+                        "TOT_EMP": 250.0,
+                        "economic_value": 13545000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "13-1161",
+                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
+                        "TOT_EMP": 350.0,
+                        "economic_value": 24223500.0
+                    },
+                    {
+                        "OCC_CODE": "27-1024",
+                        "OCC_TITLE": "Graphic Designers",
+                        "TOT_EMP": 250.0,
+                        "economic_value": 13545000.0
+                    }
+                ]
+            },
+            "FINANCE_AND_INSURANCE": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "13-2011",
+                        "OCC_TITLE": "Accountants and Auditors",
+                        "TOT_EMP": 2430.0,
+                        "economic_value": 200426400.0
+                    },
+                    {
+                        "OCC_CODE": "41-3021",
+                        "OCC_TITLE": "Insurance Sales Agents",
+                        "TOT_EMP": 590.0,
+                        "economic_value": 33234700.0
+                    },
+                    {
+                        "OCC_CODE": "13-2072",
+                        "OCC_TITLE": "Loan Officers",
+                        "TOT_EMP": 550.0,
+                        "economic_value": 44781000.0
+                    },
+                    {
+                        "OCC_CODE": "43-4131",
+                        "OCC_TITLE": "Loan Interviewers and Clerks",
+                        "TOT_EMP": 350.0,
+                        "economic_value": 18585000.0
+                    },
+                    {
+                        "OCC_CODE": "13-2031",
+                        "OCC_TITLE": "Budget Analysts",
+                        "TOT_EMP": 280.0,
+                        "economic_value": 25944800.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "13-2011",
+                        "OCC_TITLE": "Accountants and Auditors",
+                        "TOT_EMP": 2430.0,
+                        "economic_value": 200426400.0
+                    },
+                    {
+                        "OCC_CODE": "13-2072",
+                        "OCC_TITLE": "Loan Officers",
+                        "TOT_EMP": 550.0,
+                        "economic_value": 44781000.0
+                    },
+                    {
+                        "OCC_CODE": "41-3021",
+                        "OCC_TITLE": "Insurance Sales Agents",
+                        "TOT_EMP": 590.0,
+                        "economic_value": 33234700.0
+                    },
+                    {
+                        "OCC_CODE": "13-2031",
+                        "OCC_TITLE": "Budget Analysts",
+                        "TOT_EMP": 280.0,
+                        "economic_value": 25944800.0
+                    },
+                    {
+                        "OCC_CODE": "43-4131",
+                        "OCC_TITLE": "Loan Interviewers and Clerks",
+                        "TOT_EMP": 350.0,
+                        "economic_value": 18585000.0
+                    }
+                ]
+            },
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "15-1299",
+                        "OCC_TITLE": "Computer Occupations, All Other",
+                        "TOT_EMP": 560.0,
+                        "economic_value": 58492000.0
+                    },
+                    {
+                        "OCC_CODE": "15-1251",
+                        "OCC_TITLE": "Computer Programmers",
+                        "TOT_EMP": 430.0,
+                        "economic_value": 41060700.0
+                    },
+                    {
+                        "OCC_CODE": "15-2051",
+                        "OCC_TITLE": "Data Scientists",
+                        "TOT_EMP": 200.0,
+                        "economic_value": 18342000.0
+                    },
+                    {
+                        "OCC_CODE": "17-2011",
+                        "OCC_TITLE": "Aerospace Engineers",
+                        "TOT_EMP": 130.0,
+                        "economic_value": 13048100.0
+                    },
+                    {
+                        "OCC_CODE": "15-1242",
+                        "OCC_TITLE": "Database Administrators",
+                        "TOT_EMP": 90.0,
+                        "economic_value": 8133300.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "15-1299",
+                        "OCC_TITLE": "Computer Occupations, All Other",
+                        "TOT_EMP": 560.0,
+                        "economic_value": 58492000.0
+                    },
+                    {
+                        "OCC_CODE": "15-1251",
+                        "OCC_TITLE": "Computer Programmers",
+                        "TOT_EMP": 430.0,
+                        "economic_value": 41060700.0
+                    },
+                    {
+                        "OCC_CODE": "15-2051",
+                        "OCC_TITLE": "Data Scientists",
+                        "TOT_EMP": 200.0,
+                        "economic_value": 18342000.0
+                    },
+                    {
+                        "OCC_CODE": "17-2011",
+                        "OCC_TITLE": "Aerospace Engineers",
+                        "TOT_EMP": 130.0,
+                        "economic_value": 13048100.0
+                    },
+                    {
+                        "OCC_CODE": "15-1242",
+                        "OCC_TITLE": "Database Administrators",
+                        "TOT_EMP": 90.0,
+                        "economic_value": 8133300.0
+                    }
+                ]
+            },
+            "ARCHITECTURAL_ENGINEERING_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "19-3051",
+                        "OCC_TITLE": "Urban and Regional Planners",
+                        "TOT_EMP": 210.0,
+                        "economic_value": 16944900.0
+                    },
+                    {
+                        "OCC_CODE": "17-1011",
+                        "OCC_TITLE": "Architects, Except Landscape and Naval",
+                        "TOT_EMP": 150.0,
+                        "economic_value": 16672500.0
+                    },
+                    {
+                        "OCC_CODE": "17-3011",
+                        "OCC_TITLE": "Architectural and Civil Drafters",
+                        "TOT_EMP": 140.0,
+                        "economic_value": 12094600.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "19-3051",
+                        "OCC_TITLE": "Urban and Regional Planners",
+                        "TOT_EMP": 210.0,
+                        "economic_value": 16944900.0
+                    },
+                    {
+                        "OCC_CODE": "17-1011",
+                        "OCC_TITLE": "Architects, Except Landscape and Naval",
+                        "TOT_EMP": 150.0,
+                        "economic_value": 16672500.0
+                    },
+                    {
+                        "OCC_CODE": "17-3011",
+                        "OCC_TITLE": "Architectural and Civil Drafters",
+                        "TOT_EMP": 140.0,
+                        "economic_value": 12094600.0
+                    }
+                ]
+            },
+            "MANUFACTURING": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "53-7064",
+                        "OCC_TITLE": "Packers and Packagers, Hand",
+                        "TOT_EMP": 880.0,
+                        "economic_value": 35587200.0
+                    },
+                    {
+                        "OCC_CODE": "43-5061",
+                        "OCC_TITLE": "Production, Planning, and Expediting Clerks",
+                        "TOT_EMP": 340.0,
+                        "economic_value": 20185800.0
+                    },
+                    {
+                        "OCC_CODE": "51-3092",
+                        "OCC_TITLE": "Food Batchmakers",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 7450800.0
+                    },
+                    {
+                        "OCC_CODE": "17-3012",
+                        "OCC_TITLE": "Electrical and Electronics Drafters",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 5438000.0
+                    },
+                    {
+                        "OCC_CODE": "17-2131",
+                        "OCC_TITLE": "Materials Engineers",
+                        "TOT_EMP": 50.0,
+                        "economic_value": 5866500.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "53-7064",
+                        "OCC_TITLE": "Packers and Packagers, Hand",
+                        "TOT_EMP": 880.0,
+                        "economic_value": 35587200.0
+                    },
+                    {
+                        "OCC_CODE": "43-5061",
+                        "OCC_TITLE": "Production, Planning, and Expediting Clerks",
+                        "TOT_EMP": 340.0,
+                        "economic_value": 20185800.0
+                    },
+                    {
+                        "OCC_CODE": "51-3092",
+                        "OCC_TITLE": "Food Batchmakers",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 7450800.0
+                    },
+                    {
+                        "OCC_CODE": "17-2131",
+                        "OCC_TITLE": "Materials Engineers",
+                        "TOT_EMP": 50.0,
+                        "economic_value": 5866500.0
+                    },
+                    {
+                        "OCC_CODE": "17-3012",
+                        "OCC_TITLE": "Electrical and Electronics Drafters",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 5438000.0
+                    }
+                ]
+            },
+            "HEALTHCARE": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-6013",
+                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
+                        "TOT_EMP": 2020.0,
+                        "economic_value": 91223200.0
+                    },
+                    {
+                        "OCC_CODE": "29-2052",
+                        "OCC_TITLE": "Pharmacy Technicians",
+                        "TOT_EMP": 860.0,
+                        "economic_value": 42836600.0
+                    },
+                    {
+                        "OCC_CODE": "29-1051",
+                        "OCC_TITLE": "Pharmacists",
+                        "TOT_EMP": 520.0,
+                        "economic_value": 78832000.0
+                    },
+                    {
+                        "OCC_CODE": "29-1071",
+                        "OCC_TITLE": "Physician Assistants",
+                        "TOT_EMP": 510.0,
+                        "economic_value": 75724800.0
+                    },
+                    {
+                        "OCC_CODE": "29-1215",
+                        "OCC_TITLE": "Family Medicine Physicians",
+                        "TOT_EMP": 440.0,
+                        "economic_value": 120445600.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "29-1215",
+                        "OCC_TITLE": "Family Medicine Physicians",
+                        "TOT_EMP": 440.0,
+                        "economic_value": 120445600.0
+                    },
+                    {
+                        "OCC_CODE": "29-1229",
+                        "OCC_TITLE": "Physicians, All Other",
+                        "TOT_EMP": 350.0,
+                        "economic_value": 99484000.0
+                    },
+                    {
+                        "OCC_CODE": "43-6013",
+                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
+                        "TOT_EMP": 2020.0,
+                        "economic_value": 91223200.0
+                    },
+                    {
+                        "OCC_CODE": "29-1051",
+                        "OCC_TITLE": "Pharmacists",
+                        "TOT_EMP": 520.0,
+                        "economic_value": 78832000.0
+                    },
+                    {
+                        "OCC_CODE": "29-1071",
+                        "OCC_TITLE": "Physician Assistants",
+                        "TOT_EMP": 510.0,
+                        "economic_value": 75724800.0
+                    }
+                ]
+            },
+            "MINING_OIL_GAS_EXTRACTION": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "17-2151",
+                        "OCC_TITLE": "Mining and Geological Engineers, Including Mining Safety Engineers",
+                        "TOT_EMP": 320.0,
+                        "economic_value": 41203200.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "17-2151",
+                        "OCC_TITLE": "Mining and Geological Engineers, Including Mining Safety Engineers",
+                        "TOT_EMP": 320.0,
+                        "economic_value": 41203200.0
+                    }
+                ]
+            },
+            "ENERGY": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "17-2199",
+                        "OCC_TITLE": "Engineers, All Other",
+                        "TOT_EMP": 310.0,
+                        "economic_value": 37320900.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "17-2199",
+                        "OCC_TITLE": "Engineers, All Other",
+                        "TOT_EMP": 310.0,
+                        "economic_value": 37320900.0
+                    }
+                ]
+            },
+            "SPECIAL_INDUSTRIES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "17-3031",
+                        "OCC_TITLE": "Surveying and Mapping Technicians",
+                        "TOT_EMP": 300.0,
+                        "economic_value": 20763000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "17-3031",
+                        "OCC_TITLE": "Surveying and Mapping Technicians",
+                        "TOT_EMP": 300.0,
+                        "economic_value": 20763000.0
+                    }
+                ]
+            },
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "19-1031",
+                        "OCC_TITLE": "Conservation Scientists",
+                        "TOT_EMP": 400.0,
+                        "economic_value": 32792000.0
+                    },
+                    {
+                        "OCC_CODE": "19-1013",
+                        "OCC_TITLE": "Soil and Plant Scientists",
+                        "TOT_EMP": 30.0,
+                        "economic_value": 2327100.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "19-1031",
+                        "OCC_TITLE": "Conservation Scientists",
+                        "TOT_EMP": 400.0,
+                        "economic_value": 32792000.0
+                    },
+                    {
+                        "OCC_CODE": "19-1013",
+                        "OCC_TITLE": "Soil and Plant Scientists",
+                        "TOT_EMP": 30.0,
+                        "economic_value": 2327100.0
+                    }
+                ]
+            },
+            "PASSENGER_TRANSPORTATION": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "19-3099",
+                        "OCC_TITLE": "Social Scientists and Related Workers, All Other",
+                        "TOT_EMP": 220.0,
+                        "economic_value": 18431600.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "19-3099",
+                        "OCC_TITLE": "Social Scientists and Related Workers, All Other",
+                        "TOT_EMP": 220.0,
+                        "economic_value": 18431600.0
+                    }
+                ]
+            },
+            "LEGAL_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "23-2011",
+                        "OCC_TITLE": "Paralegals and Legal Assistants",
+                        "TOT_EMP": 760.0,
+                        "economic_value": 48016800.0
+                    },
+                    {
+                        "OCC_CODE": "43-6012",
+                        "OCC_TITLE": "Legal Secretaries and Administrative Assistants",
+                        "TOT_EMP": 440.0,
+                        "economic_value": 25524400.0
+                    },
+                    {
+                        "OCC_CODE": "23-2093",
+                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
+                        "TOT_EMP": 50.0,
+                        "economic_value": 3611000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "23-2011",
+                        "OCC_TITLE": "Paralegals and Legal Assistants",
+                        "TOT_EMP": 760.0,
+                        "economic_value": 48016800.0
+                    },
+                    {
+                        "OCC_CODE": "43-6012",
+                        "OCC_TITLE": "Legal Secretaries and Administrative Assistants",
+                        "TOT_EMP": 440.0,
+                        "economic_value": 25524400.0
+                    },
+                    {
+                        "OCC_CODE": "23-2093",
+                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
+                        "TOT_EMP": 50.0,
+                        "economic_value": 3611000.0
+                    }
+                ]
+            },
+            "EDUCATIONAL_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "25-9044",
+                        "OCC_TITLE": "Teaching Assistants, Postsecondary",
+                        "TOT_EMP": 270.0,
+                        "economic_value": 7746300.0
+                    },
+                    {
+                        "OCC_CODE": "25-3021",
+                        "OCC_TITLE": "Self-Enrichment Teachers",
+                        "TOT_EMP": 140.0,
+                        "economic_value": 8514800.0
+                    },
+                    {
+                        "OCC_CODE": "25-1124",
+                        "OCC_TITLE": "Foreign Language and Literature Teachers, Postsecondary",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 7206000.0
+                    },
+                    {
+                        "OCC_CODE": "25-1011",
+                        "OCC_TITLE": "Business Teachers, Postsecondary",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 11568000.0
+                    },
+                    {
+                        "OCC_CODE": "25-1032",
+                        "OCC_TITLE": "Engineering Teachers, Postsecondary",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 9215200.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "25-1011",
+                        "OCC_TITLE": "Business Teachers, Postsecondary",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 11568000.0
+                    },
+                    {
+                        "OCC_CODE": "25-1032",
+                        "OCC_TITLE": "Engineering Teachers, Postsecondary",
+                        "TOT_EMP": 80.0,
+                        "economic_value": 9215200.0
+                    },
+                    {
+                        "OCC_CODE": "25-3021",
+                        "OCC_TITLE": "Self-Enrichment Teachers",
+                        "TOT_EMP": 140.0,
+                        "economic_value": 8514800.0
+                    },
+                    {
+                        "OCC_CODE": "25-9044",
+                        "OCC_TITLE": "Teaching Assistants, Postsecondary",
+                        "TOT_EMP": 270.0,
+                        "economic_value": 7746300.0
+                    },
+                    {
+                        "OCC_CODE": "25-1124",
+                        "OCC_TITLE": "Foreign Language and Literature Teachers, Postsecondary",
+                        "TOT_EMP": 120.0,
+                        "economic_value": 7206000.0
+                    }
+                ]
+            },
+            "ACCOUNTING_AND_AUDITING_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-3031",
+                        "OCC_TITLE": "Bookkeeping, Accounting, and Auditing Clerks",
+                        "TOT_EMP": 4610.0,
+                        "economic_value": 251706000.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "43-3031",
+                        "OCC_TITLE": "Bookkeeping, Accounting, and Auditing Clerks",
+                        "TOT_EMP": 4610.0,
+                        "economic_value": 251706000.0
+                    }
+                ]
+            },
+            "RETAIL_TRADE": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-5071",
+                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
+                        "TOT_EMP": 890.0,
+                        "economic_value": 44428800.0
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "43-5071",
+                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
+                        "TOT_EMP": 890.0,
+                        "economic_value": 44428800.0
+                    }
+                ]
+            }
+        }
+    }
+}

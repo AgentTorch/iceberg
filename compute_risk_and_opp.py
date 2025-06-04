@@ -1,0 +1,184 @@
+import json
+import pandas as pd
+import numpy as np
+from tqdm import tqdm
+
+
+national_detailed_file_path = './generation/national_summary_detailed.csv' # Contains all jobs in the US and their economic value, number of employees, and industry type
+industry_type_path = './v2_assets/modified_bls_super_sector_df.csv' # Maps OCC_CODE to industry type
+wef_risk_path = './v2_assets/skills_based_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
+job_opportunity_path = './v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
+data_v2_path = './generation_v2' # TODO UPDATE
+state_results_csv_path = './generation_v2/{state}_results.json'
+
+AUTOMATION_RISK_PERCENTILE_THRESHOLD = 0.8 # all jobs with automation risk percentile above this threshold are considered at risk
+
+
+#### Utilitiy functions ####
+
+def get_state_file(state: str):
+    state_sentence_case = f'{state[0].capitalize()}{state[1:]}'
+    return state_sentence_case
+
+def load_national_detailed_df(job_risk_df: pd.DataFrame):
+    national_detailed_df = pd.read_csv(national_detailed_file_path)
+    industry_type_df = pd.read_csv(industry_type_path)
+
+    industry_type_df = industry_type_df.drop(columns=['Title'])
+    industry_type_df['OCC_CODE'] = industry_type_df['O*NET-SOC Code'].apply(lambda x: x.split('.')[0] if '.' in x else x)
+    industry_type_df = industry_type_df.drop(columns=['O*NET-SOC Code'])
+    industry_type_df = industry_type_df.drop_duplicates(subset=['OCC_CODE'], keep='first')
+    national_detailed_df = national_detailed_df.merge(industry_type_df, on='OCC_CODE', how='left')
+    
+    # Merge job risk df with national detailed df
+    national_detailed_df = national_detailed_df.merge(
+        job_risk_df[['OCC_CODE', 'automation_risk_score', 'perc_ile_thresholded_risk']],
+        on='OCC_CODE',
+        how='left'  # or 'right' or 'inner' depending on your needs
+    )
+    national_detailed_df['automation_risk_score'].fillna(national_detailed_df['automation_risk_score'].median(), inplace=True)
+    national_detailed_df['perc_ile_thresholded_risk'].fillna(False, inplace=True)
+    return national_detailed_df
+
+def load_job_risk_df():
+    job_risk_df = pd.read_csv(wef_risk_path)
+    job_risk_df['OCC_CODE'] = job_risk_df['O*NET-SOC Code'].apply(lambda x: x.split('.')[0] if '.' in x else x)
+    job_risk_df = job_risk_df.drop_duplicates(subset=['OCC_CODE']) # as we have detailed jobs
+
+    threshold = job_risk_df['automation_risk_score'].quantile(AUTOMATION_RISK_PERCENTILE_THRESHOLD)
+
+    # Create the new field based on whether each row's score is above the threshold
+    job_risk_df['perc_ile_thresholded_risk'] = job_risk_df['automation_risk_score'] >= threshold
+    return job_risk_df
+
+def load_opportunity_jobs_df():
+    """
+    Not used for now
+    """
+    opportunity_industry_wise_employment_df = pd.read_csv(job_opportunity_path)
+    return opportunity_industry_wise_employment_df
+
+def get_risk_industry_wise_impact_data(filtered_df: pd.DataFrame, risk_filtered_df: pd.DataFrame):
+    # First, let's calculate the total TOT_EMP for each minor_group
+    total_emp_by_industry = filtered_df.groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    # Then, calculate the TOT_EMP for jobs with perc_ile_thresholded_risk=True
+    risk_emp_by_industry = risk_filtered_df[risk_filtered_df['perc_ile_thresholded_risk']].groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    # Calculate the percentage
+    percentage_at_risk = (risk_emp_by_industry / total_emp_by_industry * 100).replace(np.nan, 0).sort_values(ascending=False)
+    return percentage_at_risk.to_dict()
+
+def get_risk_industry_wise_economic_value_data(risk_filtered_df: pd.DataFrame):
+    risk_economic_value_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['economic_value'].sum()
+    risk_economic_value_by_industry = risk_economic_value_by_industry.sort_values(ascending=False)
+    return risk_economic_value_by_industry.to_dict()
+
+def get_risk_industry_wise_employment_data(risk_filtered_df: pd.DataFrame):
+    risk_emp_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    risk_emp_by_industry = risk_emp_by_industry.sort_values(ascending=False)
+    return risk_emp_by_industry.to_dict()
+
+def get_employment_by_industry_data(filtered_df: pd.DataFrame):
+    employment_by_industry = filtered_df.groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    employment_by_industry = employment_by_industry.sort_values(ascending=False)
+    return employment_by_industry.to_dict()
+
+def get_economic_value_by_industry_data(filtered_df: pd.DataFrame):
+    economic_value_by_industry = filtered_df.groupby(['Modified BLS Super Sector'])['economic_value'].sum()
+    economic_value_by_industry = economic_value_by_industry.sort_values(ascending=False)
+    return economic_value_by_industry.to_dict()
+
+def get_top_5_by_industry(df: pd.DataFrame, industry_type_column: str = 'Modified BLS Super Sector', dict_dump_mode: bool = False):
+    """
+    Get top 5 rows by TOT_EMP and economic_value for each industry group
+    """
+    results = {}
+    
+    for industry in df[industry_type_column].unique():
+        if pd.notna(industry):  # Skip NaN values
+            industry_data = df[df[industry_type_column] == industry]
+
+            if not dict_dump_mode:
+                results[industry] = {
+                    'top_5_by_employment': industry_data.nlargest(5, 'TOT_EMP')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']],
+                    'top_5_by_economic_value': industry_data.nlargest(5, 'economic_value')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']]
+                }
+            else:
+                results[industry] = {
+                    'top_5_by_employment': industry_data.nlargest(5, 'TOT_EMP')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']].to_dict(orient='records'),
+                    'top_5_by_economic_value': industry_data.nlargest(5, 'economic_value')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']].to_dict(orient='records')
+                }
+    
+    return results
+
+
+def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str):
+    '''
+        Computes the risk for a given state.
+        Args:
+            national_detailed_df: pd.DataFrame
+            state_title: str of form  'North Carolina', if its None, then it will compute the risk for all states
+    '''
+    filtered_df = national_detailed_df
+    if state_title:
+        filtered_df = national_detailed_df[national_detailed_df['AREA_TITLE'] == state_title]
+
+    risk_filtered_df = filtered_df[filtered_df['perc_ile_thresholded_risk']]
+
+
+    
+    data = {
+        "state": state_title if state_title else "National",
+        "total_jobs": filtered_df['TOT_EMP'].sum(),
+        "total_economic_value": filtered_df['economic_value'].sum(),
+        "employment_by_industry": get_employment_by_industry_data(filtered_df),
+        "economic_value_by_industry": get_economic_value_by_industry_data(filtered_df),
+
+        "risk": {
+            "total_jobs_at_risk": risk_filtered_df['TOT_EMP'].sum(),
+            "total_jobs_at_risk_percentage": (risk_filtered_df['TOT_EMP'].sum() / filtered_df['TOT_EMP'].sum()) * 100,
+            
+            "total_economic_value_at_risk": risk_filtered_df['economic_value'].sum(),
+            "total_economic_value_at_risk_percentage": (risk_filtered_df['economic_value'].sum() / filtered_df['economic_value'].sum()) * 100,
+
+            "industry_impact_percentage": get_risk_industry_wise_impact_data(filtered_df, risk_filtered_df),
+            "employment_at_risk_by_industry": get_risk_industry_wise_employment_data(risk_filtered_df),
+            "economic_value_at_risk_by_industry": get_risk_industry_wise_economic_value_data(risk_filtered_df),
+            "industry_wise_top_5_jobs": get_top_5_by_industry(risk_filtered_df, dict_dump_mode=True)
+        }
+    }
+    
+    return data
+
+def dump_data_to_csv(data: dict):
+    state_title: str = data['state']
+    state_title = state_title.lower().replace(' ', '_')
+    path = state_results_csv_path.format(state=state_title)
+    
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
+    
+
+
+
+def main():
+    job_risk_df = load_job_risk_df()
+    national_detailed_df = load_national_detailed_df(job_risk_df)
+    
+    na_counts = national_detailed_df.isna().sum()
+    non_zero_counts = na_counts[na_counts > 0]
+    print("Rows with missing values in columns:")
+    for col, count in non_zero_counts.items():
+        print(f"{col}: {count}")
+    print(f'Total rows: {national_detailed_df.shape[0]}')
+    print(f'-'*30)
+    
+    state_titles = national_detailed_df['AREA_TITLE'].unique().tolist()
+    state_titles += [None]
+    for state_title in tqdm(state_titles):
+        data = compute_risk_for_state(national_detailed_df, state_title)
+        dump_data_to_csv(data)
+
+    
+
+if __name__ == '__main__':
+    main()
