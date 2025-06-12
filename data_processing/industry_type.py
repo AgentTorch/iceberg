@@ -18,7 +18,6 @@ class ModifiedBLSSuperSector(str, Enum):
     
     # Following are from Professional, scientific, and technical services
     LEGAL_SERVICES                         = "LEGAL_SERVICES" # Custom: Broken from Professional, scientific, and technical services
-    ACCOUNTING_AND_AUDITING_SERVICES       = "ACCOUNTING_AND_AUDITING_SERVICES" # Custom: Broken from Professional, scientific, and technical services
     ARCHITECTURAL_ENGINEERING_SERVICES     = "ARCHITECTURAL_ENGINEERING_SERVICES" # Custom: Broken from Professional, scientific, and technical services
     SCIENTIFIC_RESEARCH_AND_DEVELOPMENT    = "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT" # Custom: Broken from Professional, scientific, and technical services
     MANAGEMENT_CONSULTING_SERVICES         = "MANAGEMENT_CONSULTING_SERVICES" # Custom: Broken from Professional, scientific, and technical services

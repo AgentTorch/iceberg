@@ -1,5 +1,5 @@
 """
-This script computes the risk and opportunity for each state in the US.
+This script computes the risk and opportunity for each state in the US. Part of v2
 
 It uses the following files:
 - national_summary_detailed.csv: Contains all jobs in the US and their economic value, number of employees, and industry type
@@ -21,6 +21,7 @@ wef_risk_path = './v2_assets/skills_based_risk.csv' # Risk computed using heuris
 job_opportunity_path = './v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
 data_v2_path = './generation_v2' # TODO UPDATE
 state_results_csv_path = './generation_v2/{state}_results.json'
+tech_intensity_path = './data/tech_intensity_simple.csv'
 
 AUTOMATION_RISK_PERCENTILE_THRESHOLD = 0.8 # all jobs with automation risk percentile above this threshold are considered at risk
 
@@ -43,11 +44,30 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
     
     # Merge job risk df with national detailed df
     national_detailed_df = national_detailed_df.merge(
-        job_risk_df[['OCC_CODE', 'automation_risk_score', 'perc_ile_thresholded_risk']],
+        job_risk_df[['OCC_CODE', 'automation_risk_score', 'perc_ile_thresholded_risk', 'adoption_rate']],
         on='OCC_CODE',
         how='left'  # or 'right' or 'inner' depending on your needs
     )
     national_detailed_df['automation_risk_score'] = national_detailed_df['automation_risk_score'].fillna(national_detailed_df['automation_risk_score'].median())
+    
+    # adoption_rate = hot_tech_ratio (0-1 scale)
+    #   - Proxy for technology adoption speed in the real world
+    #   - Hypothesis: Jobs using "hot tech" tools get automated faster
+    #   - Based on current technology usage patterns
+    #   - 0-1 scale
+
+    # automation_risk_score (0-100 scale, normalized to 0-1)
+    #   - Likelihood of job automation based on skill composition (basic_skills, cognitive_skills, etc.)
+    #   - Higher scores = more routine/automatable work
+
+    # Displacement_rate (0-1 scale)
+    #   - Final probability of job displacement, mathematically the product of "automation feasibility" & "adoption status in real world"
+    #   - Results in realistic partial displacement
+
+    national_detailed_df['displacement_rate'] = national_detailed_df['adoption_rate'] * (national_detailed_df['automation_risk_score'] / 100.0)
+    national_detailed_df['RISK_EMP'] = (national_detailed_df['TOT_EMP'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
+    national_detailed_df['AT_RISK_ECONOMIC_VALUE'] = (national_detailed_df['economic_value'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
+    
     # Set pandas option to avoid downcasting warning
     pd.set_option('future.no_silent_downcasting', True)
     national_detailed_df['perc_ile_thresholded_risk'] = national_detailed_df['perc_ile_thresholded_risk'].fillna(False)
@@ -59,6 +79,8 @@ def load_job_risk_df():
     job_risk_df = job_risk_df.drop_duplicates(subset=['OCC_CODE'], keep='first') # as we have detailed jobs
 
     threshold = job_risk_df['automation_risk_score'].quantile(AUTOMATION_RISK_PERCENTILE_THRESHOLD)
+
+    print(f"\033[91m Risk Score Threshold at percentile p{AUTOMATION_RISK_PERCENTILE_THRESHOLD*100}: {threshold}\033[0m")
 
     # Create the new field based on whether each row's score is above the threshold
     job_risk_df['perc_ile_thresholded_risk'] = job_risk_df['automation_risk_score'] >= threshold
@@ -83,18 +105,18 @@ def get_risk_industry_wise_impact_data(filtered_df: pd.DataFrame, risk_filtered_
     # First, let's calculate the total TOT_EMP for each minor_group
     total_emp_by_industry = filtered_df.groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
     # Then, calculate the TOT_EMP for jobs with perc_ile_thresholded_risk=True
-    risk_emp_by_industry = risk_filtered_df[risk_filtered_df['perc_ile_thresholded_risk']].groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    risk_emp_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['RISK_EMP'].sum()
     # Calculate the percentage
     percentage_at_risk = (risk_emp_by_industry / total_emp_by_industry * 100).replace(np.nan, 0).sort_values(ascending=False)
     return percentage_at_risk.to_dict()
 
 def get_risk_industry_wise_economic_value_data(risk_filtered_df: pd.DataFrame):
-    risk_economic_value_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['economic_value'].sum()
+    risk_economic_value_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['AT_RISK_ECONOMIC_VALUE'].sum()
     risk_economic_value_by_industry = risk_economic_value_by_industry.sort_values(ascending=False)
     return risk_economic_value_by_industry.to_dict()
 
 def get_risk_industry_wise_employment_data(risk_filtered_df: pd.DataFrame):
-    risk_emp_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['TOT_EMP'].sum()
+    risk_emp_by_industry = risk_filtered_df.groupby(['Modified BLS Super Sector'])['RISK_EMP'].sum()
     risk_emp_by_industry = risk_emp_by_industry.sort_values(ascending=False)
     return risk_emp_by_industry.to_dict()
 
@@ -108,11 +130,14 @@ def get_economic_value_by_industry_data(filtered_df: pd.DataFrame):
     economic_value_by_industry = economic_value_by_industry.sort_values(ascending=False)
     return economic_value_by_industry.to_dict()
 
-def get_top_5_by_industry(df: pd.DataFrame, industry_type_column: str = 'Modified BLS Super Sector', dict_dump_mode: bool = False):
+def get_top_5_by_industry(df: pd.DataFrame, industry_type_column: str = 'Modified BLS Super Sector', dict_dump_mode: bool = False, is_risk: bool = False):
     """
     Get top 5 rows by TOT_EMP and economic_value for each industry group
     """
     results = {}
+
+    EMP_COL = 'TOT_EMP' if not is_risk else 'RISK_EMP'
+    ECON_COL = 'economic_value' if not is_risk else 'AT_RISK_ECONOMIC_VALUE'
     
     for industry in df[industry_type_column].unique():
         if pd.notna(industry):  # Skip NaN values
@@ -120,13 +145,13 @@ def get_top_5_by_industry(df: pd.DataFrame, industry_type_column: str = 'Modifie
 
             if not dict_dump_mode:
                 results[industry] = {
-                    'top_5_by_employment': industry_data.nlargest(5, 'TOT_EMP')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']],
-                    'top_5_by_economic_value': industry_data.nlargest(5, 'economic_value')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']]
+                    'top_5_by_employment': industry_data.nlargest(5, EMP_COL)[['OCC_CODE', 'OCC_TITLE', EMP_COL, ECON_COL]],
+                    'top_5_by_economic_value': industry_data.nlargest(5, ECON_COL)[['OCC_CODE', 'OCC_TITLE', EMP_COL, ECON_COL]]
                 }
             else:
                 results[industry] = {
-                    'top_5_by_employment': industry_data.nlargest(5, 'TOT_EMP')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']].to_dict(orient='records'),
-                    'top_5_by_economic_value': industry_data.nlargest(5, 'economic_value')[['OCC_CODE', 'OCC_TITLE', 'TOT_EMP', 'economic_value']].to_dict(orient='records')
+                    'top_5_by_employment': industry_data.nlargest(5, EMP_COL)[['OCC_CODE', 'OCC_TITLE', EMP_COL, ECON_COL]].to_dict(orient='records'),
+                    'top_5_by_economic_value': industry_data.nlargest(5, ECON_COL)[['OCC_CODE', 'OCC_TITLE', EMP_COL, ECON_COL]].to_dict(orient='records')
                 }
     
     return results
@@ -187,7 +212,7 @@ def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str,
             "industry_impact_percentage": get_risk_industry_wise_impact_data(filtered_df, risk_filtered_df),
             "employment_at_risk_by_industry": get_risk_industry_wise_employment_data(risk_filtered_df),
             "economic_value_at_risk_by_industry": get_risk_industry_wise_economic_value_data(risk_filtered_df),
-            "industry_wise_top_5_jobs": get_top_5_by_industry(risk_filtered_df, dict_dump_mode=True)
+            "industry_wise_top_5_jobs": get_top_5_by_industry(risk_filtered_df, dict_dump_mode=True, is_risk=True)
         },
         "opportunity": {
             "total_jobs_opportunity": opportunity_mapped_filtered_df['TOT_EMP'].sum(),
@@ -199,7 +224,7 @@ def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str,
             "industry_impact_percentage": get_opportunity_industry_wise_impact_data(filtered_df, opportunity_mapped_filtered_df),
             "employment_opportunity_by_industry": get_opportunity_industry_wise_employment_data(opportunity_mapped_filtered_df),
             "economic_value_opportunity_by_industry": get_opportunity_industry_wise_economic_value_data(opportunity_mapped_filtered_df),
-            "industry_wise_top_5_jobs": get_top_5_by_industry(opportunity_mapped_filtered_df, dict_dump_mode=True)
+            "industry_wise_top_5_jobs": get_top_5_by_industry(opportunity_mapped_filtered_df, dict_dump_mode=True, is_risk=False)
         }
     }
     
