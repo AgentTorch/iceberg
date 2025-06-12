@@ -1,10 +1,19 @@
+"""
+This script finds the opportunity jobs based on the skills based risk and skills importance.
+
+Part of v2
+
+It uses the following files:
+- skills_based_risk.csv: Risk computed using heuristics discovered by LLM over WEF report, but uses only the skill representation of each job
+
+"""
+
 import pandas as pd
 import numpy as np
 import os
 
-OPPORTUNITY_JOBS_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data_v2/opportunity_jobs_{version}.csv")
-# SKILLS_IMPORTANCE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data/skills/skills_importance.csv")
-SKILLS_BASED_RISK_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data/skills/skills_based_risk.csv")
+OPPORTUNITY_JOBS_OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "v2_assets/opportunity_jobs_{version}.csv")
+SKILLS_BASED_RISK_PATH = os.path.join(os.path.dirname(__file__), "v2_assets/skills_based_risk.csv")
 
 def add_technical_composition(df_normalized_skill_importance):
     """

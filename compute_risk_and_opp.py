@@ -1,5 +1,5 @@
 """
-This script computes the risk and opportunity for each state in the US.
+This script computes the risk and opportunity for each state in the US. Part of v2
 
 It uses the following files:
 - national_summary_detailed.csv: Contains all jobs in the US and their economic value, number of employees, and industry type
