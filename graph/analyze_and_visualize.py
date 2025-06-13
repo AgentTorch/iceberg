@@ -23,7 +23,7 @@ def visualize_top_risky_paths(threshold=60, num_branches=3, num_paths=5):
     # Run frequency analysis
     node_info = analyze_high_risk_professions(threshold=threshold, num_branches=num_branches)
     
-    # Print top NUM_PATHS most frequent professions
+    # Print top num_paths most frequent professions
     print(f"\nTop {num_paths} Most Frequently Occurring Professions in High-Risk Paths:")
     print("=" * 80)
     print(f"{'Job Title':<50} {'Occurrences':<12} {'Risk Score':<12} {'SOC Code'}")
@@ -34,7 +34,7 @@ def visualize_top_risky_paths(threshold=60, num_branches=3, num_paths=5):
     # Run median analysis
     path_medians = analyze_path_medians(threshold=threshold, num_branches=num_branches)
     
-    # Print top NUM_PATHS paths with highest median risks
+    # Print top num_paths paths with highest median risks
     print(f"\nTop {num_paths} Paths with Highest Median Risk Scores:")
     print("=" * 80)
     print(f"{'Job Title':<50} {'Median Risk':<12} {'Path Length':<12} {'SOC Code'}")
@@ -50,7 +50,7 @@ def visualize_top_risky_paths(threshold=60, num_branches=3, num_paths=5):
     
     mean_scores = calculate_mean_risk_scores(G, all_paths)
     
-    # Print top NUM_PATHS paths with highest mean risk scores
+    # Print top num_paths paths with highest mean risk scores
     print(f"\nTop {num_paths} Paths with Highest Mean Risk Scores:")
     print("=" * 80)
     print(f"{'Job Title':<50} {'Mean Risk':<12} {'Path Length':<12} {'SOC Code'}")
@@ -159,8 +159,8 @@ def visualize_extreme_paths(*args, **kwargs):
 
 if __name__ == "__main__":
     # Set parameters
-    THRESHOLD = 65  # Minimum risk score to consider
-    NUM_BRANCHES = 1  # Number of branches to show
+    THRESHOLD = 70  # Minimum risk score to consider
+    NUM_BRANCHES = 0  # Number of branches to show
     NUM_PATHS = 10  # Number of top paths to visualize
     
     # Visualize top paths

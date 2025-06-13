@@ -103,8 +103,10 @@ def calculate_mean_risk_scores(G, paths):
         
     Returns:
         List of tuples (soc_code, mean_risk, path_length, job_title, path)
+        Only includes the highest mean risk path for each unique starting job
     """
-    path_means = []
+    # Dictionary to store the best path for each starting job
+    best_paths = {}
     
     # Get all nodes with their risk scores for lookup
     node_risk_map = {node: data.get('automation_risk_score', 0) 
@@ -129,9 +131,13 @@ def calculate_mean_risk_scores(G, paths):
         if matching_nodes:
             soc_code = matching_nodes[0]
             job_title = G.nodes[soc_code].get('label', 'Unknown')
-            path_means.append((soc_code, mean_risk, len(path), job_title, path))
+            
+            # Only keep this path if it's the first one for this job or has a higher mean risk
+            if soc_code not in best_paths or mean_risk > best_paths[soc_code][1]:
+                best_paths[soc_code] = (soc_code, mean_risk, len(path), job_title, path)
     
-    # Sort by mean risk score in descending order
+    # Convert dictionary values to list and sort by mean risk score in descending order
+    path_means = list(best_paths.values())
     return sorted(path_means, key=lambda x: x[1], reverse=True)
 
 def save_analysis_results(node_info, output_file='high_risk_analysis.csv'):
