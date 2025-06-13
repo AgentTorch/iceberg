@@ -160,7 +160,7 @@ def visualize_extreme_paths(*args, **kwargs):
 if __name__ == "__main__":
     # Set parameters
     THRESHOLD = 70  # Minimum risk score to consider
-    NUM_BRANCHES = 0  # Number of branches to show
+    NUM_BRANCHES = 2  # Number of branches to show
     NUM_PATHS = 10  # Number of top paths to visualize
     
     # Visualize top paths
