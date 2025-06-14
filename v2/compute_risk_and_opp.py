@@ -13,15 +13,16 @@ import json
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+import os
 
+project_root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-national_detailed_file_path = './generation/national_summary_detailed.csv' # Contains all jobs in the US and their economic value, number of employees, and industry type
-industry_type_path = './v2_assets/modified_bls_super_sector_df.csv' # Maps OCC_CODE to industry type
-wef_risk_path = './v2_assets/skills_based_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
-job_opportunity_path = './v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
-data_v2_path = './generation_v2' # TODO UPDATE
-state_results_csv_path = './generation_v2/{state}_results.json'
-tech_intensity_path = './data/tech_intensity_simple.csv'
+national_detailed_file_path = f'{project_root_path}/generation/national_summary_detailed.csv' # Contains all jobs in the US and their economic value, number of employees, and industry type
+industry_type_path = f'{project_root_path}/v2_assets/modified_bls_super_sector_df.csv' # Maps OCC_CODE to industry type
+wef_risk_path = f'{project_root_path}/v2_assets/skills_based_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
+job_opportunity_path = f'{project_root_path}/v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
+data_v2_path = f'{project_root_path}/generation_v2'
+state_results_csv_path = f'{project_root_path}/generation_v2/{{state}}_results.json'
 
 AUTOMATION_RISK_PERCENTILE_THRESHOLD = 0.8 # all jobs with automation risk percentile above this threshold are considered at risk
 
@@ -130,6 +131,73 @@ def get_economic_value_by_industry_data(filtered_df: pd.DataFrame):
     economic_value_by_industry = economic_value_by_industry.sort_values(ascending=False)
     return economic_value_by_industry.to_dict()
 
+def get_state_iceberg_index(filtered_df: pd.DataFrame, risk_filtered_df: pd.DataFrame)-> dict:
+    """
+    Calculate the state-wide Iceberg Index using economic value weighting.
+    
+    The state Iceberg Index is a weighted average of industry Iceberg Indices,
+    where weights are based on each industry's proportion of total economic value.
+    
+    Args:
+        filtered_df: Full DataFrame with all jobs for the state/region
+        risk_filtered_df: DataFrame filtered to only jobs at risk
+    
+    Returns:
+        dict: Contains state_iceberg_index and breakdown by industry
+    """
+    # Calculate total economic value for the state
+    total_economic_value = filtered_df['economic_value'].sum()
+    total_at_risk_economic_value = risk_filtered_df['AT_RISK_ECONOMIC_VALUE'].sum()
+    
+    if total_economic_value == 0:
+        return {
+            'state_iceberg_index': 0.0,
+            'industry_breakdown': {},
+            'total_economic_value': 0,
+            'total_at_risk_economic_value': 0
+        }
+    
+    # Calculate simple state-wide Iceberg Index
+    state_iceberg_index = (total_at_risk_economic_value / total_economic_value) * 100
+    
+    # Get industry-wise breakdown for additional context
+    industry_breakdown = {}
+    
+    # Get total economic value by industry from full dataset
+    total_econ_by_industry = filtered_df.groupby('Modified BLS Super Sector')['economic_value'].sum()
+    
+    # Get at-risk economic value by industry from risk dataset
+    risk_econ_by_industry = risk_filtered_df.groupby('Modified BLS Super Sector')['AT_RISK_ECONOMIC_VALUE'].sum()
+    
+    for industry in total_econ_by_industry.index:
+        if pd.notna(industry):
+            industry_economic_value = total_econ_by_industry[industry]
+            industry_at_risk_value = risk_econ_by_industry.get(industry, 0)  # 0 if no risk jobs in this industry
+            
+            # Calculate industry's contribution to state Iceberg Index
+            weight = industry_economic_value / total_economic_value
+            industry_iceberg_index = (industry_at_risk_value / industry_economic_value * 100) if industry_economic_value > 0 else 0
+            weighted_contribution = weight * industry_iceberg_index
+            
+            industry_breakdown[industry] = {
+                'industry_iceberg_index': round(industry_iceberg_index, 2),
+                'economic_value_weight': round(weight * 100, 2),  # as percentage
+                'weighted_contribution': round(weighted_contribution, 2),
+                'economic_value': int(industry_economic_value),
+                'at_risk_economic_value': int(industry_at_risk_value)
+            }
+    
+    # Sort industry breakdown by weighted contribution
+    industry_breakdown = dict(sorted(industry_breakdown.items(), 
+                                   key=lambda x: x[1]['weighted_contribution'], reverse=True))
+    
+    return {
+        'state_iceberg_index': round(state_iceberg_index, 2),
+        'industry_breakdown': industry_breakdown,
+        'total_economic_value': int(total_economic_value),
+        'total_at_risk_economic_value': int(total_at_risk_economic_value)
+    }
+
 def get_top_5_by_industry(df: pd.DataFrame, industry_type_column: str = 'Modified BLS Super Sector', dict_dump_mode: bool = False, is_risk: bool = False):
     """
     Get top 5 rows by TOT_EMP and economic_value for each industry group
@@ -201,6 +269,7 @@ def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str,
         "total_economic_value": filtered_df['economic_value'].sum(),
         "employment_by_industry": get_employment_by_industry_data(filtered_df),
         "economic_value_by_industry": get_economic_value_by_industry_data(filtered_df),
+        "state_iceberg_index": get_state_iceberg_index(filtered_df, risk_filtered_df),
 
         "risk": {
             "total_jobs_at_risk": risk_filtered_df['TOT_EMP'].sum(),
