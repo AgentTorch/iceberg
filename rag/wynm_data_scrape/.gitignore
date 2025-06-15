@@ -1,0 +1,32 @@
+# Cache files
+*.pkl
+details_chunk_cache.pkl
+chunk_cache.pkl
+
+# Vector store indices
+details_faiss_index/
+faiss_index/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Scraped data
+scraped_jsons/
+
+# Environment files
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log 
