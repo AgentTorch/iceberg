@@ -6,4 +6,8 @@ wynm_data_scrape/.env
 wynm_data_scrape/scraped_jsons/*
 wynm_data_scrape/test_jsons/*
 !wynm_data_scrape/scraped_jsons/
-!wynm_data_scrape/test_jsons/ 
+!wynm_data_scrape/test_jsons/
+wynm_data_scrape/faiss_index/
+wynm_data_scrape/detailed_faiss_index/
+*.pkl
+chunk_cache.pkl 
