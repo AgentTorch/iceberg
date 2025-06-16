@@ -22,7 +22,9 @@ industry_type_path = f'{project_root_path}/v2_assets/modified_bls_super_sector_d
 wef_risk_path = f'{project_root_path}/v2_assets/skills_based_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
 llm_risk_path = f'{project_root_path}/v2_assets/llm_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
 
+tech_intensity_path = f'{project_root_path}/data/tech_intensity_simple.csv'
 job_opportunity_path = f'{project_root_path}/v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
+
 data_v2_path = f'{project_root_path}/generation_v2'
 state_results_csv_path = f'{project_root_path}/generation_v2/{{state}}_results.json'
 
@@ -36,7 +38,26 @@ def get_state_file(state: str):
     state_sentence_case = f'{state[0].capitalize()}{state[1:]}'
     return state_sentence_case
 
-def load_national_detailed_df(job_risk_df: pd.DataFrame):
+def load_availability_rate():
+    """
+    Load availability rate from tech_intensity_path
+
+    TODO: Enhance this
+    """
+    
+    tech_intensity_df = pd.read_csv(tech_intensity_path)
+    
+    tech_intensity_df['OCC_CODE'] = tech_intensity_df['O*NET-SOC Code'].apply(lambda x: x.split('.')[0] if '.' in x else x)
+    tech_intensity_df = tech_intensity_df.drop_duplicates(subset=['OCC_CODE'], keep='first')
+
+    tech_intensity_df = tech_intensity_df.rename(columns={'tech_intensity_score': 'availability_rate'})  # hot tech ratio is a proxy for availability
+    tech_intensity_df = tech_intensity_df[['OCC_CODE', 'availability_rate']]
+
+    tech_intensity_df['availability_rate'] = tech_intensity_df['availability_rate'] / 100.0
+    tech_intensity_df['availability_rate'] = tech_intensity_df['availability_rate'].round(2)
+    return tech_intensity_df
+
+def load_national_detailed_df(job_risk_df: pd.DataFrame, availability_rate_df: pd.DataFrame):
     national_detailed_df = pd.read_csv(national_detailed_file_path)
     industry_type_df = pd.read_csv(industry_type_path)
 
@@ -53,6 +74,14 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
         how='left'  # or 'right' or 'inner' depending on your needs
     )
     national_detailed_df['automation_risk_score'] = national_detailed_df['automation_risk_score'].fillna(national_detailed_df['automation_risk_score'].median())
+
+    # Merge availability rate df with national detailed df
+    national_detailed_df = national_detailed_df.merge(
+        availability_rate_df[['OCC_CODE', 'availability_rate']],
+        on='OCC_CODE',
+        how='left'
+    )
+    national_detailed_df['availability_rate'] = national_detailed_df['availability_rate'].fillna(national_detailed_df['availability_rate'].median())
     
     # adoption_rate = hot_tech_ratio (0-1 scale)
     #   - Proxy for technology adoption speed in the real world
@@ -68,7 +97,7 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
     #   - Final probability of job displacement, mathematically the product of "automation feasibility" & "adoption status in real world"
     #   - Results in realistic partial displacement
 
-    national_detailed_df['displacement_rate'] = (national_detailed_df['automation_risk_score'] / 100.0) # * (national_detailed_df['software_only_adoption_rate'])
+    national_detailed_df['displacement_rate'] = (national_detailed_df['automation_risk_score'] / 100.0) * (national_detailed_df['software_only_adoption_rate'])
     national_detailed_df['RISK_EMP'] = (national_detailed_df['TOT_EMP'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
     national_detailed_df['AT_RISK_ECONOMIC_VALUE'] = (national_detailed_df['economic_value'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
     
@@ -319,8 +348,9 @@ def dump_data_to_csv(data: dict):
 
 def main():
     job_risk_df = load_job_risk_df()
+    availability_rate_df = load_availability_rate()
     opportunity_df_v2 = load_opportunity_jobs_df()
-    national_detailed_df = load_national_detailed_df(job_risk_df)
+    national_detailed_df = load_national_detailed_df(job_risk_df, availability_rate_df)
     
     
     na_counts = national_detailed_df.isna().sum()
