@@ -20,11 +20,14 @@ project_root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 national_detailed_file_path = f'{project_root_path}/generation/national_summary_detailed.csv' # Contains all jobs in the US and their economic value, number of employees, and industry type
 industry_type_path = f'{project_root_path}/v2_assets/modified_bls_super_sector_df.csv' # Maps OCC_CODE to industry type
 wef_risk_path = f'{project_root_path}/v2_assets/skills_based_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
+llm_risk_path = f'{project_root_path}/v2_assets/llm_risk.csv' # Risk computed using heuristics discovered by LLM over WEF report
+
 job_opportunity_path = f'{project_root_path}/v2_assets/opportunity_jobs_v2.csv' # Contains the job roles that can be enhanced by AI
 data_v2_path = f'{project_root_path}/generation_v2'
 state_results_csv_path = f'{project_root_path}/generation_v2/{{state}}_results.json'
 
-AUTOMATION_RISK_PERCENTILE_THRESHOLD = 0.8 # all jobs with automation risk percentile above this threshold are considered at risk
+# AUTOMATION_RISK_PERCENTILE_THRESHOLD = 0.8 # all jobs with automation risk percentile above this threshold are considered at risk
+AUTOMATION_RISK_THRESHOLD = 30
 
 
 #### Utilitiy functions ####
@@ -45,7 +48,7 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
     
     # Merge job risk df with national detailed df
     national_detailed_df = national_detailed_df.merge(
-        job_risk_df[['OCC_CODE', 'automation_risk_score', 'perc_ile_thresholded_risk', 'adoption_rate']],
+        job_risk_df[['OCC_CODE', 'automation_risk_score', 'perc_ile_thresholded_risk', 'software_only_adoption_rate']],
         on='OCC_CODE',
         how='left'  # or 'right' or 'inner' depending on your needs
     )
@@ -65,7 +68,7 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
     #   - Final probability of job displacement, mathematically the product of "automation feasibility" & "adoption status in real world"
     #   - Results in realistic partial displacement
 
-    national_detailed_df['displacement_rate'] = national_detailed_df['adoption_rate'] * (national_detailed_df['automation_risk_score'] / 100.0)
+    national_detailed_df['displacement_rate'] = (national_detailed_df['automation_risk_score'] / 100.0) # * (national_detailed_df['software_only_adoption_rate'])
     national_detailed_df['RISK_EMP'] = (national_detailed_df['TOT_EMP'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
     national_detailed_df['AT_RISK_ECONOMIC_VALUE'] = (national_detailed_df['economic_value'] * national_detailed_df['displacement_rate']).fillna(0).astype(int)
     
@@ -75,16 +78,14 @@ def load_national_detailed_df(job_risk_df: pd.DataFrame):
     return national_detailed_df
 
 def load_job_risk_df():
-    job_risk_df = pd.read_csv(wef_risk_path)
+    job_risk_df = pd.read_csv(llm_risk_path)
     job_risk_df['OCC_CODE'] = job_risk_df['O*NET-SOC Code'].apply(lambda x: x.split('.')[0] if '.' in x else x)
     job_risk_df = job_risk_df.drop_duplicates(subset=['OCC_CODE'], keep='first') # as we have detailed jobs
-
-    threshold = job_risk_df['automation_risk_score'].quantile(AUTOMATION_RISK_PERCENTILE_THRESHOLD)
-
-    print(f"\033[91m Risk Score Threshold at percentile p{AUTOMATION_RISK_PERCENTILE_THRESHOLD*100}: {threshold}\033[0m")
+    job_risk_df['automation_risk_score'] = job_risk_df['software_automation_risk'] * 10.0 # scale 0 - 10 to 0 - 100
+    job_risk_df['software_only_adoption_rate'] = job_risk_df['software_only_adoption_rate'] / 10.0 # scale 0 - 10 to 0 - 1
 
     # Create the new field based on whether each row's score is above the threshold
-    job_risk_df['perc_ile_thresholded_risk'] = job_risk_df['automation_risk_score'] >= threshold
+    job_risk_df['perc_ile_thresholded_risk'] = job_risk_df['automation_risk_score'] >= AUTOMATION_RISK_THRESHOLD
     return job_risk_df
 
 def load_opportunity_jobs_df():
@@ -168,23 +169,35 @@ def get_state_iceberg_index(filtered_df: pd.DataFrame, risk_filtered_df: pd.Data
     
     # Get at-risk economic value by industry from risk dataset
     risk_econ_by_industry = risk_filtered_df.groupby('Modified BLS Super Sector')['AT_RISK_ECONOMIC_VALUE'].sum()
+
+    total_emp_by_industry = filtered_df.groupby('Modified BLS Super Sector')['TOT_EMP'].sum()
+    risk_emp_by_industry = risk_filtered_df.groupby('Modified BLS Super Sector')['RISK_EMP'].sum()
     
     for industry in total_econ_by_industry.index:
         if pd.notna(industry):
             industry_economic_value = total_econ_by_industry[industry]
             industry_at_risk_value = risk_econ_by_industry.get(industry, 0)  # 0 if no risk jobs in this industry
+
+            industry_emp = total_emp_by_industry.get(industry, 0)
+            industry_at_risk_emp = risk_emp_by_industry.get(industry, 0)
             
             # Calculate industry's contribution to state Iceberg Index
             weight = industry_economic_value / total_economic_value
             industry_iceberg_index = (industry_at_risk_value / industry_economic_value * 100) if industry_economic_value > 0 else 0
             weighted_contribution = weight * industry_iceberg_index
+
+            industry_emp_at_risk_percentage = (industry_at_risk_emp / industry_emp * 100) if industry_emp > 0 else 0
             
             industry_breakdown[industry] = {
+                'at_risk_economic_value': int(industry_at_risk_value),
+                'economic_value': int(industry_economic_value),
                 'industry_iceberg_index': round(industry_iceberg_index, 2),
                 'economic_value_weight': round(weight * 100, 2),  # as percentage
                 'weighted_contribution': round(weighted_contribution, 2),
-                'economic_value': int(industry_economic_value),
-                'at_risk_economic_value': int(industry_at_risk_value)
+                'total_employment': int(industry_emp),
+                'at_risk_employment': int(industry_at_risk_emp),
+                'at_risk_employment_percentage': round(industry_emp_at_risk_percentage, 2),
+                'at_risk_employment_weight': round(industry_emp_at_risk_percentage * weight * 100, 2)
             }
     
     # Sort industry breakdown by weighted contribution
@@ -261,7 +274,7 @@ def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str,
     # ----------------------------- Opportunity -----------------------------
     opportunity_mapped_filtered_df = opportunity_df_v2.merge(filtered_df, on='OCC_CODE', how='inner')
     
-
+    state_iceberg = get_state_iceberg_index(filtered_df, risk_filtered_df)
     
     data = {
         "state": state_title if state_title else "National",
@@ -269,15 +282,9 @@ def compute_risk_for_state(national_detailed_df: pd.DataFrame, state_title: str,
         "total_economic_value": filtered_df['economic_value'].sum(),
         "employment_by_industry": get_employment_by_industry_data(filtered_df),
         "economic_value_by_industry": get_economic_value_by_industry_data(filtered_df),
-        "state_iceberg_index": get_state_iceberg_index(filtered_df, risk_filtered_df),
 
         "risk": {
-            "total_jobs_at_risk": risk_filtered_df['TOT_EMP'].sum(),
-            "total_jobs_at_risk_percentage": (risk_filtered_df['TOT_EMP'].sum() / filtered_df['TOT_EMP'].sum()) * 100,
-            
-            "total_economic_value_at_risk": risk_filtered_df['economic_value'].sum(),
-            "total_economic_value_at_risk_percentage": (risk_filtered_df['economic_value'].sum() / filtered_df['economic_value'].sum()) * 100,
-
+            "state_iceberg": state_iceberg,
             "industry_impact_percentage": get_risk_industry_wise_impact_data(filtered_df, risk_filtered_df),
             "employment_at_risk_by_industry": get_risk_industry_wise_employment_data(risk_filtered_df),
             "economic_value_at_risk_by_industry": get_risk_industry_wise_economic_value_data(risk_filtered_df),

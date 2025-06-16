@@ -52,948 +52,1612 @@
         "SPECIAL_INDUSTRIES": 98467900.0,
         "MINING_OIL_GAS_EXTRACTION": 63398000.0
     },
-    "state_iceberg_index": {
-        "state_iceberg_index": 5.36,
-        "industry_breakdown": {
-            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": {
-                "industry_iceberg_index": 19.71,
-                "economic_value_weight": 6.42,
-                "weighted_contribution": 1.26,
-                "economic_value": 3698098800,
-                "at_risk_economic_value": 728716691
-            },
-            "FINANCE_AND_INSURANCE": {
-                "industry_iceberg_index": 15.0,
-                "economic_value_weight": 7.6,
-                "weighted_contribution": 1.14,
-                "economic_value": 4382169100,
-                "at_risk_economic_value": 657412634
-            },
-            "HEALTHCARE": {
-                "industry_iceberg_index": 3.93,
-                "economic_value_weight": 15.21,
-                "weighted_contribution": 0.6,
-                "economic_value": 8766191400,
-                "at_risk_economic_value": 344855285
-            },
-            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": {
-                "industry_iceberg_index": 3.48,
-                "economic_value_weight": 11.17,
-                "weighted_contribution": 0.39,
-                "economic_value": 6439082400,
-                "at_risk_economic_value": 223869469
-            },
-            "MANAGEMENT_CONSULTING_SERVICES": {
-                "industry_iceberg_index": 13.99,
-                "economic_value_weight": 2.67,
-                "weighted_contribution": 0.37,
-                "economic_value": 1540983000,
-                "at_risk_economic_value": 215587412
-            },
-            "ARCHITECTURAL_ENGINEERING_SERVICES": {
-                "industry_iceberg_index": 20.9,
-                "economic_value_weight": 1.57,
-                "weighted_contribution": 0.33,
-                "economic_value": 903572500,
-                "at_risk_economic_value": 188874252
-            },
-            "EDUCATIONAL_SERVICES": {
-                "industry_iceberg_index": 3.67,
-                "economic_value_weight": 7.55,
-                "weighted_contribution": 0.28,
-                "economic_value": 4348733100,
-                "at_risk_economic_value": 159499049
-            },
-            "MANUFACTURING": {
-                "industry_iceberg_index": 2.11,
-                "economic_value_weight": 9.45,
-                "weighted_contribution": 0.2,
-                "economic_value": 5446801600,
-                "at_risk_economic_value": 114940987
-            },
-            "PACKAGING_AND_GOODS_TRANSPORTATION": {
-                "industry_iceberg_index": 2.68,
-                "economic_value_weight": 7.21,
-                "weighted_contribution": 0.19,
-                "economic_value": 4153158000,
-                "at_risk_economic_value": 111466769
-            },
-            "RETAIL_TRADE": {
-                "industry_iceberg_index": 3.4,
-                "economic_value_weight": 5.09,
-                "weighted_contribution": 0.17,
-                "economic_value": 2931389400,
-                "at_risk_economic_value": 99730581
-            },
-            "MEDIA_AND_COMMUNICATIONS_SERVICES": {
-                "industry_iceberg_index": 7.03,
-                "economic_value_weight": 2.05,
-                "weighted_contribution": 0.14,
-                "economic_value": 1183655500,
-                "at_risk_economic_value": 83263337
-            },
-            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": {
-                "industry_iceberg_index": 19.69,
-                "economic_value_weight": 0.57,
-                "weighted_contribution": 0.11,
-                "economic_value": 328063300,
-                "at_risk_economic_value": 64594129
-            },
-            "GOVERNMENT": {
-                "industry_iceberg_index": 2.59,
-                "economic_value_weight": 1.95,
-                "weighted_contribution": 0.05,
-                "economic_value": 1124966700,
-                "at_risk_economic_value": 29162021
-            },
-            "LEGAL_SERVICES": {
-                "industry_iceberg_index": 2.78,
-                "economic_value_weight": 1.12,
-                "weighted_contribution": 0.03,
-                "economic_value": 646156500,
-                "at_risk_economic_value": 17954679
-            },
-            "AGRICULTURE_FORESTRY_FISHING_HUNTING": {
-                "industry_iceberg_index": 1.75,
-                "economic_value_weight": 1.11,
-                "weighted_contribution": 0.02,
-                "economic_value": 639000800,
-                "at_risk_economic_value": 11152381
-            },
-            "ENERGY": {
-                "industry_iceberg_index": 4.1,
-                "economic_value_weight": 0.48,
-                "weighted_contribution": 0.02,
-                "economic_value": 274458400,
-                "at_risk_economic_value": 11239618
-            },
-            "REAL_ESTATE_RENTAL_LEASING": {
-                "industry_iceberg_index": 4.69,
-                "economic_value_weight": 0.43,
-                "weighted_contribution": 0.02,
-                "economic_value": 245356300,
-                "at_risk_economic_value": 11513653
-            },
-            "CONSTRUCTION": {
-                "industry_iceberg_index": 0.2,
-                "economic_value_weight": 5.61,
-                "weighted_contribution": 0.01,
-                "economic_value": 3235403100,
-                "at_risk_economic_value": 6567036
-            },
-            "MINING_OIL_GAS_EXTRACTION": {
-                "industry_iceberg_index": 4.98,
-                "economic_value_weight": 0.11,
-                "weighted_contribution": 0.01,
-                "economic_value": 63398000,
-                "at_risk_economic_value": 3155078
-            },
-            "TRAVEL_AND_ENTERTAINMENT_SERVICES": {
-                "industry_iceberg_index": 0.2,
-                "economic_value_weight": 6.19,
-                "weighted_contribution": 0.01,
-                "economic_value": 3567399900,
-                "at_risk_economic_value": 7208521
-            },
-            "MANAGEMENT": {
-                "industry_iceberg_index": 0.0,
-                "economic_value_weight": 5.14,
-                "weighted_contribution": 0.0,
-                "economic_value": 2961230000,
-                "at_risk_economic_value": 0
-            },
-            "PASSENGER_TRANSPORTATION": {
-                "industry_iceberg_index": 0.0,
-                "economic_value_weight": 1.13,
-                "weighted_contribution": 0.0,
-                "economic_value": 652262700,
-                "at_risk_economic_value": 0
-            },
-            "SPECIAL_INDUSTRIES": {
-                "industry_iceberg_index": 0.0,
-                "economic_value_weight": 0.17,
-                "weighted_contribution": 0.0,
-                "economic_value": 98467900,
-                "at_risk_economic_value": 0
-            }
-        },
-        "total_economic_value": 57629998400,
-        "total_at_risk_economic_value": 3090763582
-    },
     "risk": {
-        "total_jobs_at_risk": 222410.0,
-        "total_jobs_at_risk_percentage": 22.341312493093994,
-        "total_economic_value_at_risk": 14875465300.0,
-        "total_economic_value_at_risk_percentage": 25.81201754813861,
+        "state_iceberg": {
+            "state_iceberg_index": 40.41,
+            "industry_breakdown": {
+                "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": {
+                    "at_risk_economic_value": 3423586472,
+                    "economic_value": 6439082400,
+                    "industry_iceberg_index": 53.17,
+                    "economic_value_weight": 11.17,
+                    "weighted_contribution": 5.94,
+                    "total_employment": 137590,
+                    "at_risk_employment": 75436,
+                    "at_risk_employment_percentage": 54.83,
+                    "at_risk_employment_weight": 612.59
+                },
+                "FINANCE_AND_INSURANCE": {
+                    "at_risk_economic_value": 2751639048,
+                    "economic_value": 4382169100,
+                    "industry_iceberg_index": 62.79,
+                    "economic_value_weight": 7.6,
+                    "weighted_contribution": 4.77,
+                    "total_employment": 62290,
+                    "at_risk_employment": 42688,
+                    "at_risk_employment_percentage": 68.53,
+                    "at_risk_employment_weight": 521.11
+                },
+                "MANUFACTURING": {
+                    "at_risk_economic_value": 2523888146,
+                    "economic_value": 5446801600,
+                    "industry_iceberg_index": 46.34,
+                    "economic_value_weight": 9.45,
+                    "weighted_contribution": 4.38,
+                    "total_employment": 99860,
+                    "at_risk_employment": 46485,
+                    "at_risk_employment_percentage": 46.55,
+                    "at_risk_employment_weight": 439.96
+                },
+                "HEALTHCARE": {
+                    "at_risk_economic_value": 2110570919,
+                    "economic_value": 8766191400,
+                    "industry_iceberg_index": 24.08,
+                    "economic_value_weight": 15.21,
+                    "weighted_contribution": 3.66,
+                    "total_employment": 130550,
+                    "at_risk_employment": 36428,
+                    "at_risk_employment_percentage": 27.9,
+                    "at_risk_employment_weight": 424.44
+                },
+                "PACKAGING_AND_GOODS_TRANSPORTATION": {
+                    "at_risk_economic_value": 2096987020,
+                    "economic_value": 4153158000,
+                    "industry_iceberg_index": 50.49,
+                    "economic_value_weight": 7.21,
+                    "weighted_contribution": 3.64,
+                    "total_employment": 85810,
+                    "at_risk_employment": 46470,
+                    "at_risk_employment_percentage": 54.15,
+                    "at_risk_employment_weight": 390.27
+                },
+                "RETAIL_TRADE": {
+                    "at_risk_economic_value": 1684599400,
+                    "economic_value": 2931389400,
+                    "industry_iceberg_index": 57.47,
+                    "economic_value_weight": 5.09,
+                    "weighted_contribution": 2.92,
+                    "total_employment": 71550,
+                    "at_risk_employment": 45090,
+                    "at_risk_employment_percentage": 63.02,
+                    "at_risk_employment_weight": 320.55
+                },
+                "TRAVEL_AND_ENTERTAINMENT_SERVICES": {
+                    "at_risk_economic_value": 1677476809,
+                    "economic_value": 3567399900,
+                    "industry_iceberg_index": 47.02,
+                    "economic_value_weight": 6.19,
+                    "weighted_contribution": 2.91,
+                    "total_employment": 105660,
+                    "at_risk_employment": 52484,
+                    "at_risk_employment_percentage": 49.67,
+                    "at_risk_employment_weight": 307.48
+                },
+                "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": {
+                    "at_risk_economic_value": 1348845470,
+                    "economic_value": 3698098800,
+                    "industry_iceberg_index": 36.47,
+                    "economic_value_weight": 6.42,
+                    "weighted_contribution": 2.34,
+                    "total_employment": 38010,
+                    "at_risk_employment": 14251,
+                    "at_risk_employment_percentage": 37.49,
+                    "at_risk_employment_weight": 240.59
+                },
+                "CONSTRUCTION": {
+                    "at_risk_economic_value": 1055471870,
+                    "economic_value": 3235403100,
+                    "industry_iceberg_index": 32.62,
+                    "economic_value_weight": 5.61,
+                    "weighted_contribution": 1.83,
+                    "total_employment": 56780,
+                    "at_risk_employment": 18813,
+                    "at_risk_employment_percentage": 33.13,
+                    "at_risk_employment_weight": 186.01
+                },
+                "MANAGEMENT": {
+                    "at_risk_economic_value": 913967840,
+                    "economic_value": 2961230000,
+                    "industry_iceberg_index": 30.86,
+                    "economic_value_weight": 5.14,
+                    "weighted_contribution": 1.59,
+                    "total_employment": 25790,
+                    "at_risk_employment": 9164,
+                    "at_risk_employment_percentage": 35.53,
+                    "at_risk_employment_weight": 182.58
+                },
+                "EDUCATIONAL_SERVICES": {
+                    "at_risk_economic_value": 669298719,
+                    "economic_value": 4348733100,
+                    "industry_iceberg_index": 15.39,
+                    "economic_value_weight": 7.55,
+                    "weighted_contribution": 1.16,
+                    "total_employment": 66700,
+                    "at_risk_employment": 8824,
+                    "at_risk_employment_percentage": 13.23,
+                    "at_risk_employment_weight": 99.83
+                },
+                "MANAGEMENT_CONSULTING_SERVICES": {
+                    "at_risk_economic_value": 560838020,
+                    "economic_value": 1540983000,
+                    "industry_iceberg_index": 36.39,
+                    "economic_value_weight": 2.67,
+                    "weighted_contribution": 0.97,
+                    "total_employment": 17790,
+                    "at_risk_employment": 6432,
+                    "at_risk_employment_percentage": 36.16,
+                    "at_risk_employment_weight": 96.68
+                },
+                "MEDIA_AND_COMMUNICATIONS_SERVICES": {
+                    "at_risk_economic_value": 550103330,
+                    "economic_value": 1183655500,
+                    "industry_iceberg_index": 46.47,
+                    "economic_value_weight": 2.05,
+                    "weighted_contribution": 0.95,
+                    "total_employment": 17530,
+                    "at_risk_employment": 8527,
+                    "at_risk_employment_percentage": 48.64,
+                    "at_risk_employment_weight": 99.91
+                },
+                "GOVERNMENT": {
+                    "at_risk_economic_value": 458764439,
+                    "economic_value": 1124966700,
+                    "industry_iceberg_index": 40.78,
+                    "economic_value_weight": 1.95,
+                    "weighted_contribution": 0.8,
+                    "total_employment": 17920,
+                    "at_risk_employment": 7595,
+                    "at_risk_employment_percentage": 42.38,
+                    "at_risk_employment_weight": 82.73
+                },
+                "ARCHITECTURAL_ENGINEERING_SERVICES": {
+                    "at_risk_economic_value": 356547370,
+                    "economic_value": 903572500,
+                    "industry_iceberg_index": 39.46,
+                    "economic_value_weight": 1.57,
+                    "weighted_contribution": 0.62,
+                    "total_employment": 10860,
+                    "at_risk_employment": 4531,
+                    "at_risk_employment_percentage": 41.72,
+                    "at_risk_employment_weight": 65.42
+                },
+                "PASSENGER_TRANSPORTATION": {
+                    "at_risk_economic_value": 257204570,
+                    "economic_value": 652262700,
+                    "industry_iceberg_index": 39.43,
+                    "economic_value_weight": 1.13,
+                    "weighted_contribution": 0.45,
+                    "total_employment": 12690,
+                    "at_risk_employment": 5108,
+                    "at_risk_employment_percentage": 40.25,
+                    "at_risk_employment_weight": 45.56
+                },
+                "LEGAL_SERVICES": {
+                    "at_risk_economic_value": 256345289,
+                    "economic_value": 646156500,
+                    "industry_iceberg_index": 39.67,
+                    "economic_value_weight": 1.12,
+                    "weighted_contribution": 0.44,
+                    "total_employment": 6920,
+                    "at_risk_employment": 3380,
+                    "at_risk_employment_percentage": 48.84,
+                    "at_risk_employment_weight": 54.76
+                },
+                "AGRICULTURE_FORESTRY_FISHING_HUNTING": {
+                    "at_risk_economic_value": 227767130,
+                    "economic_value": 639000800,
+                    "industry_iceberg_index": 35.64,
+                    "economic_value_weight": 1.11,
+                    "weighted_contribution": 0.4,
+                    "total_employment": 15050,
+                    "at_risk_employment": 5284,
+                    "at_risk_employment_percentage": 35.11,
+                    "at_risk_employment_weight": 38.93
+                },
+                "ENERGY": {
+                    "at_risk_economic_value": 116439340,
+                    "economic_value": 274458400,
+                    "industry_iceberg_index": 42.43,
+                    "economic_value_weight": 0.48,
+                    "weighted_contribution": 0.2,
+                    "total_employment": 4030,
+                    "at_risk_employment": 1755,
+                    "at_risk_employment_percentage": 43.55,
+                    "at_risk_employment_weight": 20.74
+                },
+                "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": {
+                    "at_risk_economic_value": 106795940,
+                    "economic_value": 328063300,
+                    "industry_iceberg_index": 32.55,
+                    "economic_value_weight": 0.57,
+                    "weighted_contribution": 0.19,
+                    "total_employment": 4430,
+                    "at_risk_employment": 1473,
+                    "at_risk_employment_percentage": 33.25,
+                    "at_risk_employment_weight": 18.93
+                },
+                "REAL_ESTATE_RENTAL_LEASING": {
+                    "at_risk_economic_value": 92708679,
+                    "economic_value": 245356300,
+                    "industry_iceberg_index": 37.79,
+                    "economic_value_weight": 0.43,
+                    "weighted_contribution": 0.16,
+                    "total_employment": 4230,
+                    "at_risk_employment": 1656,
+                    "at_risk_employment_percentage": 39.15,
+                    "at_risk_employment_weight": 16.67
+                },
+                "MINING_OIL_GAS_EXTRACTION": {
+                    "at_risk_economic_value": 25359200,
+                    "economic_value": 63398000,
+                    "industry_iceberg_index": 40.0,
+                    "economic_value_weight": 0.11,
+                    "weighted_contribution": 0.04,
+                    "total_employment": 1130,
+                    "at_risk_employment": 452,
+                    "at_risk_employment_percentage": 40.0,
+                    "at_risk_employment_weight": 4.4
+                },
+                "SPECIAL_INDUSTRIES": {
+                    "at_risk_economic_value": 25433490,
+                    "economic_value": 98467900,
+                    "industry_iceberg_index": 25.83,
+                    "economic_value_weight": 0.17,
+                    "weighted_contribution": 0.04,
+                    "total_employment": 2340,
+                    "at_risk_employment": 624,
+                    "at_risk_employment_percentage": 26.67,
+                    "at_risk_employment_weight": 4.56
+                }
+            },
+            "total_economic_value": 57629998400,
+            "total_at_risk_economic_value": 23290638510
+        },
         "industry_impact_percentage": {
-            "ARCHITECTURAL_ENGINEERING_SERVICES": 19.392265193370164,
-            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 19.373848987108655,
-            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 18.465011286681715,
-            "MANAGEMENT_CONSULTING_SERVICES": 14.862282181000563,
-            "FINANCE_AND_INSURANCE": 13.345641354952642,
-            "MEDIA_AND_COMMUNICATIONS_SERVICES": 7.906446092413007,
-            "EDUCATIONAL_SERVICES": 5.71064467766117,
-            "RETAIL_TRADE": 4.845562543675752,
-            "LEGAL_SERVICES": 4.76878612716763,
-            "REAL_ESTATE_RENTAL_LEASING": 4.491725768321513,
-            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 3.7161130896140713,
-            "ENERGY": 3.3498759305210917,
-            "PACKAGING_AND_GOODS_TRANSPORTATION": 3.1791166530707375,
-            "MINING_OIL_GAS_EXTRACTION": 2.920353982300885,
-            "GOVERNMENT": 2.7232142857142856,
-            "HEALTHCARE": 2.468785905783225,
-            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 1.5548172757475083,
-            "MANUFACTURING": 1.5481674344081713,
-            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 0.21767934885481735,
-            "CONSTRUCTION": 0.17435716801690737,
-            "MANAGEMENT": 0.0,
-            "PASSENGER_TRANSPORTATION": 0.0,
-            "SPECIAL_INDUSTRIES": 0.0
+            "FINANCE_AND_INSURANCE": 68.53106437630439,
+            "RETAIL_TRADE": 63.0188679245283,
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 54.82665891416527,
+            "PACKAGING_AND_GOODS_TRANSPORTATION": 54.1545274443538,
+            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 49.672534544766236,
+            "LEGAL_SERVICES": 48.84393063583815,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 48.64232743867655,
+            "MANUFACTURING": 46.55017023833366,
+            "ENERGY": 43.54838709677419,
+            "GOVERNMENT": 42.3828125,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 41.721915285451196,
+            "PASSENGER_TRANSPORTATION": 40.2521670606777,
+            "MINING_OIL_GAS_EXTRACTION": 40.0,
+            "REAL_ESTATE_RENTAL_LEASING": 39.148936170212764,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 37.492765061825835,
+            "MANAGEMENT_CONSULTING_SERVICES": 36.155143338954474,
+            "MANAGEMENT": 35.53315238464521,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 35.10963455149502,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 33.25056433408578,
+            "CONSTRUCTION": 33.13314547375836,
+            "HEALTHCARE": 27.90348525469169,
+            "SPECIAL_INDUSTRIES": 26.666666666666668,
+            "EDUCATIONAL_SERVICES": 13.229385307346329
         },
         "employment_at_risk_by_industry": {
-            "FINANCE_AND_INSURANCE": 8313,
-            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 7364,
-            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 5113,
-            "EDUCATIONAL_SERVICES": 3809,
-            "RETAIL_TRADE": 3467,
-            "HEALTHCARE": 3223,
-            "PACKAGING_AND_GOODS_TRANSPORTATION": 2728,
-            "MANAGEMENT_CONSULTING_SERVICES": 2644,
-            "ARCHITECTURAL_ENGINEERING_SERVICES": 2106,
-            "MANUFACTURING": 1546,
-            "MEDIA_AND_COMMUNICATIONS_SERVICES": 1386,
-            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 818,
-            "GOVERNMENT": 488,
-            "LEGAL_SERVICES": 330,
-            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 234,
-            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 230,
-            "REAL_ESTATE_RENTAL_LEASING": 190,
-            "ENERGY": 135,
-            "CONSTRUCTION": 99,
-            "MINING_OIL_GAS_EXTRACTION": 33
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 75436,
+            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 52484,
+            "MANUFACTURING": 46485,
+            "PACKAGING_AND_GOODS_TRANSPORTATION": 46470,
+            "RETAIL_TRADE": 45090,
+            "FINANCE_AND_INSURANCE": 42688,
+            "HEALTHCARE": 36428,
+            "CONSTRUCTION": 18813,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 14251,
+            "MANAGEMENT": 9164,
+            "EDUCATIONAL_SERVICES": 8824,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 8527,
+            "GOVERNMENT": 7595,
+            "MANAGEMENT_CONSULTING_SERVICES": 6432,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 5284,
+            "PASSENGER_TRANSPORTATION": 5108,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 4531,
+            "LEGAL_SERVICES": 3380,
+            "ENERGY": 1755,
+            "REAL_ESTATE_RENTAL_LEASING": 1656,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 1473,
+            "SPECIAL_INDUSTRIES": 624,
+            "MINING_OIL_GAS_EXTRACTION": 452
         },
         "economic_value_at_risk_by_industry": {
-            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 728716691,
-            "FINANCE_AND_INSURANCE": 657412634,
-            "HEALTHCARE": 344855285,
-            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 223869469,
-            "MANAGEMENT_CONSULTING_SERVICES": 215587412,
-            "ARCHITECTURAL_ENGINEERING_SERVICES": 188874252,
-            "EDUCATIONAL_SERVICES": 159499049,
-            "MANUFACTURING": 114940987,
-            "PACKAGING_AND_GOODS_TRANSPORTATION": 111466769,
-            "RETAIL_TRADE": 99730581,
-            "MEDIA_AND_COMMUNICATIONS_SERVICES": 83263337,
-            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 64594129,
-            "GOVERNMENT": 29162021,
-            "LEGAL_SERVICES": 17954679,
-            "REAL_ESTATE_RENTAL_LEASING": 11513653,
-            "ENERGY": 11239618,
-            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 11152381,
-            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 7208521,
-            "CONSTRUCTION": 6567036,
-            "MINING_OIL_GAS_EXTRACTION": 3155078
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": 3423586472,
+            "FINANCE_AND_INSURANCE": 2751639048,
+            "MANUFACTURING": 2523888146,
+            "HEALTHCARE": 2110570919,
+            "PACKAGING_AND_GOODS_TRANSPORTATION": 2096987020,
+            "RETAIL_TRADE": 1684599400,
+            "TRAVEL_AND_ENTERTAINMENT_SERVICES": 1677476809,
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": 1348845470,
+            "CONSTRUCTION": 1055471870,
+            "MANAGEMENT": 913967840,
+            "EDUCATIONAL_SERVICES": 669298719,
+            "MANAGEMENT_CONSULTING_SERVICES": 560838020,
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": 550103330,
+            "GOVERNMENT": 458764439,
+            "ARCHITECTURAL_ENGINEERING_SERVICES": 356547370,
+            "PASSENGER_TRANSPORTATION": 257204570,
+            "LEGAL_SERVICES": 256345289,
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": 227767130,
+            "ENERGY": 116439340,
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": 106795940,
+            "REAL_ESTATE_RENTAL_LEASING": 92708679,
+            "SPECIAL_INDUSTRIES": 25433490,
+            "MINING_OIL_GAS_EXTRACTION": 25359200
         },
         "industry_wise_top_5_jobs": {
+            "MANAGEMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "11-1021",
+                        "OCC_TITLE": "General and Operations Managers",
+                        "RISK_EMP": 8956,
+                        "AT_RISK_ECONOMIC_VALUE": 887360480
+                    },
+                    {
+                        "OCC_CODE": "11-3061",
+                        "OCC_TITLE": "Purchasing Managers",
+                        "RISK_EMP": 208,
+                        "AT_RISK_ECONOMIC_VALUE": 26607360
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "11-1021",
+                        "OCC_TITLE": "General and Operations Managers",
+                        "RISK_EMP": 8956,
+                        "AT_RISK_ECONOMIC_VALUE": 887360480
+                    },
+                    {
+                        "OCC_CODE": "11-3061",
+                        "OCC_TITLE": "Purchasing Managers",
+                        "RISK_EMP": 208,
+                        "AT_RISK_ECONOMIC_VALUE": 26607360
+                    }
+                ]
+            },
+            "MEDIA_AND_COMMUNICATIONS_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "13-1161",
+                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
+                        "RISK_EMP": 2214,
+                        "AT_RISK_ECONOMIC_VALUE": 143865720
+                    },
+                    {
+                        "OCC_CODE": "27-1024",
+                        "OCC_TITLE": "Graphic Designers",
+                        "RISK_EMP": 1206,
+                        "AT_RISK_ECONOMIC_VALUE": 63785340
+                    },
+                    {
+                        "OCC_CODE": "11-2021",
+                        "OCC_TITLE": "Marketing Managers",
+                        "RISK_EMP": 884,
+                        "AT_RISK_ECONOMIC_VALUE": 106672280
+                    },
+                    {
+                        "OCC_CODE": "41-9041",
+                        "OCC_TITLE": "Telemarketers",
+                        "RISK_EMP": 773,
+                        "AT_RISK_ECONOMIC_VALUE": 22880130
+                    },
+                    {
+                        "OCC_CODE": "27-3031",
+                        "OCC_TITLE": "Public Relations Specialists",
+                        "RISK_EMP": 576,
+                        "AT_RISK_ECONOMIC_VALUE": 35873280
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "13-1161",
+                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
+                        "RISK_EMP": 2214,
+                        "AT_RISK_ECONOMIC_VALUE": 143865720
+                    },
+                    {
+                        "OCC_CODE": "11-2021",
+                        "OCC_TITLE": "Marketing Managers",
+                        "RISK_EMP": 884,
+                        "AT_RISK_ECONOMIC_VALUE": 106672280
+                    },
+                    {
+                        "OCC_CODE": "27-1024",
+                        "OCC_TITLE": "Graphic Designers",
+                        "RISK_EMP": 1206,
+                        "AT_RISK_ECONOMIC_VALUE": 63785340
+                    },
+                    {
+                        "OCC_CODE": "27-3031",
+                        "OCC_TITLE": "Public Relations Specialists",
+                        "RISK_EMP": 576,
+                        "AT_RISK_ECONOMIC_VALUE": 35873280
+                    },
+                    {
+                        "OCC_CODE": "41-3011",
+                        "OCC_TITLE": "Advertising Sales Agents",
+                        "RISK_EMP": 392,
+                        "AT_RISK_ECONOMIC_VALUE": 31995040
+                    }
+                ]
+            },
+            "RETAIL_TRADE": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "41-2011",
+                        "OCC_TITLE": "Cashiers",
+                        "RISK_EMP": 18666,
+                        "AT_RISK_ECONOMIC_VALUE": 536834160
+                    },
+                    {
+                        "OCC_CODE": "41-2031",
+                        "OCC_TITLE": "Retail Salespersons",
+                        "RISK_EMP": 13608,
+                        "AT_RISK_ECONOMIC_VALUE": 468387360
+                    },
+                    {
+                        "OCC_CODE": "41-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Retail Sales Workers",
+                        "RISK_EMP": 2756,
+                        "AT_RISK_ECONOMIC_VALUE": 132398240
+                    },
+                    {
+                        "OCC_CODE": "41-2021",
+                        "OCC_TITLE": "Counter and Rental Clerks",
+                        "RISK_EMP": 2632,
+                        "AT_RISK_ECONOMIC_VALUE": 89803840
+                    },
+                    {
+                        "OCC_CODE": "41-3091",
+                        "OCC_TITLE": "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",
+                        "RISK_EMP": 2272,
+                        "AT_RISK_ECONOMIC_VALUE": 136456320
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "41-2011",
+                        "OCC_TITLE": "Cashiers",
+                        "RISK_EMP": 18666,
+                        "AT_RISK_ECONOMIC_VALUE": 536834160
+                    },
+                    {
+                        "OCC_CODE": "41-2031",
+                        "OCC_TITLE": "Retail Salespersons",
+                        "RISK_EMP": 13608,
+                        "AT_RISK_ECONOMIC_VALUE": 468387360
+                    },
+                    {
+                        "OCC_CODE": "11-2022",
+                        "OCC_TITLE": "Sales Managers",
+                        "RISK_EMP": 1344,
+                        "AT_RISK_ECONOMIC_VALUE": 177327360
+                    },
+                    {
+                        "OCC_CODE": "41-3091",
+                        "OCC_TITLE": "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",
+                        "RISK_EMP": 2272,
+                        "AT_RISK_ECONOMIC_VALUE": 136456320
+                    },
+                    {
+                        "OCC_CODE": "41-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Retail Sales Workers",
+                        "RISK_EMP": 2756,
+                        "AT_RISK_ECONOMIC_VALUE": 132398240
+                    }
+                ]
+            },
+            "MANAGEMENT_CONSULTING_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "13-1041",
+                        "OCC_TITLE": "Compliance Officers",
+                        "RISK_EMP": 1548,
+                        "AT_RISK_ECONOMIC_VALUE": 108158760
+                    },
+                    {
+                        "OCC_CODE": "11-9199",
+                        "OCC_TITLE": "Managers, All Other",
+                        "RISK_EMP": 1308,
+                        "AT_RISK_ECONOMIC_VALUE": 155743560
+                    },
+                    {
+                        "OCC_CODE": "13-1111",
+                        "OCC_TITLE": "Management Analysts",
+                        "RISK_EMP": 1120,
+                        "AT_RISK_ECONOMIC_VALUE": 100408000
+                    },
+                    {
+                        "OCC_CODE": "13-1199",
+                        "OCC_TITLE": "Business Operations Specialists, All Other",
+                        "RISK_EMP": 873,
+                        "AT_RISK_ECONOMIC_VALUE": 68617800
+                    },
+                    {
+                        "OCC_CODE": "13-1082",
+                        "OCC_TITLE": "Project Management Specialists",
+                        "RISK_EMP": 870,
+                        "AT_RISK_ECONOMIC_VALUE": 74472000
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "11-9199",
+                        "OCC_TITLE": "Managers, All Other",
+                        "RISK_EMP": 1308,
+                        "AT_RISK_ECONOMIC_VALUE": 155743560
+                    },
+                    {
+                        "OCC_CODE": "13-1041",
+                        "OCC_TITLE": "Compliance Officers",
+                        "RISK_EMP": 1548,
+                        "AT_RISK_ECONOMIC_VALUE": 108158760
+                    },
+                    {
+                        "OCC_CODE": "13-1111",
+                        "OCC_TITLE": "Management Analysts",
+                        "RISK_EMP": 1120,
+                        "AT_RISK_ECONOMIC_VALUE": 100408000
+                    },
+                    {
+                        "OCC_CODE": "13-1082",
+                        "OCC_TITLE": "Project Management Specialists",
+                        "RISK_EMP": 870,
+                        "AT_RISK_ECONOMIC_VALUE": 74472000
+                    },
+                    {
+                        "OCC_CODE": "13-1199",
+                        "OCC_TITLE": "Business Operations Specialists, All Other",
+                        "RISK_EMP": 873,
+                        "AT_RISK_ECONOMIC_VALUE": 68617800
+                    }
+                ]
+            },
+            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-6014",
+                        "OCC_TITLE": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
+                        "RISK_EMP": 12232,
+                        "AT_RISK_ECONOMIC_VALUE": 521205520
+                    },
+                    {
+                        "OCC_CODE": "43-4051",
+                        "OCC_TITLE": "Customer Service Representatives",
+                        "RISK_EMP": 11823,
+                        "AT_RISK_ECONOMIC_VALUE": 482023709
+                    },
+                    {
+                        "OCC_CODE": "43-9061",
+                        "OCC_TITLE": "Office Clerks, General",
+                        "RISK_EMP": 9384,
+                        "AT_RISK_ECONOMIC_VALUE": 340545360
+                    },
+                    {
+                        "OCC_CODE": "37-2011",
+                        "OCC_TITLE": "Janitors and Cleaners, Except Maids and Housekeeping Cleaners",
+                        "RISK_EMP": 5664,
+                        "AT_RISK_ECONOMIC_VALUE": 194784960
+                    },
+                    {
+                        "OCC_CODE": "43-4171",
+                        "OCC_TITLE": "Receptionists and Information Clerks",
+                        "RISK_EMP": 4807,
+                        "AT_RISK_ECONOMIC_VALUE": 165233775
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "43-6014",
+                        "OCC_TITLE": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
+                        "RISK_EMP": 12232,
+                        "AT_RISK_ECONOMIC_VALUE": 521205520
+                    },
+                    {
+                        "OCC_CODE": "43-4051",
+                        "OCC_TITLE": "Customer Service Representatives",
+                        "RISK_EMP": 11823,
+                        "AT_RISK_ECONOMIC_VALUE": 482023709
+                    },
+                    {
+                        "OCC_CODE": "43-9061",
+                        "OCC_TITLE": "Office Clerks, General",
+                        "RISK_EMP": 9384,
+                        "AT_RISK_ECONOMIC_VALUE": 340545360
+                    },
+                    {
+                        "OCC_CODE": "13-1071",
+                        "OCC_TITLE": "Human Resources Specialists",
+                        "RISK_EMP": 4638,
+                        "AT_RISK_ECONOMIC_VALUE": 292379520
+                    },
+                    {
+                        "OCC_CODE": "43-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Office and Administrative Support Workers",
+                        "RISK_EMP": 3900,
+                        "AT_RISK_ECONOMIC_VALUE": 236925000
+                    }
+                ]
+            },
+            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "15-1252",
+                        "OCC_TITLE": "Software Developers",
+                        "RISK_EMP": 2481,
+                        "AT_RISK_ECONOMIC_VALUE": 278715540
+                    },
+                    {
+                        "OCC_CODE": "15-1232",
+                        "OCC_TITLE": "Computer User Support Specialists",
+                        "RISK_EMP": 1876,
+                        "AT_RISK_ECONOMIC_VALUE": 107607360
+                    },
+                    {
+                        "OCC_CODE": "11-3021",
+                        "OCC_TITLE": "Computer and Information Systems Managers",
+                        "RISK_EMP": 1509,
+                        "AT_RISK_ECONOMIC_VALUE": 205918140
+                    },
+                    {
+                        "OCC_CODE": "15-1299",
+                        "OCC_TITLE": "Computer Occupations, All Other",
+                        "RISK_EMP": 1476,
+                        "AT_RISK_ECONOMIC_VALUE": 132603840
+                    },
+                    {
+                        "OCC_CODE": "15-1211",
+                        "OCC_TITLE": "Computer Systems Analysts",
+                        "RISK_EMP": 1428,
+                        "AT_RISK_ECONOMIC_VALUE": 128991240
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "15-1252",
+                        "OCC_TITLE": "Software Developers",
+                        "RISK_EMP": 2481,
+                        "AT_RISK_ECONOMIC_VALUE": 278715540
+                    },
+                    {
+                        "OCC_CODE": "11-3021",
+                        "OCC_TITLE": "Computer and Information Systems Managers",
+                        "RISK_EMP": 1509,
+                        "AT_RISK_ECONOMIC_VALUE": 205918140
+                    },
+                    {
+                        "OCC_CODE": "15-1299",
+                        "OCC_TITLE": "Computer Occupations, All Other",
+                        "RISK_EMP": 1476,
+                        "AT_RISK_ECONOMIC_VALUE": 132603840
+                    },
+                    {
+                        "OCC_CODE": "15-1211",
+                        "OCC_TITLE": "Computer Systems Analysts",
+                        "RISK_EMP": 1428,
+                        "AT_RISK_ECONOMIC_VALUE": 128991240
+                    },
+                    {
+                        "OCC_CODE": "15-1232",
+                        "OCC_TITLE": "Computer User Support Specialists",
+                        "RISK_EMP": 1876,
+                        "AT_RISK_ECONOMIC_VALUE": 107607360
+                    }
+                ]
+            },
             "FINANCE_AND_INSURANCE": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "11-3031",
-                        "OCC_TITLE": "Financial Managers",
-                        "RISK_EMP": 1780,
-                        "AT_RISK_ECONOMIC_VALUE": 255448431
-                    },
-                    {
                         "OCC_CODE": "43-3031",
                         "OCC_TITLE": "Bookkeeping, Accounting, and Auditing Clerks",
-                        "RISK_EMP": 1092,
-                        "AT_RISK_ECONOMIC_VALUE": 50126898
+                        "RISK_EMP": 8959,
+                        "AT_RISK_ECONOMIC_VALUE": 411128510
                     },
                     {
                         "OCC_CODE": "13-2011",
                         "OCC_TITLE": "Accountants and Auditors",
-                        "RISK_EMP": 896,
-                        "AT_RISK_ECONOMIC_VALUE": 67566087
-                    },
-                    {
-                        "OCC_CODE": "43-3071",
-                        "OCC_TITLE": "Tellers",
-                        "RISK_EMP": 789,
-                        "AT_RISK_ECONOMIC_VALUE": 28776726
+                        "RISK_EMP": 6881,
+                        "AT_RISK_ECONOMIC_VALUE": 518689779
                     },
                     {
                         "OCC_CODE": "43-3021",
                         "OCC_TITLE": "Billing and Posting Clerks",
-                        "RISK_EMP": 553,
-                        "AT_RISK_ECONOMIC_VALUE": 24338787
+                        "RISK_EMP": 3510,
+                        "AT_RISK_ECONOMIC_VALUE": 154426895
+                    },
+                    {
+                        "OCC_CODE": "43-3071",
+                        "OCC_TITLE": "Tellers",
+                        "RISK_EMP": 3145,
+                        "AT_RISK_ECONOMIC_VALUE": 114666700
+                    },
+                    {
+                        "OCC_CODE": "41-3021",
+                        "OCC_TITLE": "Insurance Sales Agents",
+                        "RISK_EMP": 3042,
+                        "AT_RISK_ECONOMIC_VALUE": 201380400
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "11-3031",
-                        "OCC_TITLE": "Financial Managers",
-                        "RISK_EMP": 1780,
-                        "AT_RISK_ECONOMIC_VALUE": 255448431
-                    },
-                    {
                         "OCC_CODE": "13-2011",
                         "OCC_TITLE": "Accountants and Auditors",
-                        "RISK_EMP": 896,
-                        "AT_RISK_ECONOMIC_VALUE": 67566087
+                        "RISK_EMP": 6881,
+                        "AT_RISK_ECONOMIC_VALUE": 518689779
                     },
                     {
                         "OCC_CODE": "43-3031",
                         "OCC_TITLE": "Bookkeeping, Accounting, and Auditing Clerks",
-                        "RISK_EMP": 1092,
-                        "AT_RISK_ECONOMIC_VALUE": 50126898
+                        "RISK_EMP": 8959,
+                        "AT_RISK_ECONOMIC_VALUE": 411128510
                     },
                     {
-                        "OCC_CODE": "41-3031",
-                        "OCC_TITLE": "Securities, Commodities, and Financial Services Sales Agents",
-                        "RISK_EMP": 472,
-                        "AT_RISK_ECONOMIC_VALUE": 40441008
+                        "OCC_CODE": "11-3031",
+                        "OCC_TITLE": "Financial Managers",
+                        "RISK_EMP": 2232,
+                        "AT_RISK_ECONOMIC_VALUE": 320269680
                     },
                     {
-                        "OCC_CODE": "13-2099",
-                        "OCC_TITLE": "Financial Specialists, All Other",
-                        "RISK_EMP": 418,
-                        "AT_RISK_ECONOMIC_VALUE": 29545180
-                    }
-                ]
-            },
-            "ARCHITECTURAL_ENGINEERING_SERVICES": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "11-9041",
-                        "OCC_TITLE": "Architectural and Engineering Managers",
-                        "RISK_EMP": 422,
-                        "AT_RISK_ECONOMIC_VALUE": 57335185
+                        "OCC_CODE": "41-3021",
+                        "OCC_TITLE": "Insurance Sales Agents",
+                        "RISK_EMP": 3042,
+                        "AT_RISK_ECONOMIC_VALUE": 201380400
                     },
                     {
-                        "OCC_CODE": "17-2051",
-                        "OCC_TITLE": "Civil Engineers",
-                        "RISK_EMP": 383,
-                        "AT_RISK_ECONOMIC_VALUE": 35397949
-                    },
-                    {
-                        "OCC_CODE": "13-1051",
-                        "OCC_TITLE": "Cost Estimators",
-                        "RISK_EMP": 289,
-                        "AT_RISK_ECONOMIC_VALUE": 19825449
-                    },
-                    {
-                        "OCC_CODE": "17-1011",
-                        "OCC_TITLE": "Architects, Except Landscape and Naval",
-                        "RISK_EMP": 177,
-                        "AT_RISK_ECONOMIC_VALUE": 16145412
-                    },
-                    {
-                        "OCC_CODE": "17-3013",
-                        "OCC_TITLE": "Mechanical Drafters",
-                        "RISK_EMP": 168,
-                        "AT_RISK_ECONOMIC_VALUE": 10428464
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "11-9041",
-                        "OCC_TITLE": "Architectural and Engineering Managers",
-                        "RISK_EMP": 422,
-                        "AT_RISK_ECONOMIC_VALUE": 57335185
-                    },
-                    {
-                        "OCC_CODE": "17-2051",
-                        "OCC_TITLE": "Civil Engineers",
-                        "RISK_EMP": 383,
-                        "AT_RISK_ECONOMIC_VALUE": 35397949
-                    },
-                    {
-                        "OCC_CODE": "13-1051",
-                        "OCC_TITLE": "Cost Estimators",
-                        "RISK_EMP": 289,
-                        "AT_RISK_ECONOMIC_VALUE": 19825449
-                    },
-                    {
-                        "OCC_CODE": "17-1011",
-                        "OCC_TITLE": "Architects, Except Landscape and Naval",
-                        "RISK_EMP": 177,
-                        "AT_RISK_ECONOMIC_VALUE": 16145412
-                    },
-                    {
-                        "OCC_CODE": "17-2071",
-                        "OCC_TITLE": "Electrical Engineers",
-                        "RISK_EMP": 141,
-                        "AT_RISK_ECONOMIC_VALUE": 14526884
-                    }
-                ]
-            },
-            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "19-2041",
-                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
-                        "RISK_EMP": 128,
-                        "AT_RISK_ECONOMIC_VALUE": 8609877
-                    },
-                    {
-                        "OCC_CODE": "11-9121",
-                        "OCC_TITLE": "Natural Sciences Managers",
-                        "RISK_EMP": 125,
-                        "AT_RISK_ECONOMIC_VALUE": 14565803
-                    },
-                    {
-                        "OCC_CODE": "19-1042",
-                        "OCC_TITLE": "Medical Scientists, Except Epidemiologists",
-                        "RISK_EMP": 114,
-                        "AT_RISK_ECONOMIC_VALUE": 9234846
-                    },
-                    {
-                        "OCC_CODE": "19-4061",
-                        "OCC_TITLE": "Social Science Research Assistants",
-                        "RISK_EMP": 101,
-                        "AT_RISK_ECONOMIC_VALUE": 5455158
-                    },
-                    {
-                        "OCC_CODE": "19-1012",
-                        "OCC_TITLE": "Food Scientists and Technologists",
-                        "RISK_EMP": 86,
-                        "AT_RISK_ECONOMIC_VALUE": 6996433
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "11-9121",
-                        "OCC_TITLE": "Natural Sciences Managers",
-                        "RISK_EMP": 125,
-                        "AT_RISK_ECONOMIC_VALUE": 14565803
-                    },
-                    {
-                        "OCC_CODE": "19-1042",
-                        "OCC_TITLE": "Medical Scientists, Except Epidemiologists",
-                        "RISK_EMP": 114,
-                        "AT_RISK_ECONOMIC_VALUE": 9234846
-                    },
-                    {
-                        "OCC_CODE": "19-2041",
-                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
-                        "RISK_EMP": 128,
-                        "AT_RISK_ECONOMIC_VALUE": 8609877
-                    },
-                    {
-                        "OCC_CODE": "19-1012",
-                        "OCC_TITLE": "Food Scientists and Technologists",
-                        "RISK_EMP": 86,
-                        "AT_RISK_ECONOMIC_VALUE": 6996433
-                    },
-                    {
-                        "OCC_CODE": "19-4061",
-                        "OCC_TITLE": "Social Science Research Assistants",
-                        "RISK_EMP": 101,
-                        "AT_RISK_ECONOMIC_VALUE": 5455158
-                    }
-                ]
-            },
-            "MANAGEMENT_CONSULTING_SERVICES": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "13-1199",
-                        "OCC_TITLE": "Business Operations Specialists, All Other",
-                        "RISK_EMP": 1142,
-                        "AT_RISK_ECONOMIC_VALUE": 89813075
-                    },
-                    {
-                        "OCC_CODE": "13-1041",
-                        "OCC_TITLE": "Compliance Officers",
-                        "RISK_EMP": 1039,
-                        "AT_RISK_ECONOMIC_VALUE": 72606229
-                    },
-                    {
-                        "OCC_CODE": "11-9199",
-                        "OCC_TITLE": "Managers, All Other",
-                        "RISK_EMP": 390,
-                        "AT_RISK_ECONOMIC_VALUE": 46531209
-                    },
-                    {
-                        "OCC_CODE": "15-2031",
-                        "OCC_TITLE": "Operations Research Analysts",
-                        "RISK_EMP": 73,
-                        "AT_RISK_ECONOMIC_VALUE": 6636899
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "13-1199",
-                        "OCC_TITLE": "Business Operations Specialists, All Other",
-                        "RISK_EMP": 1142,
-                        "AT_RISK_ECONOMIC_VALUE": 89813075
-                    },
-                    {
-                        "OCC_CODE": "13-1041",
-                        "OCC_TITLE": "Compliance Officers",
-                        "RISK_EMP": 1039,
-                        "AT_RISK_ECONOMIC_VALUE": 72606229
-                    },
-                    {
-                        "OCC_CODE": "11-9199",
-                        "OCC_TITLE": "Managers, All Other",
-                        "RISK_EMP": 390,
-                        "AT_RISK_ECONOMIC_VALUE": 46531209
-                    },
-                    {
-                        "OCC_CODE": "15-2031",
-                        "OCC_TITLE": "Operations Research Analysts",
-                        "RISK_EMP": 73,
-                        "AT_RISK_ECONOMIC_VALUE": 6636899
-                    }
-                ]
-            },
-            "PACKAGING_AND_GOODS_TRANSPORTATION": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "53-7064",
-                        "OCC_TITLE": "Packers and Packagers, Hand",
-                        "RISK_EMP": 1901,
-                        "AT_RISK_ECONOMIC_VALUE": 65016680
-                    },
-                    {
-                        "OCC_CODE": "13-1081",
-                        "OCC_TITLE": "Logisticians",
-                        "RISK_EMP": 400,
-                        "AT_RISK_ECONOMIC_VALUE": 27401915
-                    },
-                    {
-                        "OCC_CODE": "43-5071",
-                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
-                        "RISK_EMP": 394,
-                        "AT_RISK_ECONOMIC_VALUE": 16106711
-                    },
-                    {
-                        "OCC_CODE": "19-3099",
-                        "OCC_TITLE": "Social Scientists and Related Workers, All Other",
-                        "RISK_EMP": 33,
-                        "AT_RISK_ECONOMIC_VALUE": 2941463
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "53-7064",
-                        "OCC_TITLE": "Packers and Packagers, Hand",
-                        "RISK_EMP": 1901,
-                        "AT_RISK_ECONOMIC_VALUE": 65016680
-                    },
-                    {
-                        "OCC_CODE": "13-1081",
-                        "OCC_TITLE": "Logisticians",
-                        "RISK_EMP": 400,
-                        "AT_RISK_ECONOMIC_VALUE": 27401915
-                    },
-                    {
-                        "OCC_CODE": "43-5071",
-                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
-                        "RISK_EMP": 394,
-                        "AT_RISK_ECONOMIC_VALUE": 16106711
-                    },
-                    {
-                        "OCC_CODE": "19-3099",
-                        "OCC_TITLE": "Social Scientists and Related Workers, All Other",
-                        "RISK_EMP": 33,
-                        "AT_RISK_ECONOMIC_VALUE": 2941463
-                    }
-                ]
-            },
-            "MEDIA_AND_COMMUNICATIONS_SERVICES": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "13-1161",
-                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
-                        "RISK_EMP": 791,
-                        "AT_RISK_ECONOMIC_VALUE": 51458547
-                    },
-                    {
-                        "OCC_CODE": "27-1024",
-                        "OCC_TITLE": "Graphic Designers",
-                        "RISK_EMP": 546,
-                        "AT_RISK_ECONOMIC_VALUE": 28899665
-                    },
-                    {
-                        "OCC_CODE": "27-3043",
-                        "OCC_TITLE": "Writers and Authors",
-                        "RISK_EMP": 30,
-                        "AT_RISK_ECONOMIC_VALUE": 2043117
-                    },
-                    {
-                        "OCC_CODE": "27-1013",
-                        "OCC_TITLE": "Fine Artists, Including Painters, Sculptors, and Illustrators",
-                        "RISK_EMP": 10,
-                        "AT_RISK_ECONOMIC_VALUE": 477298
-                    },
-                    {
-                        "OCC_CODE": "43-9081",
-                        "OCC_TITLE": "Proofreaders and Copy Markers",
-                        "RISK_EMP": 9,
-                        "AT_RISK_ECONOMIC_VALUE": 384710
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "13-1161",
-                        "OCC_TITLE": "Market Research Analysts and Marketing Specialists",
-                        "RISK_EMP": 791,
-                        "AT_RISK_ECONOMIC_VALUE": 51458547
-                    },
-                    {
-                        "OCC_CODE": "27-1024",
-                        "OCC_TITLE": "Graphic Designers",
-                        "RISK_EMP": 546,
-                        "AT_RISK_ECONOMIC_VALUE": 28899665
-                    },
-                    {
-                        "OCC_CODE": "27-3043",
-                        "OCC_TITLE": "Writers and Authors",
-                        "RISK_EMP": 30,
-                        "AT_RISK_ECONOMIC_VALUE": 2043117
-                    },
-                    {
-                        "OCC_CODE": "27-1013",
-                        "OCC_TITLE": "Fine Artists, Including Painters, Sculptors, and Illustrators",
-                        "RISK_EMP": 10,
-                        "AT_RISK_ECONOMIC_VALUE": 477298
-                    },
-                    {
-                        "OCC_CODE": "43-9081",
-                        "OCC_TITLE": "Proofreaders and Copy Markers",
-                        "RISK_EMP": 9,
-                        "AT_RISK_ECONOMIC_VALUE": 384710
-                    }
-                ]
-            },
-            "REAL_ESTATE_RENTAL_LEASING": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "13-2020",
-                        "OCC_TITLE": "Property Appraisers and Assessors",
-                        "RISK_EMP": 96,
-                        "AT_RISK_ECONOMIC_VALUE": 6848715
-                    },
-                    {
-                        "OCC_CODE": "23-2093",
-                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
-                        "RISK_EMP": 94,
-                        "AT_RISK_ECONOMIC_VALUE": 4664938
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "13-2020",
-                        "OCC_TITLE": "Property Appraisers and Assessors",
-                        "RISK_EMP": 96,
-                        "AT_RISK_ECONOMIC_VALUE": 6848715
-                    },
-                    {
-                        "OCC_CODE": "23-2093",
-                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
-                        "RISK_EMP": 94,
-                        "AT_RISK_ECONOMIC_VALUE": 4664938
-                    }
-                ]
-            },
-            "GOVERNMENT": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "43-4031",
-                        "OCC_TITLE": "Court, Municipal, and License Clerks",
-                        "RISK_EMP": 314,
-                        "AT_RISK_ECONOMIC_VALUE": 16400571
-                    },
-                    {
-                        "OCC_CODE": "33-3021",
-                        "OCC_TITLE": "Detectives and Criminal Investigators",
-                        "RISK_EMP": 72,
-                        "AT_RISK_ECONOMIC_VALUE": 6846566
-                    },
-                    {
-                        "OCC_CODE": "43-5051",
-                        "OCC_TITLE": "Postal Service Clerks",
-                        "RISK_EMP": 57,
-                        "AT_RISK_ECONOMIC_VALUE": 3207278
-                    },
-                    {
-                        "OCC_CODE": "13-2081",
-                        "OCC_TITLE": "Tax Examiners and Collectors, and Revenue Agents",
-                        "RISK_EMP": 45,
-                        "AT_RISK_ECONOMIC_VALUE": 2707606
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "43-4031",
-                        "OCC_TITLE": "Court, Municipal, and License Clerks",
-                        "RISK_EMP": 314,
-                        "AT_RISK_ECONOMIC_VALUE": 16400571
-                    },
-                    {
-                        "OCC_CODE": "33-3021",
-                        "OCC_TITLE": "Detectives and Criminal Investigators",
-                        "RISK_EMP": 72,
-                        "AT_RISK_ECONOMIC_VALUE": 6846566
-                    },
-                    {
-                        "OCC_CODE": "43-5051",
-                        "OCC_TITLE": "Postal Service Clerks",
-                        "RISK_EMP": 57,
-                        "AT_RISK_ECONOMIC_VALUE": 3207278
-                    },
-                    {
-                        "OCC_CODE": "13-2081",
-                        "OCC_TITLE": "Tax Examiners and Collectors, and Revenue Agents",
-                        "RISK_EMP": 45,
-                        "AT_RISK_ECONOMIC_VALUE": 2707606
-                    }
-                ]
-            },
-            "TECHNOLOGY_AND_SOFTWARE_DEVELOPMENT": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "15-1252",
-                        "OCC_TITLE": "Software Developers",
-                        "RISK_EMP": 2306,
-                        "AT_RISK_ECONOMIC_VALUE": 259118012
-                    },
-                    {
-                        "OCC_CODE": "15-1299",
-                        "OCC_TITLE": "Computer Occupations, All Other",
-                        "RISK_EMP": 1301,
-                        "AT_RISK_ECONOMIC_VALUE": 116940011
-                    },
-                    {
-                        "OCC_CODE": "15-1211",
-                        "OCC_TITLE": "Computer Systems Analysts",
-                        "RISK_EMP": 1103,
-                        "AT_RISK_ECONOMIC_VALUE": 99681563
-                    },
-                    {
-                        "OCC_CODE": "15-2051",
-                        "OCC_TITLE": "Data Scientists",
-                        "RISK_EMP": 451,
-                        "AT_RISK_ECONOMIC_VALUE": 42906626
-                    },
-                    {
-                        "OCC_CODE": "15-1253",
-                        "OCC_TITLE": "Software Quality Assurance Analysts and Testers",
-                        "RISK_EMP": 405,
-                        "AT_RISK_ECONOMIC_VALUE": 37107345
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "15-1252",
-                        "OCC_TITLE": "Software Developers",
-                        "RISK_EMP": 2306,
-                        "AT_RISK_ECONOMIC_VALUE": 259118012
-                    },
-                    {
-                        "OCC_CODE": "15-1299",
-                        "OCC_TITLE": "Computer Occupations, All Other",
-                        "RISK_EMP": 1301,
-                        "AT_RISK_ECONOMIC_VALUE": 116940011
-                    },
-                    {
-                        "OCC_CODE": "15-1211",
-                        "OCC_TITLE": "Computer Systems Analysts",
-                        "RISK_EMP": 1103,
-                        "AT_RISK_ECONOMIC_VALUE": 99681563
-                    },
-                    {
-                        "OCC_CODE": "15-2051",
-                        "OCC_TITLE": "Data Scientists",
-                        "RISK_EMP": 451,
-                        "AT_RISK_ECONOMIC_VALUE": 42906626
-                    },
-                    {
-                        "OCC_CODE": "15-1253",
-                        "OCC_TITLE": "Software Quality Assurance Analysts and Testers",
-                        "RISK_EMP": 405,
-                        "AT_RISK_ECONOMIC_VALUE": 37107345
+                        "OCC_CODE": "13-2072",
+                        "OCC_TITLE": "Loan Officers",
+                        "RISK_EMP": 1920,
+                        "AT_RISK_ECONOMIC_VALUE": 163564800
                     }
                 ]
             },
             "MANUFACTURING": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "17-2112",
-                        "OCC_TITLE": "Industrial Engineers",
-                        "RISK_EMP": 580,
-                        "AT_RISK_ECONOMIC_VALUE": 54579548
+                        "OCC_CODE": "41-4012",
+                        "OCC_TITLE": "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",
+                        "RISK_EMP": 4932,
+                        "AT_RISK_ECONOMIC_VALUE": 364228200
                     },
                     {
-                        "OCC_CODE": "17-2141",
-                        "OCC_TITLE": "Mechanical Engineers",
-                        "RISK_EMP": 233,
-                        "AT_RISK_ECONOMIC_VALUE": 21695023
+                        "OCC_CODE": "51-9111",
+                        "OCC_TITLE": "Packaging and Filling Machine Operators and Tenders",
+                        "RISK_EMP": 2720,
+                        "AT_RISK_ECONOMIC_VALUE": 115899200
                     },
                     {
-                        "OCC_CODE": "43-5061",
-                        "OCC_TITLE": "Production, Planning, and Expediting Clerks",
-                        "RISK_EMP": 199,
-                        "AT_RISK_ECONOMIC_VALUE": 10295632
+                        "OCC_CODE": "51-3022",
+                        "OCC_TITLE": "Meat, Poultry, and Fish Cutters and Trimmers",
+                        "RISK_EMP": 2648,
+                        "AT_RISK_ECONOMIC_VALUE": 118153760
                     },
                     {
-                        "OCC_CODE": "51-3011",
-                        "OCC_TITLE": "Bakers",
-                        "RISK_EMP": 170,
-                        "AT_RISK_ECONOMIC_VALUE": 5711094
+                        "OCC_CODE": "51-9061",
+                        "OCC_TITLE": "Inspectors, Testers, Sorters, Samplers, and Weighers",
+                        "RISK_EMP": 2639,
+                        "AT_RISK_ECONOMIC_VALUE": 128783199
                     },
                     {
-                        "OCC_CODE": "51-3092",
-                        "OCC_TITLE": "Food Batchmakers",
-                        "RISK_EMP": 159,
-                        "AT_RISK_ECONOMIC_VALUE": 6383464
+                        "OCC_CODE": "51-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Production and Operating Workers",
+                        "RISK_EMP": 2208,
+                        "AT_RISK_ECONOMIC_VALUE": 149680320
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "17-2112",
-                        "OCC_TITLE": "Industrial Engineers",
-                        "RISK_EMP": 580,
-                        "AT_RISK_ECONOMIC_VALUE": 54579548
+                        "OCC_CODE": "41-4012",
+                        "OCC_TITLE": "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",
+                        "RISK_EMP": 4932,
+                        "AT_RISK_ECONOMIC_VALUE": 364228200
                     },
                     {
-                        "OCC_CODE": "17-2141",
-                        "OCC_TITLE": "Mechanical Engineers",
-                        "RISK_EMP": 233,
-                        "AT_RISK_ECONOMIC_VALUE": 21695023
+                        "OCC_CODE": "51-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Production and Operating Workers",
+                        "RISK_EMP": 2208,
+                        "AT_RISK_ECONOMIC_VALUE": 149680320
                     },
                     {
-                        "OCC_CODE": "43-5061",
-                        "OCC_TITLE": "Production, Planning, and Expediting Clerks",
-                        "RISK_EMP": 199,
-                        "AT_RISK_ECONOMIC_VALUE": 10295632
+                        "OCC_CODE": "51-9061",
+                        "OCC_TITLE": "Inspectors, Testers, Sorters, Samplers, and Weighers",
+                        "RISK_EMP": 2639,
+                        "AT_RISK_ECONOMIC_VALUE": 128783199
                     },
                     {
-                        "OCC_CODE": "17-2072",
-                        "OCC_TITLE": "Electronics Engineers, Except Computer",
-                        "RISK_EMP": 82,
-                        "AT_RISK_ECONOMIC_VALUE": 7333642
+                        "OCC_CODE": "49-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+                        "RISK_EMP": 1688,
+                        "AT_RISK_ECONOMIC_VALUE": 125334000
                     },
                     {
-                        "OCC_CODE": "51-3092",
-                        "OCC_TITLE": "Food Batchmakers",
-                        "RISK_EMP": 159,
-                        "AT_RISK_ECONOMIC_VALUE": 6383464
+                        "OCC_CODE": "51-3022",
+                        "OCC_TITLE": "Meat, Poultry, and Fish Cutters and Trimmers",
+                        "RISK_EMP": 2648,
+                        "AT_RISK_ECONOMIC_VALUE": 118153760
                     }
                 ]
             },
-            "ENERGY": {
+            "PACKAGING_AND_GOODS_TRANSPORTATION": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "17-2199",
-                        "OCC_TITLE": "Engineers, All Other",
-                        "RISK_EMP": 128,
-                        "AT_RISK_ECONOMIC_VALUE": 10808743
+                        "OCC_CODE": "53-7065",
+                        "OCC_TITLE": "Stockers and Order Fillers",
+                        "RISK_EMP": 11221,
+                        "AT_RISK_ECONOMIC_VALUE": 400814120
                     },
                     {
-                        "OCC_CODE": "17-2161",
-                        "OCC_TITLE": "Nuclear Engineers",
-                        "RISK_EMP": 7,
-                        "AT_RISK_ECONOMIC_VALUE": 430875
+                        "OCC_CODE": "53-7062",
+                        "OCC_TITLE": "Laborers and Freight, Stock, and Material Movers, Hand",
+                        "RISK_EMP": 10948,
+                        "AT_RISK_ECONOMIC_VALUE": 435949360
+                    },
+                    {
+                        "OCC_CODE": "53-3032",
+                        "OCC_TITLE": "Heavy and Tractor-Trailer Truck Drivers",
+                        "RISK_EMP": 9888,
+                        "AT_RISK_ECONOMIC_VALUE": 580227840
+                    },
+                    {
+                        "OCC_CODE": "43-5071",
+                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
+                        "RISK_EMP": 3891,
+                        "AT_RISK_ECONOMIC_VALUE": 159027120
+                    },
+                    {
+                        "OCC_CODE": "53-7064",
+                        "OCC_TITLE": "Packers and Packagers, Hand",
+                        "RISK_EMP": 3164,
+                        "AT_RISK_ECONOMIC_VALUE": 108177160
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "17-2199",
-                        "OCC_TITLE": "Engineers, All Other",
-                        "RISK_EMP": 128,
-                        "AT_RISK_ECONOMIC_VALUE": 10808743
+                        "OCC_CODE": "53-3032",
+                        "OCC_TITLE": "Heavy and Tractor-Trailer Truck Drivers",
+                        "RISK_EMP": 9888,
+                        "AT_RISK_ECONOMIC_VALUE": 580227840
                     },
                     {
-                        "OCC_CODE": "17-2161",
-                        "OCC_TITLE": "Nuclear Engineers",
-                        "RISK_EMP": 7,
-                        "AT_RISK_ECONOMIC_VALUE": 430875
+                        "OCC_CODE": "53-7062",
+                        "OCC_TITLE": "Laborers and Freight, Stock, and Material Movers, Hand",
+                        "RISK_EMP": 10948,
+                        "AT_RISK_ECONOMIC_VALUE": 435949360
+                    },
+                    {
+                        "OCC_CODE": "53-7065",
+                        "OCC_TITLE": "Stockers and Order Fillers",
+                        "RISK_EMP": 11221,
+                        "AT_RISK_ECONOMIC_VALUE": 400814120
+                    },
+                    {
+                        "OCC_CODE": "43-5071",
+                        "OCC_TITLE": "Shipping, Receiving, and Inventory Clerks",
+                        "RISK_EMP": 3891,
+                        "AT_RISK_ECONOMIC_VALUE": 159027120
+                    },
+                    {
+                        "OCC_CODE": "53-3033",
+                        "OCC_TITLE": "Light Truck Drivers",
+                        "RISK_EMP": 2496,
+                        "AT_RISK_ECONOMIC_VALUE": 115764480
+                    }
+                ]
+            },
+            "EDUCATIONAL_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "25-3031",
+                        "OCC_TITLE": "Substitute Teachers, Short-Term",
+                        "RISK_EMP": 1113,
+                        "AT_RISK_ECONOMIC_VALUE": 53602080
+                    },
+                    {
+                        "OCC_CODE": "13-1151",
+                        "OCC_TITLE": "Training and Development Specialists",
+                        "RISK_EMP": 816,
+                        "AT_RISK_ECONOMIC_VALUE": 58009440
+                    },
+                    {
+                        "OCC_CODE": "25-3021",
+                        "OCC_TITLE": "Self-Enrichment Teachers",
+                        "RISK_EMP": 747,
+                        "AT_RISK_ECONOMIC_VALUE": 31799790
+                    },
+                    {
+                        "OCC_CODE": "25-1071",
+                        "OCC_TITLE": "Health Specialties Teachers, Postsecondary",
+                        "RISK_EMP": 657,
+                        "AT_RISK_ECONOMIC_VALUE": 120382110
+                    },
+                    {
+                        "OCC_CODE": "21-1012",
+                        "OCC_TITLE": "Educational, Guidance, and Career Counselors and Advisors",
+                        "RISK_EMP": 618,
+                        "AT_RISK_ECONOMIC_VALUE": 41189700
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "25-1071",
+                        "OCC_TITLE": "Health Specialties Teachers, Postsecondary",
+                        "RISK_EMP": 657,
+                        "AT_RISK_ECONOMIC_VALUE": 120382110
+                    },
+                    {
+                        "OCC_CODE": "11-9032",
+                        "OCC_TITLE": "Education Administrators, Kindergarten through Secondary",
+                        "RISK_EMP": 543,
+                        "AT_RISK_ECONOMIC_VALUE": 59968920
+                    },
+                    {
+                        "OCC_CODE": "13-1151",
+                        "OCC_TITLE": "Training and Development Specialists",
+                        "RISK_EMP": 816,
+                        "AT_RISK_ECONOMIC_VALUE": 58009440
+                    },
+                    {
+                        "OCC_CODE": "25-3031",
+                        "OCC_TITLE": "Substitute Teachers, Short-Term",
+                        "RISK_EMP": 1113,
+                        "AT_RISK_ECONOMIC_VALUE": 53602080
+                    },
+                    {
+                        "OCC_CODE": "11-9033",
+                        "OCC_TITLE": "Education Administrators, Postsecondary",
+                        "RISK_EMP": 438,
+                        "AT_RISK_ECONOMIC_VALUE": 50869320
+                    }
+                ]
+            },
+            "AGRICULTURE_FORESTRY_FISHING_HUNTING": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "37-3011",
+                        "OCC_TITLE": "Landscaping and Groundskeeping Workers",
+                        "RISK_EMP": 1812,
+                        "AT_RISK_ECONOMIC_VALUE": 69508320
+                    },
+                    {
+                        "OCC_CODE": "45-2091",
+                        "OCC_TITLE": "Agricultural Equipment Operators",
+                        "RISK_EMP": 744,
+                        "AT_RISK_ECONOMIC_VALUE": 33680880
+                    },
+                    {
+                        "OCC_CODE": "39-2021",
+                        "OCC_TITLE": "Animal Caretakers",
+                        "RISK_EMP": 612,
+                        "AT_RISK_ECONOMIC_VALUE": 18892440
+                    },
+                    {
+                        "OCC_CODE": "49-3041",
+                        "OCC_TITLE": "Farm Equipment Mechanics and Service Technicians",
+                        "RISK_EMP": 480,
+                        "AT_RISK_ECONOMIC_VALUE": 25224000
+                    },
+                    {
+                        "OCC_CODE": "37-1012",
+                        "OCC_TITLE": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",
+                        "RISK_EMP": 312,
+                        "AT_RISK_ECONOMIC_VALUE": 17484480
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "37-3011",
+                        "OCC_TITLE": "Landscaping and Groundskeeping Workers",
+                        "RISK_EMP": 1812,
+                        "AT_RISK_ECONOMIC_VALUE": 69508320
+                    },
+                    {
+                        "OCC_CODE": "45-2091",
+                        "OCC_TITLE": "Agricultural Equipment Operators",
+                        "RISK_EMP": 744,
+                        "AT_RISK_ECONOMIC_VALUE": 33680880
+                    },
+                    {
+                        "OCC_CODE": "49-3041",
+                        "OCC_TITLE": "Farm Equipment Mechanics and Service Technicians",
+                        "RISK_EMP": 480,
+                        "AT_RISK_ECONOMIC_VALUE": 25224000
+                    },
+                    {
+                        "OCC_CODE": "39-2021",
+                        "OCC_TITLE": "Animal Caretakers",
+                        "RISK_EMP": 612,
+                        "AT_RISK_ECONOMIC_VALUE": 18892440
+                    },
+                    {
+                        "OCC_CODE": "37-1012",
+                        "OCC_TITLE": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",
+                        "RISK_EMP": 312,
+                        "AT_RISK_ECONOMIC_VALUE": 17484480
+                    }
+                ]
+            },
+            "CONSTRUCTION": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "47-2061",
+                        "OCC_TITLE": "Construction Laborers",
+                        "RISK_EMP": 2728,
+                        "AT_RISK_ECONOMIC_VALUE": 120495760
+                    },
+                    {
+                        "OCC_CODE": "47-2031",
+                        "OCC_TITLE": "Carpenters",
+                        "RISK_EMP": 2480,
+                        "AT_RISK_ECONOMIC_VALUE": 121991200
+                    },
+                    {
+                        "OCC_CODE": "47-2111",
+                        "OCC_TITLE": "Electricians",
+                        "RISK_EMP": 1848,
+                        "AT_RISK_ECONOMIC_VALUE": 110676720
+                    },
+                    {
+                        "OCC_CODE": "47-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Construction Trades and Extraction Workers",
+                        "RISK_EMP": 1803,
+                        "AT_RISK_ECONOMIC_VALUE": 133782600
+                    },
+                    {
+                        "OCC_CODE": "47-4051",
+                        "OCC_TITLE": "Highway Maintenance Workers",
+                        "RISK_EMP": 1080,
+                        "AT_RISK_ECONOMIC_VALUE": 47800800
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "47-1011",
+                        "OCC_TITLE": "First-Line Supervisors of Construction Trades and Extraction Workers",
+                        "RISK_EMP": 1803,
+                        "AT_RISK_ECONOMIC_VALUE": 133782600
+                    },
+                    {
+                        "OCC_CODE": "47-2031",
+                        "OCC_TITLE": "Carpenters",
+                        "RISK_EMP": 2480,
+                        "AT_RISK_ECONOMIC_VALUE": 121991200
+                    },
+                    {
+                        "OCC_CODE": "47-2061",
+                        "OCC_TITLE": "Construction Laborers",
+                        "RISK_EMP": 2728,
+                        "AT_RISK_ECONOMIC_VALUE": 120495760
+                    },
+                    {
+                        "OCC_CODE": "47-2111",
+                        "OCC_TITLE": "Electricians",
+                        "RISK_EMP": 1848,
+                        "AT_RISK_ECONOMIC_VALUE": 110676720
+                    },
+                    {
+                        "OCC_CODE": "11-9021",
+                        "OCC_TITLE": "Construction Managers",
+                        "RISK_EMP": 897,
+                        "AT_RISK_ECONOMIC_VALUE": 85672470
+                    }
+                ]
+            },
+            "ARCHITECTURAL_ENGINEERING_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "13-1051",
+                        "OCC_TITLE": "Cost Estimators",
+                        "RISK_EMP": 1074,
+                        "AT_RISK_ECONOMIC_VALUE": 73654920
+                    },
+                    {
+                        "OCC_CODE": "17-2051",
+                        "OCC_TITLE": "Civil Engineers",
+                        "RISK_EMP": 579,
+                        "AT_RISK_ECONOMIC_VALUE": 53453280
+                    },
+                    {
+                        "OCC_CODE": "17-3011",
+                        "OCC_TITLE": "Architectural and Civil Drafters",
+                        "RISK_EMP": 432,
+                        "AT_RISK_ECONOMIC_VALUE": 25513920
+                    },
+                    {
+                        "OCC_CODE": "11-9041",
+                        "OCC_TITLE": "Architectural and Engineering Managers",
+                        "RISK_EMP": 393,
+                        "AT_RISK_ECONOMIC_VALUE": 53310450
+                    },
+                    {
+                        "OCC_CODE": "17-3013",
+                        "OCC_TITLE": "Mechanical Drafters",
+                        "RISK_EMP": 384,
+                        "AT_RISK_ECONOMIC_VALUE": 23727360
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "13-1051",
+                        "OCC_TITLE": "Cost Estimators",
+                        "RISK_EMP": 1074,
+                        "AT_RISK_ECONOMIC_VALUE": 73654920
+                    },
+                    {
+                        "OCC_CODE": "17-2051",
+                        "OCC_TITLE": "Civil Engineers",
+                        "RISK_EMP": 579,
+                        "AT_RISK_ECONOMIC_VALUE": 53453280
+                    },
+                    {
+                        "OCC_CODE": "11-9041",
+                        "OCC_TITLE": "Architectural and Engineering Managers",
+                        "RISK_EMP": 393,
+                        "AT_RISK_ECONOMIC_VALUE": 53310450
+                    },
+                    {
+                        "OCC_CODE": "17-2071",
+                        "OCC_TITLE": "Electrical Engineers",
+                        "RISK_EMP": 340,
+                        "AT_RISK_ECONOMIC_VALUE": 34887400
+                    },
+                    {
+                        "OCC_CODE": "17-3011",
+                        "OCC_TITLE": "Architectural and Civil Drafters",
+                        "RISK_EMP": 432,
+                        "AT_RISK_ECONOMIC_VALUE": 25513920
+                    }
+                ]
+            },
+            "TRAVEL_AND_ENTERTAINMENT_SERVICES": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "35-3023",
+                        "OCC_TITLE": "Fast Food and Counter Workers",
+                        "RISK_EMP": 19677,
+                        "AT_RISK_ECONOMIC_VALUE": 554694630
+                    },
+                    {
+                        "OCC_CODE": "35-3031",
+                        "OCC_TITLE": "Waiters and Waitresses",
+                        "RISK_EMP": 5204,
+                        "AT_RISK_ECONOMIC_VALUE": 194265320
+                    },
+                    {
+                        "OCC_CODE": "35-2021",
+                        "OCC_TITLE": "Food Preparation Workers",
+                        "RISK_EMP": 4146,
+                        "AT_RISK_ECONOMIC_VALUE": 126618840
+                    },
+                    {
+                        "OCC_CODE": "35-1012",
+                        "OCC_TITLE": "First-Line Supervisors of Food Preparation and Serving Workers",
+                        "RISK_EMP": 2764,
+                        "AT_RISK_ECONOMIC_VALUE": 106745680
+                    },
+                    {
+                        "OCC_CODE": "35-3011",
+                        "OCC_TITLE": "Bartenders",
+                        "RISK_EMP": 2244,
+                        "AT_RISK_ECONOMIC_VALUE": 73558320
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "35-3023",
+                        "OCC_TITLE": "Fast Food and Counter Workers",
+                        "RISK_EMP": 19677,
+                        "AT_RISK_ECONOMIC_VALUE": 554694630
+                    },
+                    {
+                        "OCC_CODE": "35-3031",
+                        "OCC_TITLE": "Waiters and Waitresses",
+                        "RISK_EMP": 5204,
+                        "AT_RISK_ECONOMIC_VALUE": 194265320
+                    },
+                    {
+                        "OCC_CODE": "35-2021",
+                        "OCC_TITLE": "Food Preparation Workers",
+                        "RISK_EMP": 4146,
+                        "AT_RISK_ECONOMIC_VALUE": 126618840
+                    },
+                    {
+                        "OCC_CODE": "35-1012",
+                        "OCC_TITLE": "First-Line Supervisors of Food Preparation and Serving Workers",
+                        "RISK_EMP": 2764,
+                        "AT_RISK_ECONOMIC_VALUE": 106745680
+                    },
+                    {
+                        "OCC_CODE": "35-3011",
+                        "OCC_TITLE": "Bartenders",
+                        "RISK_EMP": 2244,
+                        "AT_RISK_ECONOMIC_VALUE": 73558320
+                    }
+                ]
+            },
+            "HEALTHCARE": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "29-1141",
+                        "OCC_TITLE": "Registered Nurses",
+                        "RISK_EMP": 6861,
+                        "AT_RISK_ECONOMIC_VALUE": 547370580
+                    },
+                    {
+                        "OCC_CODE": "31-1131",
+                        "OCC_TITLE": "Nursing Assistants",
+                        "RISK_EMP": 4959,
+                        "AT_RISK_ECONOMIC_VALUE": 190772730
+                    },
+                    {
+                        "OCC_CODE": "43-6013",
+                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
+                        "RISK_EMP": 3585,
+                        "AT_RISK_ECONOMIC_VALUE": 152326650
+                    },
+                    {
+                        "OCC_CODE": "39-9011",
+                        "OCC_TITLE": "Childcare Workers",
+                        "RISK_EMP": 2781,
+                        "AT_RISK_ECONOMIC_VALUE": 81372060
+                    },
+                    {
+                        "OCC_CODE": "29-2052",
+                        "OCC_TITLE": "Pharmacy Technicians",
+                        "RISK_EMP": 1792,
+                        "AT_RISK_ECONOMIC_VALUE": 72773120
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "29-1141",
+                        "OCC_TITLE": "Registered Nurses",
+                        "RISK_EMP": 6861,
+                        "AT_RISK_ECONOMIC_VALUE": 547370580
+                    },
+                    {
+                        "OCC_CODE": "31-1131",
+                        "OCC_TITLE": "Nursing Assistants",
+                        "RISK_EMP": 4959,
+                        "AT_RISK_ECONOMIC_VALUE": 190772730
+                    },
+                    {
+                        "OCC_CODE": "11-9111",
+                        "OCC_TITLE": "Medical and Health Services Managers",
+                        "RISK_EMP": 1500,
+                        "AT_RISK_ECONOMIC_VALUE": 172635000
+                    },
+                    {
+                        "OCC_CODE": "43-6013",
+                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
+                        "RISK_EMP": 3585,
+                        "AT_RISK_ECONOMIC_VALUE": 152326650
+                    },
+                    {
+                        "OCC_CODE": "29-2061",
+                        "OCC_TITLE": "Licensed Practical and Licensed Vocational Nurses",
+                        "RISK_EMP": 1464,
+                        "AT_RISK_ECONOMIC_VALUE": 82159680
+                    }
+                ]
+            },
+            "SCIENTIFIC_RESEARCH_AND_DEVELOPMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "19-1013",
+                        "OCC_TITLE": "Soil and Plant Scientists",
+                        "RISK_EMP": 201,
+                        "AT_RISK_ECONOMIC_VALUE": 13680060
+                    },
+                    {
+                        "OCC_CODE": "19-1042",
+                        "OCC_TITLE": "Medical Scientists, Except Epidemiologists",
+                        "RISK_EMP": 147,
+                        "AT_RISK_ECONOMIC_VALUE": 11871720
+                    },
+                    {
+                        "OCC_CODE": "19-4061",
+                        "OCC_TITLE": "Social Science Research Assistants",
+                        "RISK_EMP": 132,
+                        "AT_RISK_ECONOMIC_VALUE": 7072560
+                    },
+                    {
+                        "OCC_CODE": "19-2041",
+                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
+                        "RISK_EMP": 120,
+                        "AT_RISK_ECONOMIC_VALUE": 8037600
+                    },
+                    {
+                        "OCC_CODE": "11-9121",
+                        "OCC_TITLE": "Natural Sciences Managers",
+                        "RISK_EMP": 90,
+                        "AT_RISK_ECONOMIC_VALUE": 10486800
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "19-1013",
+                        "OCC_TITLE": "Soil and Plant Scientists",
+                        "RISK_EMP": 201,
+                        "AT_RISK_ECONOMIC_VALUE": 13680060
+                    },
+                    {
+                        "OCC_CODE": "19-1042",
+                        "OCC_TITLE": "Medical Scientists, Except Epidemiologists",
+                        "RISK_EMP": 147,
+                        "AT_RISK_ECONOMIC_VALUE": 11871720
+                    },
+                    {
+                        "OCC_CODE": "11-9121",
+                        "OCC_TITLE": "Natural Sciences Managers",
+                        "RISK_EMP": 90,
+                        "AT_RISK_ECONOMIC_VALUE": 10486800
+                    },
+                    {
+                        "OCC_CODE": "19-2041",
+                        "OCC_TITLE": "Environmental Scientists and Specialists, Including Health",
+                        "RISK_EMP": 120,
+                        "AT_RISK_ECONOMIC_VALUE": 8037600
+                    },
+                    {
+                        "OCC_CODE": "19-4061",
+                        "OCC_TITLE": "Social Science Research Assistants",
+                        "RISK_EMP": 132,
+                        "AT_RISK_ECONOMIC_VALUE": 7072560
+                    }
+                ]
+            },
+            "GOVERNMENT": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "43-5052",
+                        "OCC_TITLE": "Postal Service Mail Carriers",
+                        "RISK_EMP": 1260,
+                        "AT_RISK_ECONOMIC_VALUE": 74667600
+                    },
+                    {
+                        "OCC_CODE": "33-3012",
+                        "OCC_TITLE": "Correctional Officers and Jailers",
+                        "RISK_EMP": 1204,
+                        "AT_RISK_ECONOMIC_VALUE": 70133000
+                    },
+                    {
+                        "OCC_CODE": "33-3051",
+                        "OCC_TITLE": "Police and Sheriff's Patrol Officers",
+                        "RISK_EMP": 1149,
+                        "AT_RISK_ECONOMIC_VALUE": 78522660
+                    },
+                    {
+                        "OCC_CODE": "43-4031",
+                        "OCC_TITLE": "Court, Municipal, and License Clerks",
+                        "RISK_EMP": 902,
+                        "AT_RISK_ECONOMIC_VALUE": 47091450
+                    },
+                    {
+                        "OCC_CODE": "43-5053",
+                        "OCC_TITLE": "Postal Service Mail Sorters, Processors, and Processing Machine Operators",
+                        "RISK_EMP": 637,
+                        "AT_RISK_ECONOMIC_VALUE": 36312000
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "33-3051",
+                        "OCC_TITLE": "Police and Sheriff's Patrol Officers",
+                        "RISK_EMP": 1149,
+                        "AT_RISK_ECONOMIC_VALUE": 78522660
+                    },
+                    {
+                        "OCC_CODE": "43-5052",
+                        "OCC_TITLE": "Postal Service Mail Carriers",
+                        "RISK_EMP": 1260,
+                        "AT_RISK_ECONOMIC_VALUE": 74667600
+                    },
+                    {
+                        "OCC_CODE": "33-3012",
+                        "OCC_TITLE": "Correctional Officers and Jailers",
+                        "RISK_EMP": 1204,
+                        "AT_RISK_ECONOMIC_VALUE": 70133000
+                    },
+                    {
+                        "OCC_CODE": "43-4031",
+                        "OCC_TITLE": "Court, Municipal, and License Clerks",
+                        "RISK_EMP": 902,
+                        "AT_RISK_ECONOMIC_VALUE": 47091450
+                    },
+                    {
+                        "OCC_CODE": "43-5053",
+                        "OCC_TITLE": "Postal Service Mail Sorters, Processors, and Processing Machine Operators",
+                        "RISK_EMP": 637,
+                        "AT_RISK_ECONOMIC_VALUE": 36312000
+                    }
+                ]
+            },
+            "REAL_ESTATE_RENTAL_LEASING": {
+                "top_5_by_employment": [
+                    {
+                        "OCC_CODE": "11-9141",
+                        "OCC_TITLE": "Property, Real Estate, and Community Association Managers",
+                        "RISK_EMP": 532,
+                        "AT_RISK_ECONOMIC_VALUE": 35340760
+                    },
+                    {
+                        "OCC_CODE": "41-9022",
+                        "OCC_TITLE": "Real Estate Sales Agents",
+                        "RISK_EMP": 420,
+                        "AT_RISK_ECONOMIC_VALUE": 20340600
+                    },
+                    {
+                        "OCC_CODE": "41-9021",
+                        "OCC_TITLE": "Real Estate Brokers",
+                        "RISK_EMP": 396,
+                        "AT_RISK_ECONOMIC_VALUE": 21799800
+                    },
+                    {
+                        "OCC_CODE": "23-2093",
+                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
+                        "RISK_EMP": 308,
+                        "AT_RISK_ECONOMIC_VALUE": 15227519
+                    }
+                ],
+                "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "11-9141",
+                        "OCC_TITLE": "Property, Real Estate, and Community Association Managers",
+                        "RISK_EMP": 532,
+                        "AT_RISK_ECONOMIC_VALUE": 35340760
+                    },
+                    {
+                        "OCC_CODE": "41-9021",
+                        "OCC_TITLE": "Real Estate Brokers",
+                        "RISK_EMP": 396,
+                        "AT_RISK_ECONOMIC_VALUE": 21799800
+                    },
+                    {
+                        "OCC_CODE": "41-9022",
+                        "OCC_TITLE": "Real Estate Sales Agents",
+                        "RISK_EMP": 420,
+                        "AT_RISK_ECONOMIC_VALUE": 20340600
+                    },
+                    {
+                        "OCC_CODE": "23-2093",
+                        "OCC_TITLE": "Title Examiners, Abstractors, and Searchers",
+                        "RISK_EMP": 308,
+                        "AT_RISK_ECONOMIC_VALUE": 15227519
                     }
                 ]
             },
             "MINING_OIL_GAS_EXTRACTION": {
                 "top_5_by_employment": [
                     {
+                        "OCC_CODE": "47-5022",
+                        "OCC_TITLE": "Excavating and Loading Machine and Dragline Operators, Surface Mining",
+                        "RISK_EMP": 240,
+                        "AT_RISK_ECONOMIC_VALUE": 12405600
+                    },
+                    {
+                        "OCC_CODE": "47-5023",
+                        "OCC_TITLE": "Earth Drillers, Except Oil and Gas",
+                        "RISK_EMP": 64,
+                        "AT_RISK_ECONOMIC_VALUE": 3257600
+                    },
+                    {
                         "OCC_CODE": "17-2171",
                         "OCC_TITLE": "Petroleum Engineers",
-                        "RISK_EMP": 33,
-                        "AT_RISK_ECONOMIC_VALUE": 3155078
+                        "RISK_EMP": 44,
+                        "AT_RISK_ECONOMIC_VALUE": 4170320
+                    },
+                    {
+                        "OCC_CODE": "47-5041",
+                        "OCC_TITLE": "Continuous Mining Machine Operators",
+                        "RISK_EMP": 44,
+                        "AT_RISK_ECONOMIC_VALUE": 2310880
+                    },
+                    {
+                        "OCC_CODE": "47-5013",
+                        "OCC_TITLE": "Service Unit Operators, Oil and Gas",
+                        "RISK_EMP": 24,
+                        "AT_RISK_ECONOMIC_VALUE": 990480
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
+                        "OCC_CODE": "47-5022",
+                        "OCC_TITLE": "Excavating and Loading Machine and Dragline Operators, Surface Mining",
+                        "RISK_EMP": 240,
+                        "AT_RISK_ECONOMIC_VALUE": 12405600
+                    },
+                    {
                         "OCC_CODE": "17-2171",
                         "OCC_TITLE": "Petroleum Engineers",
-                        "RISK_EMP": 33,
-                        "AT_RISK_ECONOMIC_VALUE": 3155078
+                        "RISK_EMP": 44,
+                        "AT_RISK_ECONOMIC_VALUE": 4170320
+                    },
+                    {
+                        "OCC_CODE": "47-5023",
+                        "OCC_TITLE": "Earth Drillers, Except Oil and Gas",
+                        "RISK_EMP": 64,
+                        "AT_RISK_ECONOMIC_VALUE": 3257600
+                    },
+                    {
+                        "OCC_CODE": "47-5041",
+                        "OCC_TITLE": "Continuous Mining Machine Operators",
+                        "RISK_EMP": 44,
+                        "AT_RISK_ECONOMIC_VALUE": 2310880
+                    },
+                    {
+                        "OCC_CODE": "47-5012",
+                        "OCC_TITLE": "Rotary Drill Operators, Oil and Gas",
+                        "RISK_EMP": 16,
+                        "AT_RISK_ECONOMIC_VALUE": 1132320
                     }
                 ]
             },
-            "ADMINISTRATIVE_SUPPORT_WASTE_SERVICES": {
+            "ENERGY": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "43-6014",
-                        "OCC_TITLE": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
-                        "RISK_EMP": 3286,
-                        "AT_RISK_ECONOMIC_VALUE": 140029562
+                        "OCC_CODE": "51-8031",
+                        "OCC_TITLE": "Water and Wastewater Treatment Plant and System Operators",
+                        "RISK_EMP": 516,
+                        "AT_RISK_ECONOMIC_VALUE": 28003320
                     },
                     {
-                        "OCC_CODE": "43-6011",
-                        "OCC_TITLE": "Executive Secretaries and Executive Administrative Assistants",
-                        "RISK_EMP": 382,
-                        "AT_RISK_ECONOMIC_VALUE": 24089883
+                        "OCC_CODE": "49-9051",
+                        "OCC_TITLE": "Electrical Power-Line Installers and Repairers",
+                        "RISK_EMP": 327,
+                        "AT_RISK_ECONOMIC_VALUE": 24740820
                     },
                     {
-                        "OCC_CODE": "43-9199",
-                        "OCC_TITLE": "Office and Administrative Support Workers, All Other",
-                        "RISK_EMP": 344,
-                        "AT_RISK_ECONOMIC_VALUE": 11244824
+                        "OCC_CODE": "17-2199",
+                        "OCC_TITLE": "Engineers, All Other",
+                        "RISK_EMP": 184,
+                        "AT_RISK_ECONOMIC_VALUE": 15483600
                     },
                     {
-                        "OCC_CODE": "43-4071",
-                        "OCC_TITLE": "File Clerks",
-                        "RISK_EMP": 339,
-                        "AT_RISK_ECONOMIC_VALUE": 12972379
+                        "OCC_CODE": "49-9099",
+                        "OCC_TITLE": "Installation, Maintenance, and Repair Workers, All Other",
+                        "RISK_EMP": 184,
+                        "AT_RISK_ECONOMIC_VALUE": 8379360
                     },
                     {
-                        "OCC_CODE": "43-3061",
-                        "OCC_TITLE": "Procurement Clerks",
-                        "RISK_EMP": 286,
-                        "AT_RISK_ECONOMIC_VALUE": 13132324
+                        "OCC_CODE": "51-8021",
+                        "OCC_TITLE": "Stationary Engineers and Boiler Operators",
+                        "RISK_EMP": 180,
+                        "AT_RISK_ECONOMIC_VALUE": 10299600
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "43-6014",
-                        "OCC_TITLE": "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",
-                        "RISK_EMP": 3286,
-                        "AT_RISK_ECONOMIC_VALUE": 140029562
+                        "OCC_CODE": "51-8031",
+                        "OCC_TITLE": "Water and Wastewater Treatment Plant and System Operators",
+                        "RISK_EMP": 516,
+                        "AT_RISK_ECONOMIC_VALUE": 28003320
                     },
                     {
-                        "OCC_CODE": "43-6011",
-                        "OCC_TITLE": "Executive Secretaries and Executive Administrative Assistants",
-                        "RISK_EMP": 382,
-                        "AT_RISK_ECONOMIC_VALUE": 24089883
+                        "OCC_CODE": "49-9051",
+                        "OCC_TITLE": "Electrical Power-Line Installers and Repairers",
+                        "RISK_EMP": 327,
+                        "AT_RISK_ECONOMIC_VALUE": 24740820
                     },
                     {
-                        "OCC_CODE": "43-3061",
-                        "OCC_TITLE": "Procurement Clerks",
-                        "RISK_EMP": 286,
-                        "AT_RISK_ECONOMIC_VALUE": 13132324
+                        "OCC_CODE": "17-2199",
+                        "OCC_TITLE": "Engineers, All Other",
+                        "RISK_EMP": 184,
+                        "AT_RISK_ECONOMIC_VALUE": 15483600
                     },
                     {
-                        "OCC_CODE": "43-4071",
-                        "OCC_TITLE": "File Clerks",
-                        "RISK_EMP": 339,
-                        "AT_RISK_ECONOMIC_VALUE": 12972379
+                        "OCC_CODE": "51-8021",
+                        "OCC_TITLE": "Stationary Engineers and Boiler Operators",
+                        "RISK_EMP": 180,
+                        "AT_RISK_ECONOMIC_VALUE": 10299600
                     },
                     {
-                        "OCC_CODE": "43-9199",
-                        "OCC_TITLE": "Office and Administrative Support Workers, All Other",
-                        "RISK_EMP": 344,
-                        "AT_RISK_ECONOMIC_VALUE": 11244824
+                        "OCC_CODE": "49-9099",
+                        "OCC_TITLE": "Installation, Maintenance, and Repair Workers, All Other",
+                        "RISK_EMP": 184,
+                        "AT_RISK_ECONOMIC_VALUE": 8379360
                     }
                 ]
             },
@@ -1002,304 +1666,172 @@
                     {
                         "OCC_CODE": "43-6012",
                         "OCC_TITLE": "Legal Secretaries and Administrative Assistants",
-                        "RISK_EMP": 164,
-                        "AT_RISK_ECONOMIC_VALUE": 7688412
+                        "RISK_EMP": 1241,
+                        "AT_RISK_ECONOMIC_VALUE": 57942290
+                    },
+                    {
+                        "OCC_CODE": "23-1011",
+                        "OCC_TITLE": "Lawyers",
+                        "RISK_EMP": 1065,
+                        "AT_RISK_ECONOMIC_VALUE": 132890700
                     },
                     {
                         "OCC_CODE": "23-2011",
                         "OCC_TITLE": "Paralegals and Legal Assistants",
-                        "RISK_EMP": 113,
-                        "AT_RISK_ECONOMIC_VALUE": 6867985
+                        "RISK_EMP": 993,
+                        "AT_RISK_ECONOMIC_VALUE": 60216519
                     },
                     {
-                        "OCC_CODE": "23-2099",
-                        "OCC_TITLE": "Legal Support Workers, All Other",
-                        "RISK_EMP": 42,
-                        "AT_RISK_ECONOMIC_VALUE": 2692250
+                        "OCC_CODE": "27-3092",
+                        "OCC_TITLE": "Court Reporters and Simultaneous Captioners",
+                        "RISK_EMP": 49,
+                        "AT_RISK_ECONOMIC_VALUE": 3344740
                     },
                     {
                         "OCC_CODE": "23-1012",
                         "OCC_TITLE": "Judicial Law Clerks",
-                        "RISK_EMP": 11,
-                        "AT_RISK_ECONOMIC_VALUE": 706032
+                        "RISK_EMP": 32,
+                        "AT_RISK_ECONOMIC_VALUE": 1951040
                     }
                 ],
                 "top_5_by_economic_value": [
+                    {
+                        "OCC_CODE": "23-1011",
+                        "OCC_TITLE": "Lawyers",
+                        "RISK_EMP": 1065,
+                        "AT_RISK_ECONOMIC_VALUE": 132890700
+                    },
+                    {
+                        "OCC_CODE": "23-2011",
+                        "OCC_TITLE": "Paralegals and Legal Assistants",
+                        "RISK_EMP": 993,
+                        "AT_RISK_ECONOMIC_VALUE": 60216519
+                    },
                     {
                         "OCC_CODE": "43-6012",
                         "OCC_TITLE": "Legal Secretaries and Administrative Assistants",
-                        "RISK_EMP": 164,
-                        "AT_RISK_ECONOMIC_VALUE": 7688412
+                        "RISK_EMP": 1241,
+                        "AT_RISK_ECONOMIC_VALUE": 57942290
                     },
                     {
-                        "OCC_CODE": "23-2011",
-                        "OCC_TITLE": "Paralegals and Legal Assistants",
-                        "RISK_EMP": 113,
-                        "AT_RISK_ECONOMIC_VALUE": 6867985
-                    },
-                    {
-                        "OCC_CODE": "23-2099",
-                        "OCC_TITLE": "Legal Support Workers, All Other",
-                        "RISK_EMP": 42,
-                        "AT_RISK_ECONOMIC_VALUE": 2692250
+                        "OCC_CODE": "27-3092",
+                        "OCC_TITLE": "Court Reporters and Simultaneous Captioners",
+                        "RISK_EMP": 49,
+                        "AT_RISK_ECONOMIC_VALUE": 3344740
                     },
                     {
                         "OCC_CODE": "23-1012",
                         "OCC_TITLE": "Judicial Law Clerks",
-                        "RISK_EMP": 11,
-                        "AT_RISK_ECONOMIC_VALUE": 706032
+                        "RISK_EMP": 32,
+                        "AT_RISK_ECONOMIC_VALUE": 1951040
                     }
                 ]
             },
-            "EDUCATIONAL_SERVICES": {
+            "PASSENGER_TRANSPORTATION": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "25-9045",
-                        "OCC_TITLE": "Teaching Assistants, Except Postsecondary",
-                        "RISK_EMP": 2276,
-                        "AT_RISK_ECONOMIC_VALUE": 68878040
+                        "OCC_CODE": "43-5032",
+                        "OCC_TITLE": "Dispatchers, Except Police, Fire, and Ambulance",
+                        "RISK_EMP": 1036,
+                        "AT_RISK_ECONOMIC_VALUE": 53571560
                     },
                     {
-                        "OCC_CODE": "25-3021",
-                        "OCC_TITLE": "Self-Enrichment Teachers",
-                        "RISK_EMP": 533,
-                        "AT_RISK_ECONOMIC_VALUE": 22703122
+                        "OCC_CODE": "49-3031",
+                        "OCC_TITLE": "Bus and Truck Mechanics and Diesel Engine Specialists",
+                        "RISK_EMP": 915,
+                        "AT_RISK_ECONOMIC_VALUE": 48742050
                     },
                     {
-                        "OCC_CODE": "25-3031",
-                        "OCC_TITLE": "Substitute Teachers, Short-Term",
-                        "RISK_EMP": 468,
-                        "AT_RISK_ECONOMIC_VALUE": 22551160
+                        "OCC_CODE": "53-3051",
+                        "OCC_TITLE": "Bus Drivers, School",
+                        "RISK_EMP": 687,
+                        "AT_RISK_ECONOMIC_VALUE": 33875970
                     },
                     {
-                        "OCC_CODE": "25-1011",
-                        "OCC_TITLE": "Business Teachers, Postsecondary",
-                        "RISK_EMP": 116,
-                        "AT_RISK_ECONOMIC_VALUE": 12314728
+                        "OCC_CODE": "43-4181",
+                        "OCC_TITLE": "Reservation and Transportation Ticket Agents and Travel Clerks",
+                        "RISK_EMP": 585,
+                        "AT_RISK_ECONOMIC_VALUE": 21539700
                     },
                     {
-                        "OCC_CODE": "25-9044",
-                        "OCC_TITLE": "Teaching Assistants, Postsecondary",
-                        "RISK_EMP": 105,
-                        "AT_RISK_ECONOMIC_VALUE": 5173195
+                        "OCC_CODE": "53-3053",
+                        "OCC_TITLE": "Shuttle Drivers and Chauffeurs",
+                        "RISK_EMP": 460,
+                        "AT_RISK_ECONOMIC_VALUE": 15037400
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "25-9045",
-                        "OCC_TITLE": "Teaching Assistants, Except Postsecondary",
-                        "RISK_EMP": 2276,
-                        "AT_RISK_ECONOMIC_VALUE": 68878040
+                        "OCC_CODE": "43-5032",
+                        "OCC_TITLE": "Dispatchers, Except Police, Fire, and Ambulance",
+                        "RISK_EMP": 1036,
+                        "AT_RISK_ECONOMIC_VALUE": 53571560
                     },
                     {
-                        "OCC_CODE": "25-3021",
-                        "OCC_TITLE": "Self-Enrichment Teachers",
-                        "RISK_EMP": 533,
-                        "AT_RISK_ECONOMIC_VALUE": 22703122
+                        "OCC_CODE": "49-3031",
+                        "OCC_TITLE": "Bus and Truck Mechanics and Diesel Engine Specialists",
+                        "RISK_EMP": 915,
+                        "AT_RISK_ECONOMIC_VALUE": 48742050
                     },
                     {
-                        "OCC_CODE": "25-3031",
-                        "OCC_TITLE": "Substitute Teachers, Short-Term",
-                        "RISK_EMP": 468,
-                        "AT_RISK_ECONOMIC_VALUE": 22551160
+                        "OCC_CODE": "53-3051",
+                        "OCC_TITLE": "Bus Drivers, School",
+                        "RISK_EMP": 687,
+                        "AT_RISK_ECONOMIC_VALUE": 33875970
                     },
                     {
-                        "OCC_CODE": "25-1011",
-                        "OCC_TITLE": "Business Teachers, Postsecondary",
-                        "RISK_EMP": 116,
-                        "AT_RISK_ECONOMIC_VALUE": 12314728
+                        "OCC_CODE": "43-4181",
+                        "OCC_TITLE": "Reservation and Transportation Ticket Agents and Travel Clerks",
+                        "RISK_EMP": 585,
+                        "AT_RISK_ECONOMIC_VALUE": 21539700
                     },
                     {
-                        "OCC_CODE": "25-1042",
-                        "OCC_TITLE": "Biological Science Teachers, Postsecondary",
-                        "RISK_EMP": 66,
-                        "AT_RISK_ECONOMIC_VALUE": 6338433
+                        "OCC_CODE": "49-3043",
+                        "OCC_TITLE": "Rail Car Repairers",
+                        "RISK_EMP": 248,
+                        "AT_RISK_ECONOMIC_VALUE": 16868960
                     }
                 ]
             },
-            "TRAVEL_AND_ENTERTAINMENT_SERVICES": {
+            "SPECIAL_INDUSTRIES": {
                 "top_5_by_employment": [
                     {
-                        "OCC_CODE": "39-3012",
-                        "OCC_TITLE": "Gambling and Sports Book Writers and Runners",
-                        "RISK_EMP": 141,
-                        "AT_RISK_ECONOMIC_VALUE": 3704900
+                        "OCC_CODE": "53-7081",
+                        "OCC_TITLE": "Refuse and Recyclable Material Collectors",
+                        "RISK_EMP": 411,
+                        "AT_RISK_ECONOMIC_VALUE": 17163360
                     },
                     {
-                        "OCC_CODE": "39-7010",
-                        "OCC_TITLE": "Tour and Travel Guides",
-                        "RISK_EMP": 40,
-                        "AT_RISK_ECONOMIC_VALUE": 1267373
+                        "OCC_CODE": "39-4021",
+                        "OCC_TITLE": "Funeral Attendants",
+                        "RISK_EMP": 111,
+                        "AT_RISK_ECONOMIC_VALUE": 3861690
                     },
                     {
-                        "OCC_CODE": "25-4012",
-                        "OCC_TITLE": "Curators",
-                        "RISK_EMP": 34,
-                        "AT_RISK_ECONOMIC_VALUE": 1706779
-                    },
-                    {
-                        "OCC_CODE": "27-2023",
-                        "OCC_TITLE": "Umpires, Referees, and Other Sports Officials",
-                        "RISK_EMP": 15,
-                        "AT_RISK_ECONOMIC_VALUE": 529469
+                        "OCC_CODE": "47-4041",
+                        "OCC_TITLE": "Hazardous Materials Removal Workers",
+                        "RISK_EMP": 102,
+                        "AT_RISK_ECONOMIC_VALUE": 4408440
                     }
                 ],
                 "top_5_by_economic_value": [
                     {
-                        "OCC_CODE": "39-3012",
-                        "OCC_TITLE": "Gambling and Sports Book Writers and Runners",
-                        "RISK_EMP": 141,
-                        "AT_RISK_ECONOMIC_VALUE": 3704900
+                        "OCC_CODE": "53-7081",
+                        "OCC_TITLE": "Refuse and Recyclable Material Collectors",
+                        "RISK_EMP": 411,
+                        "AT_RISK_ECONOMIC_VALUE": 17163360
                     },
                     {
-                        "OCC_CODE": "25-4012",
-                        "OCC_TITLE": "Curators",
-                        "RISK_EMP": 34,
-                        "AT_RISK_ECONOMIC_VALUE": 1706779
+                        "OCC_CODE": "47-4041",
+                        "OCC_TITLE": "Hazardous Materials Removal Workers",
+                        "RISK_EMP": 102,
+                        "AT_RISK_ECONOMIC_VALUE": 4408440
                     },
                     {
-                        "OCC_CODE": "39-7010",
-                        "OCC_TITLE": "Tour and Travel Guides",
-                        "RISK_EMP": 40,
-                        "AT_RISK_ECONOMIC_VALUE": 1267373
-                    },
-                    {
-                        "OCC_CODE": "27-2023",
-                        "OCC_TITLE": "Umpires, Referees, and Other Sports Officials",
-                        "RISK_EMP": 15,
-                        "AT_RISK_ECONOMIC_VALUE": 529469
-                    }
-                ]
-            },
-            "HEALTHCARE": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "43-6013",
-                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
-                        "RISK_EMP": 691,
-                        "AT_RISK_ECONOMIC_VALUE": 29399043
-                    },
-                    {
-                        "OCC_CODE": "29-2052",
-                        "OCC_TITLE": "Pharmacy Technicians",
-                        "RISK_EMP": 499,
-                        "AT_RISK_ECONOMIC_VALUE": 20288926
-                    },
-                    {
-                        "OCC_CODE": "29-1051",
-                        "OCC_TITLE": "Pharmacists",
-                        "RISK_EMP": 464,
-                        "AT_RISK_ECONOMIC_VALUE": 60435365
-                    },
-                    {
-                        "OCC_CODE": "29-1071",
-                        "OCC_TITLE": "Physician Assistants",
-                        "RISK_EMP": 260,
-                        "AT_RISK_ECONOMIC_VALUE": 32896331
-                    },
-                    {
-                        "OCC_CODE": "29-1214",
-                        "OCC_TITLE": "Emergency Medicine Physicians",
-                        "RISK_EMP": 217,
-                        "AT_RISK_ECONOMIC_VALUE": 74619232
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "29-1214",
-                        "OCC_TITLE": "Emergency Medicine Physicians",
-                        "RISK_EMP": 217,
-                        "AT_RISK_ECONOMIC_VALUE": 74619232
-                    },
-                    {
-                        "OCC_CODE": "29-1051",
-                        "OCC_TITLE": "Pharmacists",
-                        "RISK_EMP": 464,
-                        "AT_RISK_ECONOMIC_VALUE": 60435365
-                    },
-                    {
-                        "OCC_CODE": "29-1215",
-                        "OCC_TITLE": "Family Medicine Physicians",
-                        "RISK_EMP": 127,
-                        "AT_RISK_ECONOMIC_VALUE": 34232101
-                    },
-                    {
-                        "OCC_CODE": "29-1071",
-                        "OCC_TITLE": "Physician Assistants",
-                        "RISK_EMP": 260,
-                        "AT_RISK_ECONOMIC_VALUE": 32896331
-                    },
-                    {
-                        "OCC_CODE": "43-6013",
-                        "OCC_TITLE": "Medical Secretaries and Administrative Assistants",
-                        "RISK_EMP": 691,
-                        "AT_RISK_ECONOMIC_VALUE": 29399043
-                    }
-                ]
-            },
-            "RETAIL_TRADE": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "41-2011",
-                        "OCC_TITLE": "Cashiers",
-                        "RISK_EMP": 3467,
-                        "AT_RISK_ECONOMIC_VALUE": 99730581
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "41-2011",
-                        "OCC_TITLE": "Cashiers",
-                        "RISK_EMP": 3467,
-                        "AT_RISK_ECONOMIC_VALUE": 99730581
-                    }
-                ]
-            },
-            "AGRICULTURE_FORESTRY_FISHING_HUNTING": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "45-2011",
-                        "OCC_TITLE": "Agricultural Inspectors",
-                        "RISK_EMP": 156,
-                        "AT_RISK_ECONOMIC_VALUE": 7530416
-                    },
-                    {
-                        "OCC_CODE": "45-2041",
-                        "OCC_TITLE": "Graders and Sorters, Agricultural Products",
-                        "RISK_EMP": 78,
-                        "AT_RISK_ECONOMIC_VALUE": 3621965
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "45-2011",
-                        "OCC_TITLE": "Agricultural Inspectors",
-                        "RISK_EMP": 156,
-                        "AT_RISK_ECONOMIC_VALUE": 7530416
-                    },
-                    {
-                        "OCC_CODE": "45-2041",
-                        "OCC_TITLE": "Graders and Sorters, Agricultural Products",
-                        "RISK_EMP": 78,
-                        "AT_RISK_ECONOMIC_VALUE": 3621965
-                    }
-                ]
-            },
-            "CONSTRUCTION": {
-                "top_5_by_employment": [
-                    {
-                        "OCC_CODE": "47-4011",
-                        "OCC_TITLE": "Construction and Building Inspectors",
-                        "RISK_EMP": 99,
-                        "AT_RISK_ECONOMIC_VALUE": 6567036
-                    }
-                ],
-                "top_5_by_economic_value": [
-                    {
-                        "OCC_CODE": "47-4011",
-                        "OCC_TITLE": "Construction and Building Inspectors",
-                        "RISK_EMP": 99,
-                        "AT_RISK_ECONOMIC_VALUE": 6567036
+                        "OCC_CODE": "39-4021",
+                        "OCC_TITLE": "Funeral Attendants",
+                        "RISK_EMP": 111,
+                        "AT_RISK_ECONOMIC_VALUE": 3861690
                     }
                 ]
             }
